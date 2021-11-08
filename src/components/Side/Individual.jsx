@@ -37,17 +37,7 @@ const participantNameStyle = css({
   textTransform: 'capitalize',
   fontSize: '0.875rem',
   lineHeight: '1.5rem',
-  fontWeight: 500,
-  variants: {
-    variant: {
-      winner: {
-        fontWeight: 700
-      },
-      loser: {
-        fontWeight: 500
-      }
-    }
-  }
+  fontWeight: 500
 });
 
 const seedStyle = css({

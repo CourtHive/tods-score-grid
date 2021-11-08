@@ -38,8 +38,6 @@ const {
 });
 
 Individual.args = {
-  showAddress: true,
-  onClick: () => {},
   individualParticipant,
   side: { seedValue: 1 }
 };
