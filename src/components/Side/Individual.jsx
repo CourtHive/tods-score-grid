@@ -13,39 +13,36 @@ export const participantStatus = css({
 import { Address } from './Address';
 
 const flagStyles = css({
-  width: '1rem',
-  minWidth: '1rem',
   borderRadius: 2,
+  boxSizing: 'border-box',
+  display: 'inline-block',
   marginLeft: 2,
   marginRight: 2,
-  position: 'relative',
-  display: 'inline-block',
-  WebkitBoxSizing: 'border-box',
-  boxSizing: 'border-box'
+  position: 'relative'
 });
 
 const participantStyle = css({
+  alignItems: 'center',
   display: 'flex',
   fontWeight: 500,
-  whiteSpace: 'nowrap',
   justifyContent: 'flex-start',
-  alignItems: 'center'
+  whiteSpace: 'nowrap'
 });
 
 const participantNameStyle = css({
-  margin: '0 0.375rem 0 0.375rem',
-  textTransform: 'capitalize',
   fontSize: '0.875rem',
+  fontWeight: 500,
   lineHeight: '1.5rem',
-  fontWeight: 500
+  margin: '0 0.375rem 0 0.375rem',
+  textTransform: 'capitalize'
 });
 
 const seedStyle = css({
-  textTransform: 'uppercase',
+  color: '$participant$seed',
   fontSize: '0.75rem',
   lineHeight: '1rem',
   marginLeft: '.5rem',
-  color: '$participant$seed'
+  textTransform: 'uppercase'
 });
 
 export function Individual(params) {
