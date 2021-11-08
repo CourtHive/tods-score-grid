@@ -1,0 +1,4 @@
+{
+  "src/components/**/*.{js,jsx,ts,tsx,css,md}": "prettier --write",
+  "src/components/**/*.{j,t}s?(x)": "eslint --cache --fix --max-warnings=0"
+}
