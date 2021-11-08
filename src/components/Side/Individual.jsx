@@ -47,13 +47,13 @@ const seedStyle = css({
 });
 
 export function Individual(params) {
-  const { onClick, side, individualParticipant, className } = params;
+  const { side, individualParticipant, className } = params;
 
   const participantName = individualParticipant?.participantName;
 
   return (
     <div className={className} key={`${params.index}`}>
-      <div className={participantStyle()} onClick={onClick}>
+      <div className={participantStyle()}>
         <Frill {...params} className={flagStyles()} />
 
         <div className={participantNameStyle()}>
