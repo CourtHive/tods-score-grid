@@ -18,7 +18,8 @@ const flagStyles = css({
   display: 'inline-block',
   marginLeft: 2,
   marginRight: 2,
-  position: 'relative'
+  position: 'relative',
+  width: '1rem'
 });
 
 const participantStyle = css({
