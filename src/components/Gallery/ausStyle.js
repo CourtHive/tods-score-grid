@@ -32,7 +32,7 @@ export const ausStyle = ({ roundNumber, participantHeight }) => {
     '&::after': {
       position: 'relative',
       width: 8,
-      left: '100%'
+      insetInlineStart: '100%'
     },
     '&::after, &::before': {
       content: '',
@@ -65,7 +65,7 @@ export const ausStyle = ({ roundNumber, participantHeight }) => {
         connectors: {
           '&:before': {
             width: connectorWidth,
-            left: -connectorWidth
+            insetInlineStart: -connectorWidth
           },
           '&:nth-child(2n):after': {
             top: `calc(-100% - ${participantHeight}px)`
@@ -81,7 +81,7 @@ export const ausStyle = ({ roundNumber, participantHeight }) => {
         finalRound: {
           '&:before': {
             width: connectorWidth,
-            left: -connectorWidth
+            insetInlineStart: -connectorWidth
           },
           '&:after': {
             width: 0,
