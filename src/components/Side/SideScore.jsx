@@ -86,7 +86,7 @@ const Set = ({ set, sideNumber }) => {
   return (
     <p className={gameScoreStyle({ variant })}>
       {!isNaN(scoreDisplay) ? scoreDisplay : ''}
-      <span className={tieBreakStyle()}>{!(tieBreakSet && tieBreakScore) || ''}</span>
+      <span className={tieBreakStyle()}>{!tieBreakSet ? tieBreakScore : ''}</span>
     </p>
   );
 };
