@@ -2,8 +2,6 @@ import { css } from '@stitches/react';
 import { Side } from '../Side/Side';
 import React from 'react';
 
-const participantHeight = 42;
-
 const matchAnchorStyle = css({
   textDecoration: 'none',
   display: 'block',
@@ -13,14 +11,24 @@ const matchAnchorStyle = css({
 });
 
 export const MatchUp = (params) => {
-  const { matchUp, matchUpStyle } = params;
-  const { roundNumber, finishingRound } = matchUp;
-  const bracketStyle = roundNumber === 1 ? 'firstRound' : finishingRound === 1 ? 'finalRound' : 'connectors';
+  const { matchUp, matchUpStyle, moeity } = params;
+  const { roundNumber, finishingRound, matchUpType, preFeedRound } = matchUp;
+  const link = preFeedRound ? 'm0' : moeity ? 'm1' : 'm2';
+  const finalRound = parseInt(finishingRound) === 1;
+  const firstRound = parseInt(roundNumber) === 1;
+  const isDoubles = matchUpType === 'DOUBLES';
 
+  const participantHeight = isDoubles ? 60 : 40;
   const componentStyle = matchUpStyle({ roundNumber, participantHeight });
 
   return (
-    <div className={componentStyle({ bracketStyle })}>
+    <div
+      className={componentStyle({
+        firstRound,
+        finalRound,
+        link
+      })}
+    >
       <a href="" aria-label="match link" aria-click="CLICK" className={matchAnchorStyle()}>
         {' '}
         <Side sideNumber={1} {...matchUp} participantHeight={participantHeight} />

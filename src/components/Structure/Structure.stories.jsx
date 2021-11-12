@@ -24,7 +24,7 @@ const matchUpStyle = ausStyle;
 
 export const Structure = (args) => {
   const className = useDarkMode() ? nightTheme : dayTheme;
-  const { matchUps } = generateMatchUps(args);
+  const { matchUps } = generateMatchUps({ ...args, drawType: 'FEED_IN' });
 
   return (
     <Container className={className}>

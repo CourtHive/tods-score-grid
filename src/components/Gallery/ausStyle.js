@@ -27,62 +27,59 @@ export const ausStyle = ({ roundNumber, participantHeight }) => {
       position: 'absolute',
       borderBlockStart: '$matchUp$borderWidth solid #999',
       height: 1,
+      width: connectorWidth,
+      insetInlineStart: -connectorWidth,
       top: `calc(50% - $matchUp$borderWidth)`
     },
     '&::after': {
       position: 'relative',
-      width: 8,
-      insetInlineStart: '100%'
+      insetInlineStart: '100%',
+      width: 8
     },
     '&::after, &::before': {
       content: '',
-      borderColor: '#999',
       display: 'block',
+      borderColor: '#999',
       borderWidth: '$matchUp$borderWidth'
     },
-    '&:nth-child(odd):after': {
-      borderInlineEnd: '$matchUp$borderWidth solid #999',
-      borderTopStyle: 'solid'
-    },
-    '&:nth-child(2n):after': {
-      borderInlineEnd: '$matchUp$borderWidth solid #999',
-      borderBottomStyle: 'solid'
+    '&:after': {
+      width: connectorWidth,
+      height: connectorHeight
     },
     variants: {
-      bracketStyle: {
-        firstRound: {
-          '&:nth-child(2n):after': {
-            top: `calc(-100% - ${participantHeight}px)`
-          },
-          '&:nth-child(odd):after': {
-            top: topOffset
-          },
+      firstRound: {
+        true: {
+          '&:before': {
+            width: 0,
+            height: 0,
+            borderWidth: 0
+          }
+        }
+      },
+      link: {
+        m1: {
           '&:after': {
-            width: connectorWidth,
-            height: connectorHeight
+            top: topOffset,
+            borderInlineEnd: '$matchUp$borderWidth solid #999',
+            borderTopStyle: 'solid'
           }
         },
-        connectors: {
-          '&:before': {
-            width: connectorWidth,
-            insetInlineStart: -connectorWidth
-          },
-          '&:nth-child(2n):after': {
-            top: `calc(-100% - ${participantHeight}px)`
-          },
-          '&:nth-child(odd):after': {
-            top: topOffset
-          },
+        m2: {
           '&:after': {
-            width: connectorWidth,
-            height: connectorHeight
+            top: `calc(-100% - ${participantHeight}px)`,
+            borderInlineEnd: '$matchUp$borderWidth solid #999',
+            borderBottomStyle: 'solid'
           }
         },
-        finalRound: {
-          '&:before': {
-            width: connectorWidth,
-            insetInlineStart: -connectorWidth
-          },
+        m0: {
+          '&:after': {
+            top: `calc(-100% - ${participantHeight}px)`,
+            borderBottomStyle: 'solid'
+          }
+        }
+      },
+      finalRound: {
+        true: {
           '&:after': {
             width: 0,
             height: 0,

@@ -4,7 +4,10 @@ export const argTypes = {
     control: { type: 'inline-radio' }
   },
   drawSize: {
-    options: [4, 8, 16, 32, 64],
+    control: { type: 'range', min: 4, max: 64 }
+  },
+  eventType: {
+    options: { Singles: 'SINGLES', Doubles: 'DOUBLES' },
     control: { type: 'select' }
   },
   matchUpFormat: {
