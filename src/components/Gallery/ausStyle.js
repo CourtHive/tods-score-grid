@@ -1,7 +1,7 @@
 import { css } from '@stitches/react';
 
-export const ausStyle = ({ roundNumber, participantHeight }) => {
-  const connectorHeight = (participantHeight + 14) * Math.pow(2, roundNumber - 1);
+export const ausStyle = ({ roundFactor, roundNumber, participantHeight }) => {
+  const connectorHeight = (participantHeight + 14) * (roundFactor || Math.pow(2, roundNumber - 1));
   const topOffset = -1 * (participantHeight + 1);
   const connectorWidth = 17;
 
@@ -75,6 +75,18 @@ export const ausStyle = ({ roundNumber, participantHeight }) => {
           '&:after': {
             top: `calc(-100% - ${participantHeight}px)`,
             borderBottomStyle: 'solid'
+          }
+        },
+        mr: {
+          '&:after': {
+            width: 0,
+            height: 0,
+            borderWidth: 0
+          },
+          '&:before': {
+            width: 0,
+            height: 0,
+            borderWidth: 0
           }
         }
       },
