@@ -10,6 +10,18 @@ export const argTypes = {
     options: { Singles: 'SINGLES', Doubles: 'DOUBLES' },
     control: { type: 'select' }
   },
+  drawType: {
+    options: {
+      'Round Robin': 'ROUND_ROBIN',
+      'Feed In': 'FEED_IN',
+      'Ad Hoc': 'AD_HOC'
+    },
+    control: { type: 'select' }
+  },
+  theme: {
+    options: { Australian: 1, French: 2, Night: 3 },
+    control: { type: 'select' }
+  },
   matchUpFormat: {
     options: {
       standard: 'SET3-S:6/TB7',

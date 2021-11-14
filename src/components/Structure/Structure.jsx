@@ -1,7 +1,7 @@
 import { Round } from './Round';
 import React from 'react';
 
-export const Structure = ({ matchUps, direction, matchUpStyle }) => {
+export const Structure = ({ composition, matchUps, direction, matchUpStyle }) => {
   const roundNumbers = matchUps.reduce(
     (roundNumbers, { roundNumber }) =>
       roundNumbers.includes(roundNumber) ? roundNumbers : roundNumbers.concat(roundNumber),
@@ -11,7 +11,13 @@ export const Structure = ({ matchUps, direction, matchUpStyle }) => {
   return (
     <div style={{ display: 'flex', overflowX: 'auto', direction }}>
       {roundNumbers.map((roundNumber, i) => (
-        <Round matchUps={matchUps} matchUpStyle={matchUpStyle} key={`round-${i}`} roundNumber={roundNumber} />
+        <Round
+          matchUpStyle={matchUpStyle}
+          composition={composition}
+          roundNumber={roundNumber}
+          matchUps={matchUps}
+          key={`round-${i}`}
+        />
       ))}
     </div>
   );

@@ -1,6 +1,6 @@
 import { css } from '@stitches/react';
 
-export const ausStyle = ({ roundFactor, roundNumber, participantHeight }) => {
+export const matchUpStyle = ({ roundFactor, roundNumber, participantHeight }) => {
   const connectorHeight = (participantHeight + 14) * (roundFactor || Math.pow(2, roundNumber - 1));
   const topOffset = -1 * (participantHeight + 1);
   const connectorWidth = 17;
@@ -11,13 +11,14 @@ export const ausStyle = ({ roundFactor, roundNumber, participantHeight }) => {
     width: '100%',
     height: participantHeight * 2 + 2,
     gridRow: 'span 2',
-    border: 'solid $matchUp$borderColor',
-    borderWidth: '$matchUp$borderWidth',
+    border: 'solid $border',
+    borderWidth: '$borderWidths$matchUp',
+    boxShadow: '$matchUp$boxShadow',
     WebkitTransition: 'all 0.25s ease',
     transition: 'all 0.25s ease',
     marginBottom: 20,
     '&:hover': {
-      border: '$matchUp$borderWidth solid #0091d2'
+      border: '$borderWidths$matchUp solid #0091d2'
     },
     '@media (min-width: 400px)': {
       fontSize: 16
@@ -25,11 +26,11 @@ export const ausStyle = ({ roundFactor, roundNumber, participantHeight }) => {
     '&::before': {
       borderRadius: 2,
       position: 'absolute',
-      borderBlockStart: '$matchUp$borderWidth solid #999',
+      borderBlockStart: '$borderWidths$matchUp solid #999',
       height: 1,
       width: connectorWidth,
       insetInlineStart: -connectorWidth,
-      top: `calc(50% - $matchUp$borderWidth)`
+      top: `calc(50% - $borderWidths$matchUp)`
     },
     '&::after': {
       position: 'relative',
@@ -39,8 +40,8 @@ export const ausStyle = ({ roundFactor, roundNumber, participantHeight }) => {
     '&::after, &::before': {
       content: '',
       display: 'block',
-      borderColor: '#999',
-      borderWidth: '$matchUp$borderWidth'
+      borderWidth: '$borderWidths$matchUp',
+      borderColor: '$connector'
     },
     '&:after': {
       width: connectorWidth,
@@ -59,22 +60,28 @@ export const ausStyle = ({ roundFactor, roundNumber, participantHeight }) => {
       link: {
         m1: {
           '&:after': {
-            top: topOffset,
-            borderInlineEnd: '$matchUp$borderWidth solid #999',
-            borderTopStyle: 'solid'
+            borderWidth: '$borderWidths$matchUp',
+            borderInlineEnd: '$borderWidths$matchUp solid',
+            borderColor: '$connector',
+            borderTopStyle: 'solid',
+            top: topOffset
           }
         },
         m2: {
           '&:after': {
             top: `calc(-100% - ${participantHeight}px)`,
-            borderInlineEnd: '$matchUp$borderWidth solid #999',
+            borderInlineEnd: '$borderWidths$matchUp solid',
+            borderWidth: '$borderWidths$matchUp',
+            borderColor: '$connector',
             borderBottomStyle: 'solid'
           }
         },
         m0: {
           '&:after': {
             top: `calc(-100% - ${participantHeight}px)`,
-            borderBottomStyle: 'solid'
+            borderWidth: '$borderWidths$matchUp',
+            borderBottomStyle: 'solid',
+            borderColor: '$connector'
           }
         },
         mr: {

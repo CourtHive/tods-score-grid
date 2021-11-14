@@ -1,17 +1,9 @@
-import { css } from '@stitches/react';
 import { Side } from '../Side/Side';
 import React from 'react';
 
-const matchAnchorStyle = css({
-  textDecoration: 'none',
-  display: 'block',
-  '&:hover': {
-    textDecoration: 'none'
-  }
-});
-
 export const MatchUp = (params) => {
-  const { matchUp, matchUpStyle, moeity } = params;
+  const { composition, matchUp, matchUpStyle, moeity } = params;
+  // const { headerHeight, footerHeight, showHeader, showFooter } = composition;
   const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound } = matchUp;
   const link = !matchUp.drawPositions || matchUp.isRoundRobin ? 'mr' : preFeedRound ? 'm0' : moeity ? 'm1' : 'm2';
   const finalRound = parseInt(finishingRound) === 1;
@@ -30,11 +22,8 @@ export const MatchUp = (params) => {
         // css: { ...(firstRound && { marginLeft: 30 }) }
       })}
     >
-      <a href="" aria-label="match link" aria-click="CLICK" className={matchAnchorStyle()}>
-        {' '}
-        <Side sideNumber={1} {...matchUp} participantHeight={participantHeight} />
-        <Side sideNumber={2} {...matchUp} participantHeight={participantHeight} />
-      </a>{' '}
+      <Side sideNumber={1} {...matchUp} composition={composition} participantHeight={participantHeight} />
+      <Side sideNumber={2} {...matchUp} composition={composition} participantHeight={participantHeight} />
     </div>
   );
 };

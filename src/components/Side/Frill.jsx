@@ -23,7 +23,15 @@ export const Flag = ({ className, individualParticipant }) => {
   );
 };
 
-export const Frill = ({ className, individualParticipant, matchUpType = 'SINGLES', type = 'flag', side }) => {
+export const Frill = ({
+  individualParticipant,
+  matchUpType = 'SINGLES',
+  type = 'flag',
+  composition,
+  className,
+  side
+}) => {
+  const { bracketedSeeds } = composition || {};
   const ratings = individualParticipant?.ratings?.[matchUpType];
   const rankings = individualParticipant?.rankings?.[matchUpType];
   if (ratings || rankings) {
@@ -31,10 +39,11 @@ export const Frill = ({ className, individualParticipant, matchUpType = 'SINGLES
   }
 
   const seedValue = type === 'seed' && (side?.seedValue || side?.seedNumber);
+  const seedDisplay = bracketedSeeds ? `(${seedValue})` : seedValue;
 
   return !individualParticipant ? null : type === 'flag' ? (
     <Flag className={className} individualParticipant={individualParticipant} />
   ) : seedValue ? (
-    <sup className={className}>{seedValue}</sup>
+    <sup className={className}>{seedDisplay}</sup>
   ) : null;
 };

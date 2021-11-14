@@ -24,7 +24,16 @@ const participantTypeStyle = css({
   }
 });
 
-export const Side = ({ participantHeight, matchUpType, sides, sideNumber, winningSide, matchUpStatus, score }) => {
+export const Side = ({
+  participantHeight,
+  matchUpStatus,
+  composition,
+  matchUpType,
+  winningSide,
+  sideNumber,
+  score,
+  sides
+}) => {
   const sideContainerStyle = css({
     display: 'flex',
     position: 'relative',
@@ -52,6 +61,7 @@ export const Side = ({ participantHeight, matchUpType, sides, sideNumber, winnin
   const side = sides?.find((side) => side.sideNumber === sideNumber);
   const firstParticipant = isDoubles ? side.participant?.individualParticipants?.[0] : side.participant;
   const secondParticipant = isDoubles && side.participant?.individualParticipants?.[1];
+  const isWinningSide = sideNumber === winningSide;
   //   const drawPosition = side?.drawPosition;
 
   return (
@@ -72,12 +82,30 @@ export const Side = ({ participantHeight, matchUpType, sides, sideNumber, winnin
       <div className={participantTypeStyle({ variant: isDoubles ? 'doubles' : undefined })}>
         {isTeam ? null : (
           <>
-            <Individual side={side} individualParticipant={firstParticipant} />
-            {!secondParticipant ? null : <Individual side={side} individualParticipant={secondParticipant} />}
+            <Individual
+              individualParticipant={firstParticipant}
+              isWinningSide={isWinningSide}
+              composition={composition}
+              side={side}
+            />
+            {!secondParticipant ? null : (
+              <Individual
+                individualParticipant={secondParticipant}
+                isWinningSide={isWinningSide}
+                composition={composition}
+                side={side}
+              />
+            )}
           </>
         )}
       </div>{' '}
-      <SideScore sideNumber={sideNumber} score={score} winningSide={winningSide} matchUpStatus={matchUpStatus} />
+      <SideScore
+        matchUpStatus={matchUpStatus}
+        composition={composition}
+        winningSide={winningSide}
+        sideNumber={sideNumber}
+        score={score}
+      />
     </div>
   );
 };

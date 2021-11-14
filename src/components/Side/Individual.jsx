@@ -13,50 +13,64 @@ export const participantStatus = css({
 import { Address } from './Address';
 
 const flagStyles = css({
+  width: '1rem',
+  minWidth: '1rem',
   borderRadius: 2,
-  boxSizing: 'border-box',
-  display: 'inline-block',
   marginLeft: 2,
   marginRight: 2,
   position: 'relative',
-  width: '1rem'
+  display: 'inline-block',
+  WebkitBoxSizing: 'border-box',
+  boxSizing: 'border-box'
 });
 
 const participantStyle = css({
-  alignItems: 'center',
   display: 'flex',
   fontWeight: 500,
+  whiteSpace: 'nowrap',
   justifyContent: 'flex-start',
-  whiteSpace: 'nowrap'
+  alignItems: 'center'
 });
 
 const participantNameStyle = css({
-  fontSize: '0.875rem',
-  fontWeight: 500,
-  lineHeight: '1.5rem',
   margin: '0 0.375rem 0 0.375rem',
-  textTransform: 'capitalize'
+  textTransform: 'capitalize',
+  fontSize: '0.875rem',
+  lineHeight: '1.5rem',
+  fontWeight: 500,
+  variants: {
+    variant: {
+      winner: {
+        fontWeight: 700,
+        color: '$winner'
+      },
+      loser: {
+        fontWeight: 500
+      }
+    }
+  }
 });
 
 const seedStyle = css({
-  color: '$participant$seed',
+  textTransform: 'uppercase',
   fontSize: '0.75rem',
   lineHeight: '1rem',
   marginLeft: '.5rem',
-  textTransform: 'uppercase'
+  color: '$participant$seed'
 });
 
 export function Individual(params) {
-  const { side, individualParticipant, className } = params;
+  const { isWinningSide, onClickIndividual, side, individualParticipant, className } = params;
+  const variant = isWinningSide ? 'winner' : undefined;
 
   const participantName = individualParticipant?.participantName;
 
   return (
     <div className={className} key={`${params.index}`}>
-      <div className={participantStyle()}>
+      <div className={participantStyle()} onClick={onClickIndividual}>
         <Frill {...params} className={flagStyles()} />
 
-        <div className={participantNameStyle()}>
+        <div className={participantNameStyle({ variant })}>
           {side?.bye || side?.qualifier || !participantName ? (
             <abbr className={participantStatus()}>{side.bye ? BYE : side.qualifier ? QUALIFIER : TBD}</abbr>
           ) : (

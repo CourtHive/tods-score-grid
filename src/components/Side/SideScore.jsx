@@ -52,6 +52,7 @@ const gameScoreStyle = css({
   variants: {
     variant: {
       winner: {
+        color: '$winner!important',
         fontWeight: 700
       }
     }
