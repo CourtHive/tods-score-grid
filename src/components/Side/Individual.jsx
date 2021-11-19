@@ -34,7 +34,7 @@ const participantStyle = css({
 
 const participantNameStyle = css({
   margin: '0 0.375rem 0 0.375rem',
-  textTransform: 'capitalize',
+  textTransform: '$participant$textTransform',
   fontSize: '0.875rem',
   lineHeight: '1.5rem',
   fontWeight: 500,
@@ -72,7 +72,7 @@ export function Individual(params) {
 
         <div className={participantNameStyle({ variant })}>
           {side?.bye || side?.qualifier || !participantName ? (
-            <abbr className={participantStatus()}>{side.bye ? BYE : side.qualifier ? QUALIFIER : TBD}</abbr>
+            <abbr className={participantStatus()}>{side?.bye ? BYE : side?.qualifier ? QUALIFIER : TBD}</abbr>
           ) : (
             <span>{participantName}</span>
           )}

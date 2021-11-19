@@ -1,6 +1,6 @@
-import { australianTheme, frenchTheme, nightTheme } from '../themes';
 import { generateMatchUps } from '../Data/matchUps';
 import { useDarkMode } from 'storybook-dark-mode';
+import { australianTheme, nightTheme } from '../themes';
 import { styled } from '@stitches/react';
 import { Round as RD } from './Round';
 import { argTypes } from './argTypes';
@@ -20,12 +20,15 @@ const Container = styled('div', {
   height: 1000
 });
 
-const themes = { 1: australianTheme, 2: frenchTheme, 3: nightTheme };
-
 export const Round = (args) => {
-  const className = useDarkMode() ? nightTheme : themes[args.theme];
+  const className = useDarkMode() ? nightTheme : australianTheme;
   const { matchUps } = generateMatchUps(args);
-  const composition = { bracketedSeeds: args.theme === 2 };
+  const composition = {
+    bracketedSeeds: args.theme === 2,
+    resultsInfo: args.theme === 3,
+    centerInfo: args.theme === 5,
+    winnerChevron: args.theme === 5
+  };
 
   return (
     <Container className={className}>
@@ -36,10 +39,7 @@ export const Round = (args) => {
 
 Round.args = {
   matchUpFormat: 'SET3-S:6/TB7',
-  eventType: 'SINGLES',
-  drawType: 'FEED_IN',
   direction: 'ltr',
   roundNumber: 1,
-  drawSize: 8,
-  theme: 1
+  drawSize: 8
 };

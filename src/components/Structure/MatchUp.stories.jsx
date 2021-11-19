@@ -1,6 +1,6 @@
-import { australianTheme, frenchTheme, nightTheme } from '../themes';
 import { generateMatchUps } from '../Data/matchUps';
 import { useDarkMode } from 'storybook-dark-mode';
+import { australianTheme, nightTheme } from '../themes';
 import { styled } from '@stitches/react';
 import { argTypes } from './argTypes';
 import { MatchUp } from './MatchUp';
@@ -20,34 +20,20 @@ const Container = styled('div', {
   height: '100%'
 });
 
-const themes = { 1: australianTheme, 2: frenchTheme, 3: nightTheme };
-
 export const Match = (args) => {
-  const className = useDarkMode() ? nightTheme : themes[args.theme];
-  const composition = { bracketedSeeds: args.theme === 2 };
-
+  const className = useDarkMode() ? nightTheme : australianTheme;
   const {
     matchUps: [matchUp]
   } = generateMatchUps(args);
 
   return (
     <Container className={className}>
-      <MatchUp
-        {...args}
-        matchUpStyle={matchUpStyle}
-        composition={composition}
-        className={className}
-        matchUp={matchUp}
-      />
+      <MatchUp {...args} matchUp={matchUp} matchUpStyle={matchUpStyle} className={className} />
     </Container>
   );
 };
 
 Match.args = {
-  matchUpFormat: 'SET5-S:6/TB7',
-  eventType: 'SINGLES',
-  drawType: 'FEED_IN',
-  direction: 'ltr',
-  drawSize: 16,
-  theme: 1
+  matchUpFormat: 'SET3-S:6/TB7',
+  direction: 'ltr'
 };
