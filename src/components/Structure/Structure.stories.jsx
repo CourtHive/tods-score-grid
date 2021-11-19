@@ -1,10 +1,10 @@
 import { generateMatchUps } from '../Data/matchUps';
+import { compositions } from '../Data/compositions';
 import { useDarkMode } from 'storybook-dark-mode';
 import { Structure as ST } from './Structure';
-import { compositions } from './compositions';
-import { nightTheme } from '../themes';
+import { argTypes } from '../Data/argTypes';
 import { styled } from '@stitches/react';
-import { argTypes } from './argTypes';
+import { nightTheme } from '../themes';
 import React from 'react';
 import { setConsoleOptions } from '@storybook/addon-console';
 
@@ -34,7 +34,7 @@ export const Structure = (args) => {
   const { matchUps } = generateMatchUps({ ...args });
 
   return (
-    <Container className={className}>
+    <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
         <ST {...args} composition={configuration} matchUps={matchUps} className={className} />
       </div>
@@ -43,11 +43,11 @@ export const Structure = (args) => {
 };
 
 Structure.args = {
+  direction: 'Left to Right',
   composition: 'Australian',
-  matchUpFormat: 'SET5-S:6/TB7',
-  eventType: 'SINGLES',
+  matchUpFormat: 'grand',
+  eventType: 'Singles',
   completionGoal: 100,
-  drawType: 'FEED_IN',
-  direction: 'ltr',
+  drawType: 'Feed In',
   drawSize: 16
 };

@@ -1,8 +1,8 @@
 import { generateMatchUps } from '../Data/matchUps';
+import { compositions } from '../Data/compositions';
 import { useDarkMode } from 'storybook-dark-mode';
-import { compositions } from './compositions';
+import { argTypes } from '../Data/argTypes';
 import { styled } from '@stitches/react';
-import { argTypes } from './argTypes';
 import { nightTheme } from '../themes';
 import { MatchUp } from './MatchUp';
 import React from 'react';
@@ -38,7 +38,7 @@ export const Match = (args) => {
   } = generateMatchUps(args);
 
   return (
-    <Container className={className}>
+    <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
         <MatchUp {...args} composition={configuration} matchUp={matchUp} />
       </div>
@@ -47,8 +47,8 @@ export const Match = (args) => {
 };
 
 Match.args = {
-  matchUpFormat: 'SET5-S:6/TB7',
+  direction: 'Left to Right',
+  matchUpFormat: 'standard',
   composition: 'Australian',
-  eventType: 'SINGLES',
-  direction: 'ltr'
+  eventType: 'Singles'
 };

@@ -1,57 +1,45 @@
-import { drawEngine } from 'tods-competition-factory';
+import { generateEventData } from '../Data/generateEventData';
 import { compositions } from '../Data/compositions';
-import { generateMatchUps } from '../Data/matchUps';
 import { useDarkMode } from 'storybook-dark-mode';
+import { Draw as DrawComponent } from './Draw';
 import { argTypes } from '../Data/argTypes';
 import { styled } from '@stitches/react';
 import { nightTheme } from '../themes';
-import { Round as RD } from './Round';
 import React from 'react';
 
+Draw;
 export default {
-  title: 'Score Grid/Round',
-  component: RD,
+  title: 'Score Grid/Draw',
+  component: DrawComponent,
+  parameters: { actions: { argTypesRegex: '^on.*' } },
   argTypes
 };
 
 const Container = styled('div', {
   backgroundColor: '$colors$backgroundColor',
   color: '$colors$color',
-  height: 1000
+  height: '100%'
 });
 
-export const Round = (args) => {
+export const Draw = (args) => {
   const composition = compositions[args.composition];
   const configuration = composition?.configuration || {};
-  const className = useDarkMode() ? nightTheme : composition.theme;
-  const { matchUps } = generateMatchUps(args);
-
-  const { hasOddMatchUpsCount } = drawEngine.getRoundMatchUps({
-    matchUps
-  });
-
-  const isLucky = hasOddMatchUpsCount;
+  const className = useDarkMode() ? nightTheme : composition?.theme;
+  const { eventData } = generateEventData({ ...args });
 
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <RD
-          {...args}
-          composition={configuration}
-          className={className}
-          matchUps={matchUps}
-          isLucky={isLucky}
-          roundNumber={1}
-        />
+        <DrawComponent {...args} composition={configuration} eventData={eventData} />
       </div>
     </Container>
   );
 };
 
-Round.args = {
+Draw.args = {
   direction: 'Left to Right',
   composition: 'Australian',
-  matchUpFormat: 'grand',
+  matchUpFormat: 'standard',
   eventType: 'Singles',
   completionGoal: 100,
   drawType: 'Feed In',
