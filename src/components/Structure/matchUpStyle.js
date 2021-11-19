@@ -1,24 +1,31 @@
 import { css } from '@stitches/react';
 
-export const matchUpStyle = ({ roundFactor, roundNumber, participantHeight }) => {
-  const connectorHeight = (participantHeight + 14) * (roundFactor || Math.pow(2, roundNumber - 1));
-  const topOffset = -1 * (participantHeight + 1);
+export const matchUpStyle = ({ composition, roundFactor, roundNumber, participantHeight }) => {
+  const connectorHeight =
+    (participantHeight + 14 + (composition?.centerInfo ? 30 : 0)) * (roundFactor || Math.pow(2, roundNumber - 1));
+  const topOffset = -1 * (participantHeight + 1 + (composition?.centerInfo ? 30 : 0));
+  const bottomOffset = composition?.centerInfo ? participantHeight + 30 : participantHeight;
   const connectorWidth = 17;
+
+  const height = participantHeight * 2 + 2 + (composition?.centerInfo ? 2 * 30 : 0);
 
   return css({
     position: 'relative',
     display: 'grid',
     width: '100%',
-    height: participantHeight * 2 + 2,
+    height,
     gridRow: 'span 2',
     border: 'solid $border',
+    borderLeft: 'solid $borderLeft',
     borderWidth: '$borderWidths$matchUp',
     boxShadow: '$matchUp$boxShadow',
-    WebkitTransition: 'all 0.25s ease',
-    transition: 'all 0.25s ease',
+    WebkitTransition: 'all 0.30s linear',
+    transition: 'all 0.30s linear',
     marginBottom: 20,
     '&:hover': {
-      border: '$borderWidths$matchUp solid #0091d2'
+      border: 'solid $borderHover',
+      borderLeft: 'solid $borderHover',
+      borderWidth: '$borderWidths$matchUp'
     },
     '@media (min-width: 400px)': {
       fontSize: 16
@@ -69,7 +76,7 @@ export const matchUpStyle = ({ roundFactor, roundNumber, participantHeight }) =>
         },
         m2: {
           '&:after': {
-            top: `calc(-100% - ${participantHeight}px)`,
+            top: `calc(-100% - ${bottomOffset}px)`,
             borderInlineEnd: '$borderWidths$matchUp solid',
             borderWidth: '$borderWidths$matchUp',
             borderColor: '$connector',
@@ -78,7 +85,7 @@ export const matchUpStyle = ({ roundFactor, roundNumber, participantHeight }) =>
         },
         m0: {
           '&:after': {
-            top: `calc(-100% - ${participantHeight}px)`,
+            top: `calc(-100% - ${bottomOffset}px)`,
             borderWidth: '$borderWidths$matchUp',
             borderBottomStyle: 'solid',
             borderColor: '$connector'
