@@ -7,12 +7,11 @@ import { styled } from '@stitches/react';
 import { nightTheme } from '../themes';
 import React from 'react';
 
-Draw;
 export default {
   title: 'Score Grid/Draw',
   component: DrawComponent,
   parameters: { actions: { argTypesRegex: '^on.*' } },
-  argTypes
+  argTypes: argTypes('all')
 };
 
 const Container = styled('div', {

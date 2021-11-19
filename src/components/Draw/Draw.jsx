@@ -14,7 +14,10 @@ export const Draw = ({ composition, structures, structureId }) => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <StructureSelector structures={structures} structureId={selectedStructureId} onSelect={onSelect} />
+      {structures.length <= 1 ? null : (
+        <StructureSelector structures={structures} structureId={selectedStructureId} onSelect={onSelect} />
+      )}
+      <div style={{ height: '30px' }}> </div>
       <Structure composition={composition.configuration} matchUps={matchUps} />
     </div>
   );

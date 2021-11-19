@@ -11,10 +11,10 @@ export default {
   title: 'Score Grid/Match',
   component: MatchUp,
   argTypes: {
-    eventType: argTypes.eventType,
-    composition: argTypes.composition,
-    matchUpFormat: argTypes.matchUpFormat,
-    direction: argTypes.direction
+    eventType: argTypes().eventType,
+    composition: argTypes().composition,
+    matchUpFormat: argTypes().matchUpFormat,
+    direction: argTypes().direction
   },
   parameters: {
     docs: {

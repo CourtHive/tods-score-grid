@@ -18,7 +18,7 @@ export default {
   title: 'Score Grid/Structure',
   component: ST,
   parameters: { actions: { argTypesRegex: '^on.*' } },
-  argTypes
+  argTypes: argTypes()
 };
 
 const Container = styled('div', {

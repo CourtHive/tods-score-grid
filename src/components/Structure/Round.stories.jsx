@@ -11,7 +11,7 @@ import React from 'react';
 export default {
   title: 'Score Grid/Round',
   component: RD,
-  argTypes
+  argTypes: argTypes()
 };
 
 const Container = styled('div', {

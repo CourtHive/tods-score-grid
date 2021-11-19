@@ -6,6 +6,20 @@ const drawTypes = {
   'Ad Hoc': 'AD_HOC',
   'Lucky Draw': 'LUCKY_DRAW'
 };
+
+const allDrawTypes = {
+  'Round Robin': 'ROUND_ROBIN',
+  'Feed In': 'FEED_IN',
+  'Ad Hoc': 'AD_HOC',
+  'Lucky Draw': 'LUCKY_DRAW',
+  'Feed In Championship': 'FEED_IN_CHAMPIONSHIP',
+  Compass: 'COMPASS',
+  Olympic: 'OLYMPIC',
+  'First Match Loser Consolation': 'FIRST_MATCH_LOSER_CONSOLATION',
+  'Curtis Consolation': 'CURTIS_CONSOLATION',
+  'Round Robin with Playoffs': 'ROUND_ROBIN_WITH_PLAYOFFS'
+};
+
 const matchUpFormats = {
   standard: 'SET3-S:6/TB7',
   grand: 'SET5-S:6/TB7',
@@ -13,7 +27,7 @@ const matchUpFormats = {
   'tb sets': 'SET3-S:TB10'
 };
 
-export const argTypes = {
+export const argTypes = (type) => ({
   drawSize: {
     control: { type: 'range', min: 4, max: 64 }
   },
@@ -26,8 +40,8 @@ export const argTypes = {
     control: { type: 'select' }
   },
   drawType: {
-    options: Object.keys(drawTypes),
-    mapping: drawTypes,
+    options: Object.keys(!type ? drawTypes : allDrawTypes),
+    mapping: !type ? drawTypes : allDrawTypes,
     control: { type: 'select' }
   },
   composition: {
@@ -44,4 +58,4 @@ export const argTypes = {
     mapping: directions,
     control: { type: 'inline-radio' }
   }
-};
+});
