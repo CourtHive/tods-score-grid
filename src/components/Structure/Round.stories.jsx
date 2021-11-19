@@ -1,6 +1,7 @@
+import { australianTheme, nightTheme } from '../themes';
+import { drawEngine } from 'tods-competition-factory';
 import { generateMatchUps } from '../Data/matchUps';
 import { useDarkMode } from 'storybook-dark-mode';
-import { australianTheme, nightTheme } from '../themes';
 import { styled } from '@stitches/react';
 import { Round as RD } from './Round';
 import { argTypes } from './argTypes';
@@ -30,16 +31,33 @@ export const Round = (args) => {
     winnerChevron: args.theme === 5
   };
 
+  const { hasOddMatchUpsCount } = drawEngine.getRoundMatchUps({
+    matchUps
+  });
+
+  const isLucky = hasOddMatchUpsCount;
+
   return (
     <Container className={className}>
-      <RD {...args} composition={composition} matchUps={matchUps} matchUpStyle={matchUpStyle} className={className} />
+      <RD
+        {...args}
+        composition={composition}
+        matchUpStyle={matchUpStyle}
+        className={className}
+        matchUps={matchUps}
+        isLucky={isLucky}
+        roundNumber={1}
+      />
     </Container>
   );
 };
 
 Round.args = {
-  matchUpFormat: 'SET3-S:6/TB7',
+  matchUpFormat: 'SET5-S:6/TB7',
+  eventType: 'SINGLES',
+  completionGoal: 100,
+  drawType: 'FEED_IN',
   direction: 'ltr',
-  roundNumber: 1,
-  drawSize: 8
+  drawSize: 16,
+  theme: 1
 };
