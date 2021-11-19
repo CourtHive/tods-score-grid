@@ -23,7 +23,5 @@ export function generateEventData({
 
   const { eventData } = tournamentEngine.setState(tournamentRecord).getEventData({ eventId });
 
-  console.log({ eventData });
-
   return { eventData };
 }
