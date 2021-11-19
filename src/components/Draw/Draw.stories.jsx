@@ -22,7 +22,6 @@ const Container = styled('div', {
 
 export const Draw = (args) => {
   const composition = compositions[args.composition];
-  const configuration = composition?.configuration || {};
   const className = useDarkMode() ? nightTheme : composition?.theme;
   const { eventData } = generateEventData({ ...args });
 
@@ -32,7 +31,7 @@ export const Draw = (args) => {
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <DrawComponent {...args} composition={configuration} structures={structures} structureId={initialStructureId} />
+        <DrawComponent {...args} composition={composition} structures={structures} structureId={initialStructureId} />
       </div>
     </Container>
   );

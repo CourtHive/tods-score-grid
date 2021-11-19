@@ -22,7 +22,5 @@ export function generateMatchUps({
     .setState(tournamentRecord)
     .allTournamentMatchUps({ participantsProfile: { withISO: true } });
 
-  console.log({ matchUps, tournamentRecord });
-
   return { matchUps };
 }
