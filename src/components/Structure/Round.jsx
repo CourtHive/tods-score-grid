@@ -1,7 +1,7 @@
 import { MatchUp } from './MatchUp';
 import React from 'react';
 
-export const Round = ({ composition, isLucky, matchUps, roundNumber, matchUpStyle }) => {
+export const Round = ({ composition, isLucky, matchUps, roundNumber }) => {
   const roundMatchUps = matchUps
     .filter((matchUp) => matchUp.roundNumber === roundNumber)
     .sort((a, b) => (a.roundPosition || 0) - (b.roundPosition || 0));
@@ -17,14 +17,7 @@ export const Round = ({ composition, isLucky, matchUps, roundNumber, matchUpStyl
       }}
     >
       {roundMatchUps.map((matchUp, i) => (
-        <MatchUp
-          matchUpStyle={matchUpStyle}
-          composition={composition}
-          moeity={i % 2 === 0}
-          matchUp={matchUp}
-          isLucky={isLucky}
-          key={`m-${i}`}
-        />
+        <MatchUp composition={composition} moeity={i % 2 === 0} matchUp={matchUp} isLucky={isLucky} key={`m-${i}`} />
       ))}{' '}
     </div>
   );

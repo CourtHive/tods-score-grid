@@ -1,8 +1,8 @@
+import { CenterInfo } from './CenterInfo';
 import { Individual } from './Individual';
 import { SideScore } from './SideScore';
 import { css } from '@stitches/react';
 import React from 'react';
-import { CenterInfo } from './CenterInfo';
 
 const sideContainerStyle = css({
   display: 'flex',
@@ -83,9 +83,12 @@ export const Side = ({
             display: 'block',
             borderTop: `${chevronHeight}px solid transparent`,
             borderBottom: `${chevronHeight}px solid transparent`,
-            borderLeft: '8px solid #008f70',
+            borderInlineStart: '8px solid #008f70',
             left: 0
           }
+        },
+        rtl: {
+          left: `calc(100% - 8px)`
         }
       }
     }

@@ -1,16 +1,17 @@
+import { matchUpStyle } from './matchUpStyle';
 import { css } from '@stitches/react';
 import { Side } from '../Side/Side';
 import React from 'react';
 
 export const MatchUp = (params) => {
-  const { composition, isLucky, matchUp, matchUpStyle, moeity } = params;
-  const { /*headerHeight, footerHeight, showHeader, showFooter*/ resultsInfo } = composition || {};
+  const { composition, isLucky, matchUp, moeity } = params;
   const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound } = matchUp;
   const link =
     !matchUp.drawPositions || matchUp.isRoundRobin || isLucky ? 'mr' : preFeedRound ? 'm0' : moeity ? 'm1' : 'm2';
   const finalRound = parseInt(finishingRound) === 1;
   const firstRound = parseInt(roundNumber) === 1;
   const isDoubles = matchUpType === 'DOUBLES';
+  const { resultsInfo } = composition || {};
 
   const participantHeight = isDoubles ? 60 : 40;
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
@@ -23,7 +24,6 @@ export const MatchUp = (params) => {
           firstRound,
           finalRound,
           link
-          // css: { ...(firstRound && { marginLeft: 30 }) }
         })}
       >
         <Side sideNumber={1} {...matchUp} composition={composition} participantHeight={participantHeight} />
@@ -39,7 +39,7 @@ const resultsInfoStyle = css({
   textTransform: 'uppercase',
   color: '#bbb',
   position: 'absolute',
-  right: 12,
+  right: 4,
   top: 38,
   transform: 'translateY(-50%)',
   backgroundColor: '#fff',

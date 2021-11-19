@@ -1,13 +1,12 @@
-import { australianTheme, nightTheme } from '../themes';
 import { drawEngine } from 'tods-competition-factory';
 import { generateMatchUps } from '../Data/matchUps';
 import { useDarkMode } from 'storybook-dark-mode';
+import { compositions } from './compositions';
 import { styled } from '@stitches/react';
+import { nightTheme } from '../themes';
 import { Round as RD } from './Round';
 import { argTypes } from './argTypes';
 import React from 'react';
-
-import { matchUpStyle } from './matchUpStyle';
 
 export default {
   title: 'Score Grid/Draw',
@@ -22,14 +21,10 @@ const Container = styled('div', {
 });
 
 export const Round = (args) => {
-  const className = useDarkMode() ? nightTheme : australianTheme;
+  const composition = compositions[args.composition];
+  const configuration = composition?.configuration || {};
+  const className = useDarkMode() ? nightTheme : composition.theme;
   const { matchUps } = generateMatchUps(args);
-  const composition = {
-    bracketedSeeds: args.theme === 2,
-    resultsInfo: args.theme === 3,
-    centerInfo: args.theme === 5,
-    winnerChevron: args.theme === 5
-  };
 
   const { hasOddMatchUpsCount } = drawEngine.getRoundMatchUps({
     matchUps
@@ -39,25 +34,26 @@ export const Round = (args) => {
 
   return (
     <Container className={className}>
-      <RD
-        {...args}
-        composition={composition}
-        matchUpStyle={matchUpStyle}
-        className={className}
-        matchUps={matchUps}
-        isLucky={isLucky}
-        roundNumber={1}
-      />
+      <div style={{ padding: '1rem' }}>
+        <RD
+          {...args}
+          composition={configuration}
+          className={className}
+          matchUps={matchUps}
+          isLucky={isLucky}
+          roundNumber={1}
+        />
+      </div>
     </Container>
   );
 };
 
 Round.args = {
   matchUpFormat: 'SET5-S:6/TB7',
+  composition: 'Australian',
   eventType: 'SINGLES',
   completionGoal: 100,
   drawType: 'FEED_IN',
   direction: 'ltr',
-  drawSize: 16,
-  theme: 1
+  drawSize: 16
 };
