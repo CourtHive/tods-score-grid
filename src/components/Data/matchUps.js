@@ -18,5 +18,11 @@ export function generateMatchUps({
     randomWinningSide: true
   });
 
-  return tournamentEngine.setState(tournamentRecord).allTournamentMatchUps({ participantsProfile: { withISO: true } });
+  const { matchUps } = tournamentEngine
+    .setState(tournamentRecord)
+    .allTournamentMatchUps({ participantsProfile: { withISO: true } });
+
+  console.log({ matchUps, tournamentRecord });
+
+  return { matchUps };
 }

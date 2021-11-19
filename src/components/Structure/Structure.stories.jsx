@@ -1,15 +1,21 @@
-import { Structure as ST } from './Structure';
 import { generateMatchUps } from '../Data/matchUps';
 import { useDarkMode } from 'storybook-dark-mode';
+import { Structure as ST } from './Structure';
+import { compositions } from './compositions';
 import { nightTheme } from '../themes';
 import { styled } from '@stitches/react';
 import { argTypes } from './argTypes';
 import React from 'react';
+import { setConsoleOptions } from '@storybook/addon-console';
 
-import { compositions } from './compositions';
+const panelExclude = setConsoleOptions({}).panelExclude;
+setConsoleOptions({
+  panelExclude: [...panelExclude, /deprecated/],
+  log: 'ScoreGrid'
+});
 
 export default {
-  title: 'Score Grid/Draw',
+  title: 'Score Grid/Structure',
   component: ST,
   parameters: { actions: { argTypesRegex: '^on.*' } },
   argTypes

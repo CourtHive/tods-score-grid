@@ -2,15 +2,25 @@ import { generateMatchUps } from '../Data/matchUps';
 import { useDarkMode } from 'storybook-dark-mode';
 import { compositions } from './compositions';
 import { styled } from '@stitches/react';
-import { nightTheme } from '../themes';
 import { argTypes } from './argTypes';
+import { nightTheme } from '../themes';
 import { MatchUp } from './MatchUp';
 import React from 'react';
 
 export default {
-  title: 'Score Grid/Draw',
+  title: 'Score Grid/Match',
   component: MatchUp,
-  argTypes
+  argTypes: {
+    eventType: argTypes.eventType,
+    composition: argTypes.composition,
+    matchUpFormat: argTypes.matchUpFormat,
+    direction: argTypes.direction
+  },
+  parameters: {
+    docs: {
+      //     page: null
+    }
+  }
 };
 
 const Container = styled('div', {
@@ -40,8 +50,5 @@ Match.args = {
   matchUpFormat: 'SET5-S:6/TB7',
   composition: 'Australian',
   eventType: 'SINGLES',
-  completionGoal: 100,
-  drawType: 'FEED_IN',
-  direction: 'ltr',
-  drawSize: 16
+  direction: 'ltr'
 };

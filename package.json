@@ -31,6 +31,7 @@
   "homepage": "https://courthive.github.io/tods-score-grid",
   "dependencies": {
     "@stitches/react": "^1.2.5",
+    "@storybook/addon-console": "^1.2.3",
     "@storybook/addons": "^6.3.12",
     "@storybook/api": "^6.3.12",
     "@storybook/components": "^6.3.12",
