@@ -1,10 +1,9 @@
 export const argTypes = {
-  direction: {
-    options: { 'Left to Right': 'ltr', 'Right to Left': 'rtl' },
-    control: { type: 'inline-radio' }
-  },
   drawSize: {
     control: { type: 'range', min: 4, max: 64 }
+  },
+  completionGoal: {
+    control: { type: 'range', min: 0, max: 100 }
   },
   eventType: {
     options: { Singles: 'SINGLES', Doubles: 'DOUBLES' },
@@ -14,12 +13,13 @@ export const argTypes = {
     options: {
       'Round Robin': 'ROUND_ROBIN',
       'Feed In': 'FEED_IN',
-      'Ad Hoc': 'AD_HOC'
+      'Ad Hoc': 'AD_HOC',
+      'Lucky Draw': 'LUCKY_DRAW'
     },
     control: { type: 'select' }
   },
   theme: {
-    options: { Australian: 1, French: 2, Night: 3 },
+    options: { Australian: 1, French: 2, Wimbledon: 3, 'US Open': 4, ITF: 5, Night: 6 },
     control: { type: 'select' }
   },
   matchUpFormat: {
@@ -30,5 +30,9 @@ export const argTypes = {
       'tb sets': 'SET3-S:TB10'
     },
     control: { type: 'select' }
+  },
+  direction: {
+    options: { 'Left to Right': 'ltr', 'Right to Left': 'rtl' },
+    control: { type: 'inline-radio' }
   }
 };
