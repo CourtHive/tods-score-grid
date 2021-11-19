@@ -7,7 +7,7 @@
     "lint": "prettier --write src && eslint --cache --fix src",
     "lint:staged": "lint-staged",
     "prepare": "husky install",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 7777",
     "build-storybook": "build-storybook",
     "documentation": "storybook-to-ghpages",
     "publish": "storybook-to-ghpages"
