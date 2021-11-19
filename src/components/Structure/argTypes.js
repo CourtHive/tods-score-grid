@@ -22,10 +22,6 @@ export const argTypes = {
     options: ['Australian', 'French', 'Wimbledon', 'US Open', 'ITF', 'Night'],
     control: { type: 'select' }
   },
-  theme: {
-    options: { Australian: 1, French: 2, Wimbledon: 3, 'US Open': 4, ITF: 5, Night: 6 },
-    control: { type: 'select' }
-  },
   matchUpFormat: {
     options: {
       standard: 'SET3-S:6/TB7',

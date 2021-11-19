@@ -9,7 +9,7 @@ import { argTypes } from './argTypes';
 import React from 'react';
 
 export default {
-  title: 'Score Grid/Draw',
+  title: 'Score Grid/Round',
   component: RD,
   argTypes
 };
