@@ -1,11 +1,11 @@
 import { useDarkMode } from 'storybook-dark-mode';
-import { dayTheme, nightTheme } from './themes';
+import { australianTheme, nightTheme } from './themes';
 import { styled } from '@stitches/react';
 import ScoreGrid from './ScoreGrid';
 import React from 'react';
 
 export default {
-  title: 'Playground',
+  title: 'Score Grid/Playground',
   component: ScoreGrid,
   argTypes: {
     color: { control: 'color' },
@@ -21,7 +21,7 @@ const Container = styled('div', {
 });
 
 export const Grid = (args) => {
-  const className = useDarkMode() ? nightTheme : dayTheme;
+  const className = useDarkMode() ? nightTheme : australianTheme;
   return (
     <Container className={className}>
       <ScoreGrid {...args} className={className} />
