@@ -1,12 +1,11 @@
 import { generateMatchUps } from '../Data/matchUps';
 import { useDarkMode } from 'storybook-dark-mode';
-import { australianTheme, nightTheme } from '../themes';
+import { compositions } from './compositions';
 import { styled } from '@stitches/react';
+import { nightTheme } from '../themes';
 import { argTypes } from './argTypes';
 import { MatchUp } from './MatchUp';
 import React from 'react';
-
-import { matchUpStyle } from './matchUpStyle';
 
 export default {
   title: 'Score Grid/Draw',
@@ -17,23 +16,32 @@ export default {
 const Container = styled('div', {
   backgroundColor: '$colors$backgroundColor',
   color: '$colors$color',
-  height: '100%'
+  height: '100vh'
 });
 
 export const Match = (args) => {
-  const className = useDarkMode() ? nightTheme : australianTheme;
+  const composition = compositions[args.composition];
+  const configuration = composition?.configuration || {};
+  const className = useDarkMode() ? nightTheme : composition.theme;
   const {
     matchUps: [matchUp]
   } = generateMatchUps(args);
 
   return (
     <Container className={className}>
-      <MatchUp {...args} matchUp={matchUp} matchUpStyle={matchUpStyle} className={className} />
+      <div style={{ padding: '1rem' }}>
+        <MatchUp {...args} composition={configuration} matchUp={matchUp} />
+      </div>
     </Container>
   );
 };
 
 Match.args = {
-  matchUpFormat: 'SET3-S:6/TB7',
-  direction: 'ltr'
+  matchUpFormat: 'SET5-S:6/TB7',
+  composition: 'Australian',
+  eventType: 'SINGLES',
+  completionGoal: 100,
+  drawType: 'FEED_IN',
+  direction: 'ltr',
+  drawSize: 16
 };

@@ -1,8 +1,8 @@
+import { CenterInfo } from './CenterInfo';
 import { Individual } from './Individual';
 import { SideScore } from './SideScore';
 import { css } from '@stitches/react';
 import React from 'react';
-import { CenterInfo } from './CenterInfo';
 
 const sideContainerStyle = css({
   display: 'flex',
