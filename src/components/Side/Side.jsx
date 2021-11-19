@@ -83,9 +83,12 @@ export const Side = ({
             display: 'block',
             borderTop: `${chevronHeight}px solid transparent`,
             borderBottom: `${chevronHeight}px solid transparent`,
-            borderLeft: '8px solid #008f70',
+            borderInlineStart: '8px solid #008f70',
             left: 0
           }
+        },
+        rtl: {
+          left: `calc(100% - 8px)`
         }
       }
     }
