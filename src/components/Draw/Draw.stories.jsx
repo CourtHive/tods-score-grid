@@ -23,10 +23,10 @@ const Container = styled('div', {
 export const Draw = (args) => {
   const composition = compositions[args.composition];
   const className = useDarkMode() ? nightTheme : composition?.theme;
-  const { eventData } = generateEventData({ ...args });
+  const { eventData } = generateEventData({ ...args }) || {};
 
-  const structures = eventData?.drawsData?.[0]?.structures;
-  const initialStructureId = structures[0].structureId;
+  const structures = eventData?.drawsData?.[0]?.structures || [];
+  const initialStructureId = structures[0]?.structureId;
 
   return (
     <Container className={className} style={{ direction: args.direction }}>
@@ -44,5 +44,5 @@ Draw.args = {
   eventType: 'Singles',
   completionGoal: 100,
   drawType: 'Feed In',
-  drawSize: 16
+  drawSize: 32
 };
