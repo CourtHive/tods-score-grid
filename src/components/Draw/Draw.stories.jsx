@@ -27,10 +27,13 @@ export const Draw = (args) => {
   const className = useDarkMode() ? nightTheme : composition?.theme;
   const { eventData } = generateEventData({ ...args });
 
+  const structures = eventData?.drawsData?.[0]?.structures;
+  const initialStructureId = structures[0].structureId;
+
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <DrawComponent {...args} composition={configuration} eventData={eventData} />
+        <DrawComponent {...args} composition={configuration} structures={structures} structureId={initialStructureId} />
       </div>
     </Container>
   );

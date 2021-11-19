@@ -36,7 +36,7 @@ export const Structure = (args) => {
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <ST {...args} composition={configuration} matchUps={matchUps} className={className} />
+        <ST {...args} composition={configuration} matchUps={matchUps} />
       </div>
     </Container>
   );
