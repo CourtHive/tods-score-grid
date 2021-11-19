@@ -9,13 +9,13 @@ const pillStyle = css({
   fontFamily: 'Sharp Sans, Arial, sans-serif',
   fontSize: '0.625rem',
   lineHeight: '1rem',
+  margin: '0 0.25rem',
   padding: '0 0.25rem',
   fontWeight: 700,
   borderRadius: '4px',
   color: '#fff',
   textAlign: 'center',
   whiteSpace: 'nowrap',
-  margin: '0 0.25rem',
   variants: {
     variant: {
       defaulted: {
@@ -34,7 +34,7 @@ const pillStyle = css({
 const tieBreakStyle = css({
   position: 'absolute',
   left: '17px',
-  top: '-2px',
+  top: '2px',
   letterSpacing: '-0.2em',
   fontSize: '0.625rem',
   lineHeight: '0.75rem'
@@ -48,7 +48,7 @@ const gameScoreStyle = css({
   display: 'flex',
   justifyContent: 'center',
   fontSize: '0.875rem',
-  lineHeight: '1.5rem',
+  lineHeight: '2.5rem',
   variants: {
     variant: {
       winner: {
@@ -63,7 +63,8 @@ const gameWrapperStyle = css({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  marginRight: '0.25rem'
+  marginRight: '$space$gameMarginRight'
+  // marginRight: '0.25rem'
 });
 
 const scoreWrapperStyle = css({
@@ -76,16 +77,17 @@ const tickStyles = css({
   color: 'green'
 });
 
-const Set = ({ set, sideNumber }) => {
+const Set = ({ scoreStripes, set, sideNumber }) => {
   const isWinningSide = sideNumber === set?.winningSide;
   const variant = isWinningSide ? 'winner' : undefined;
   const gameScore = sideNumber === 2 ? set.side2Score : set.side1Score;
   const tieBreakScore = sideNumber === 2 ? set.side2TiebreakScore : set.side1TiebreakScore;
   const tieBreakSet = gameScore === undefined && tieBreakScore;
   const scoreDisplay = tieBreakSet || gameScore;
+  const stripedScore = scoreStripes && set.setNumber % 2 ? 'lightgray' : 'transparent';
 
   return (
-    <p className={gameScoreStyle({ variant })}>
+    <p className={gameScoreStyle({ variant })} style={{ backgroundColor: stripedScore }}>
       {!isNaN(scoreDisplay) ? scoreDisplay : ''}
       <span className={tieBreakStyle()}>{!tieBreakSet ? tieBreakScore : ''}</span>
     </p>
@@ -104,9 +106,10 @@ const StatusPill = ({ matchUpStatus }) => {
   );
 };
 
-export const SideScore = ({ matchUpStatus, score, sideNumber, winningSide }) => {
+export const SideScore = ({ composition, matchUpStatus, score, sideNumber, winningSide }) => {
   const isWinningSide = sideNumber === winningSide;
   const irregularEnding = ['RETIRED', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
+  const scoreStripes = composition?.winnerChevron;
   const sets = score?.sets || [];
 
   return (
@@ -117,9 +120,9 @@ export const SideScore = ({ matchUpStatus, score, sideNumber, winningSide }) => 
       </div>{' '}
       <div className={gameWrapperStyle()}>
         {sets?.map((set, i) => (
-          <Set key={`Side${sideNumber}-Set-${i}`} set={set} sideNumber={sideNumber} />
+          <Set key={`Side${sideNumber}-Set-${i}`} set={set} scoreStripes={scoreStripes} sideNumber={sideNumber} />
         ))}
-      </div>{' '}
+      </div>
     </div>
   );
 };
