@@ -49,7 +49,10 @@ export const Side = ({
     alignItems: 'center',
     backgroundColor: '$matchUp',
     justifyContent: 'space-between',
-    padding: '0.5rem 0rem 0.5rem 0.75rem',
+    paddingInlineStart: '0.75rem',
+    paddingInlineEnd: '0rem',
+    paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
     '& p': {
       fontFamily: 'Sharp Sans, Arial, sans-serif',
       color: '$color'
