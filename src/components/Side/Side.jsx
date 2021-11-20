@@ -66,8 +66,8 @@ export const Side = ({
   const isTeam = matchUpType === 'TEAM';
   const isDoubles = matchUpType === 'DOUBLES';
   const side = sides?.find((side) => side.sideNumber === sideNumber);
-  const firstParticipant = isDoubles ? side.participant?.individualParticipants?.[0] : side?.participant;
-  const secondParticipant = isDoubles && side.participant?.individualParticipants?.[1];
+  const firstParticipant = isDoubles ? side?.participant?.individualParticipants?.[0] : side?.participant;
+  const secondParticipant = isDoubles && side?.participant?.individualParticipants?.[1];
   const isWinningSide = sideNumber === winningSide;
   const winnerChevron = composition?.winnerChevron && isWinningSide;
   //   const drawPosition = side?.drawPosition;
