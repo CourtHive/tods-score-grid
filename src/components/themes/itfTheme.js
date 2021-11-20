@@ -21,12 +21,8 @@ export const itfTheme = createTheme('itf-theme', {
     spacing: '1px',
     borderWidth: '1px'
   },
-  space: {
-    gameMarginRight: 0
-  },
   borderWidths: {
-    matchUp: '1px',
-    centerInfo: 1
-  },
-  connector: {}
+    centerInfo: 1,
+    factor: 1
+  }
 });

@@ -15,11 +15,13 @@ export const nightTheme = createTheme('dark-theme', {
   matchUp: {
     spacing: '1px'
   },
+  /*
   space: {
     gameMarginRight: '0.25rem'
   },
   borderWidths: {
     matchUp: '1px'
   },
+  */
   connector: {}
 });

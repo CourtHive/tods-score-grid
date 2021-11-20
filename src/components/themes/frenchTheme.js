@@ -18,12 +18,5 @@ export const frenchTheme = createTheme('french-theme', {
     spacing: '1px',
     borderWidth: '1px',
     boxShadow: '0 0 30px 0 hsla(0,0%,89%,9)'
-  },
-  space: {
-    gameMarginRight: '0.25rem'
-  },
-  borderWidths: {
-    matchUp: '1px'
-  },
-  connector: {}
+  }
 });

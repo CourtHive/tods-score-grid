@@ -19,12 +19,5 @@ export const australianTheme = createTheme('australian-theme', {
   matchUp: {
     spacing: '1px',
     borderWidth: '1px'
-  },
-  space: {
-    gameMarginRight: '0.25rem'
-  },
-  borderWidths: {
-    matchUp: '1px'
-  },
-  connector: {}
+  }
 });

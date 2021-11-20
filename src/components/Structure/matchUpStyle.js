@@ -3,9 +3,9 @@ import { css } from '@stitches/react';
 export const matchUpStyle = ({ composition, roundFactor, roundNumber, participantHeight }) => {
   const connectorHeight =
     (participantHeight + 14 + (composition?.centerInfo ? 30 : 0)) * (roundFactor || Math.pow(2, roundNumber - 1));
-  const topOffset = -1 * (participantHeight + 1 + (composition?.centerInfo ? 30 : 0));
-  const bottomOffset = composition?.centerInfo ? participantHeight + 30 : participantHeight;
-  const connectorWidth = 17;
+  const topOffset = -1 * (participantHeight + 1 + (composition?.centerInfo ? 30 : 0)) - 2;
+  const bottomOffset = composition?.centerInfo ? participantHeight + 30 : participantHeight - 2;
+  const connectorWidth = 16;
 
   const height = participantHeight * 2 + 2 + (composition?.centerInfo ? 2 * 30 : 0);
 
@@ -37,7 +37,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
       height: 1,
       width: connectorWidth,
       insetInlineStart: -connectorWidth,
-      top: `calc(50% - $borderWidths$matchUp)`
+      top: `calc(50% - $borderWidths$matchUp * $borderWidths$factor)`
     },
     '&::after': {
       position: 'relative',
@@ -71,12 +71,12 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
             borderInlineEnd: '$borderWidths$matchUp solid',
             borderColor: '$connector',
             borderTopStyle: 'solid',
-            top: topOffset
+            top: `calc(${topOffset}px + $borderWidths$matchUp * $borderWidths$factor)`
           }
         },
         m2: {
           '&:after': {
-            top: `calc(-100% - ${bottomOffset}px)`,
+            top: `calc(-100% - ${bottomOffset}px - $borderWidths$matchUp * $borderWidths$factor)`,
             borderInlineEnd: '$borderWidths$matchUp solid',
             borderWidth: '$borderWidths$matchUp',
             borderColor: '$connector',
@@ -85,7 +85,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
         },
         m0: {
           '&:after': {
-            top: `calc(-100% - ${bottomOffset}px)`,
+            top: `calc(-100% - ${bottomOffset}px - $borderWidths$matchUp * $borderWidths$factor)`,
             borderWidth: '$borderWidths$matchUp',
             borderBottomStyle: 'solid',
             borderColor: '$connector'
