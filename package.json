@@ -7,9 +7,9 @@
     "lint": "prettier --write src && eslint --cache --fix src",
     "lint:staged": "lint-staged",
     "prepare": "husky install",
-    "storybook": "start-storybook -p 7777",
-    "build-storybook": "build-storybook",
-    "documentation": "storybook-to-ghpages",
+    "storybook": "start-storybook -p 7777 -s ./public",
+    "build-storybook": "build-storybook -s ./public",
+    "documentation": "storybook-to-ghpages -s ./public",
     "publish": "storybook-to-ghpages"
   },
   "repository": {
