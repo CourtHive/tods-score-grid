@@ -10,7 +10,7 @@ export const Structure = ({ composition, matchUps }) => {
   const isLucky = hasOddMatchUpsCount;
 
   return (
-    <div style={{ marginLeft: '1rem', display: 'flex', overflowX: 'auto' }}>
+    <div style={{ marginInlineStart: '1rem', display: 'flex', overflowX: 'auto' }}>
       {roundNumbers.map((roundNumber, i) => (
         <Round
           composition={composition}

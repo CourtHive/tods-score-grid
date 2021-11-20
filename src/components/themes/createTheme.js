@@ -10,7 +10,7 @@ export const { createTheme } = createStitches({
       factor: 2
     },
     space: {
-      gameMarginRight: '0.25rem'
+      gameMarginInlineEnd: '0.25rem'
     }
   }
 });

@@ -17,7 +17,7 @@ export const nightTheme = createTheme('dark-theme', {
   },
   /*
   space: {
-    gameMarginRight: '0.25rem'
+    gameMarginInlineEnd: '0.25rem'
   },
   borderWidths: {
     matchUp: '1px'

@@ -51,7 +51,7 @@ const itemStyles = {
   height: 25,
   padding: '0 5px',
   position: 'relative',
-  // paddingLeft: 25,
+  // paddingInlineStart: 25,
   userSelect: 'none',
 
   '&[data-disabled]': {
@@ -77,7 +77,7 @@ const StyledTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, {
 });
 
 const StyledLabel = styled(DropdownMenuPrimitive.Label, {
-  paddingLeft: 25,
+  paddingInlineStart: 25,
   fontSize: 12,
   lineHeight: '25px',
   color: mauve.mauve11

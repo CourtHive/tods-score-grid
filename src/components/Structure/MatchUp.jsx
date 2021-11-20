@@ -56,7 +56,7 @@ const resultsItemStyle = css({
         textAlign: 'center'
       },
       points: {
-        marginRight: 3
+        marginInlineEnd: 3
       }
     }
   }

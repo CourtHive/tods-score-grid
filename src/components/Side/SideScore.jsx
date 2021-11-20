@@ -63,8 +63,7 @@ const gameWrapperStyle = css({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  marginRight: '$space$gameMarginRight'
-  // marginRight: '0.25rem'
+  marginInlineEnd: '$space$gameMarginInlineEnd'
 });
 
 const scoreWrapperStyle = css({

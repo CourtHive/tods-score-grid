@@ -6,8 +6,8 @@ import React from 'react';
 const Box = styled('div', {});
 
 const RightSlot = styled('div', {
-  marginLeft: 'auto',
-  paddingLeft: 20,
+  marginInlineStart: 'auto',
+  paddingInlineStart: 20,
   color: mauve.mauve11,
   ':focus > &': { color: 'white' },
   '[data-disabled] &': { color: mauve.mauve8 }
@@ -19,8 +19,8 @@ const StructureButton = styled('button', {
   borderRadius: 5,
   minWidth: 50,
   height: 35,
-  paddingLeft: 10,
-  paddingRight: 10,
+  paddingInlineStart: 10,
+  paddingInlineEnd: 10,
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
