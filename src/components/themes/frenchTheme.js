@@ -6,7 +6,7 @@ export const frenchTheme = createTheme('french-theme', {
     winner: '#01503d!important',
     borderHover: '#0091d2',
     connector: 'lightgray',
-    borderLeft: '#F8F9F9',
+    borderInlineStart: '#F8F9F9',
     border: '#F8F9F9',
     color: 'black'
   },

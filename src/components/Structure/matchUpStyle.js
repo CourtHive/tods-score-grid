@@ -16,7 +16,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
     height,
     gridRow: 'span 2',
     border: 'solid $border',
-    borderLeft: 'solid $borderLeft',
+    borderInlineStart: 'solid $borderInlineStart',
     borderWidth: '$borderWidths$matchUp',
     boxShadow: '$matchUp$boxShadow',
     WebkitTransition: 'all 0.30s linear',
@@ -24,7 +24,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
     marginBottom: 20,
     '&:hover': {
       border: 'solid $borderHover',
-      borderLeft: 'solid $borderHover',
+      borderInlineStart: 'solid $borderHover',
       borderWidth: '$borderWidths$matchUp'
     },
     '@media (min-width: 400px)': {

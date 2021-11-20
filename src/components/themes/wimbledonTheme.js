@@ -6,7 +6,7 @@ export const wimbledonTheme = createTheme('wimbledon-theme', {
     connector: 'transparent',
     borderHover: 'lightgray',
     border: 'lightgray',
-    borderLeft: '#00703c',
+    borderInlineStart: '#00703c',
     matchUp: '#fff',
     color: 'black'
   },

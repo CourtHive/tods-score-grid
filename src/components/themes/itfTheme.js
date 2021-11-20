@@ -5,7 +5,7 @@ export const itfTheme = createTheme('itf-theme', {
     backgroundColor: 'lightgray',
     connector: '#999',
     borderHover: '#0091d2',
-    borderLeft: 'darkgray',
+    borderInlineStart: 'darkgray',
     border: 'darkgray',
     matchUp: '#fff',
     color: 'black'
