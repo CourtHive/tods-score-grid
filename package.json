@@ -99,6 +99,6 @@
     "source-map-resolve": "0.6.0",
     "storybook-addon-outline": "1.4.1",
     "storybook-dark-mode": "1.0.8",
-    "webpack": "5.64.1"
+    "webpack": "5.64.2"
   }
 }
