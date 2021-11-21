@@ -12,7 +12,6 @@ export const wimbledonTheme = createTheme('wimbledon-theme', {
     borderInlineStart: '#00703c',
     matchUp: '#fff'
   },
-  matchUp: {},
   participant: {
     textTransform: 'uppercase'
   }

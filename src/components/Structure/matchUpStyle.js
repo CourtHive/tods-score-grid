@@ -1,34 +1,32 @@
 import { css } from '@stitches/react';
 
-export const matchUpStyle = ({ configuration, roundFactor, roundNumber, participantHeight }) => {
+export const matchUpStyle = ({ composition, roundFactor, roundNumber, participantHeight }) => {
+  const configuration = composition.configuration;
+  const centerInfoHeight = configuration?.centerInfo || 0;
+  const connectorWidth = configuration?.connectorWidth || 16;
   const connectorHeight =
-    (participantHeight + 14 + (configuration?.centerInfo ? 30 : 0)) * (roundFactor || Math.pow(2, roundNumber - 1));
-  const topOffset = -1 * (participantHeight + 1 + (configuration?.centerInfo ? 30 : 0)) - 2;
-  const bottomOffset = configuration?.centerInfo ? participantHeight + 30 : participantHeight - 2;
-  const connectorWidth = 16;
+    (participantHeight + connectorWidth + centerInfoHeight - 2) * (roundFactor || Math.pow(2, roundNumber - 1));
+  const topOffset = -1 * (participantHeight + centerInfoHeight) - 2 - 1;
+  const bottomOffset = centerInfoHeight ? participantHeight + centerInfoHeight : participantHeight - 2;
 
-  const height = participantHeight * 2 + 2 + (configuration?.centerInfo ? 2 * 30 : 0);
+  const height = 2 * (participantHeight + centerInfoHeight) + 2;
 
   return css({
     position: 'relative',
     display: 'grid',
     width: '100%',
     height,
-    gridRow: 'span 2',
     border: 'solid $border',
     borderInlineStart: 'solid $borderInlineStart',
     borderWidth: '$borderWidths$matchUp',
     boxShadow: '$matchUp$boxShadow',
     WebkitTransition: 'all 0.30s linear',
     transition: 'all 0.30s linear',
-    marginBottom: 20,
+    marginBottom: '$space$1',
     '&:hover': {
       border: 'solid $borderHover',
       borderInlineStart: 'solid $borderHover',
       borderWidth: '$borderWidths$matchUp'
-    },
-    '@media (min-width: 400px)': {
-      fontSize: 16
     },
     '&::before': {
       borderRadius: 2,
@@ -42,7 +40,7 @@ export const matchUpStyle = ({ configuration, roundFactor, roundNumber, particip
     '&::after': {
       position: 'relative',
       insetInlineStart: '100%',
-      width: 8
+      width: `calc(${connectorWidth} / 2}`
     },
     '&::after, &::before': {
       content: '',

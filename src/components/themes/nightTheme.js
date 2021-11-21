@@ -6,7 +6,6 @@ export const nightTheme = createTheme('dark-theme', {
     borderHover: '#0091d2',
     color: 'white'
   },
-  matchUp: {},
   participant: {
     seed: 'cyan'
   }

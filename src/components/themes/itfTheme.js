@@ -14,6 +14,5 @@ export const itfTheme = createTheme('itf-theme', {
   participant: {
     textTransform: 'capitalize',
     seed: 'gray'
-  },
-  matchUp: {}
+  }
 });

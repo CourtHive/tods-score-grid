@@ -35,6 +35,7 @@ export const Side = ({
   matchUpStatus,
   composition,
   matchUpType,
+  roundNumber,
   winningSide,
   sideNumber,
   score,
@@ -74,7 +75,6 @@ export const Side = ({
   const isWinningSide = sideNumber === winningSide;
   const configuration = composition?.configuration || {};
   const winnerChevron = configuration?.winnerChevron && isWinningSide;
-  console.log({ composition, configuration });
   const entryStatus = side?.entryStatus?.replace('_', ' ');
   const EntryStatus = () => <CenterInfo height={30} sideNumber={sideNumber} entryStatus={entryStatus} />;
 
@@ -98,22 +98,30 @@ export const Side = ({
   });
 
   const centerInfo = configuration?.centerInfo;
+  const drawPosition =
+    configuration.drawPositions && side.drawPosition && (roundNumber === 1 || side.participantFed)
+      ? side.drawPosition
+      : '';
 
   return (
     <div className={sideContainerStyle()}>
       {!centerInfo || sideNumber === 1 ? null : <EntryStatus />}
       <div
         className={participantContainerStyle({
-          sideNumber
-          /*
-          css: {
+          sideNumber,
+          css: drawPosition && {
             '&:before': {
+              display: 'flex',
               position: 'absolute',
-              insetInlineStart: -15,
-              content: `"${side?.drawPosition || ''}"`
+              insetInlineStart: -10,
+              width: 20,
+              color: '#55AFFE',
+              alignContent: 'center',
+              justifyContent: 'center',
+              backgroundColor: '$backgroundColor',
+              content: `${drawPosition}`
             }
           }
-          */
         })}
       >
         <div className={participantTypeStyle({ variant: isDoubles ? 'doubles' : undefined })}>

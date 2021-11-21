@@ -15,7 +15,7 @@ export const MatchUp = (params) => {
   const { resultsInfo, itf } = configuration || {};
 
   const participantHeight = isDoubles ? 60 : 40;
-  const componentStyle = matchUpStyle({ configuration, roundFactor, roundNumber, participantHeight });
+  const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
 
   return (
     <>

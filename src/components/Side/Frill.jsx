@@ -32,7 +32,7 @@ export const Frill = ({
   side
 }) => {
   const configuration = composition?.configuration || {};
-  const { bracketedSeeds } = configuration || {};
+  const { bracketedSeeds } = configuration;
   const ratings = individualParticipant?.ratings?.[matchUpType];
   const rankings = individualParticipant?.rankings?.[matchUpType];
   if (ratings || rankings) {
@@ -42,7 +42,7 @@ export const Frill = ({
   const seedValue = type === 'seed' && (side?.seedValue || side?.seedNumber);
   const seedDisplay = bracketedSeeds ? `(${seedValue})` : seedValue;
 
-  return !individualParticipant ? null : type === 'flag' ? (
+  return !individualParticipant ? null : type === 'flag' && configuration.flags ? (
     <Flag className={className} individualParticipant={individualParticipant} />
   ) : seedValue ? (
     <sup className={className}>{seedDisplay}</sup>
