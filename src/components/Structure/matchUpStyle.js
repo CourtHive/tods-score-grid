@@ -17,6 +17,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
     width: '100%',
     height,
     border: 'solid $border',
+    backgroundColor: '$matchUpBackgroundColor',
     borderInlineStart: 'solid $borderInlineStart',
     borderWidth: '$borderWidths$matchUp',
     boxShadow: '$matchUp$boxShadow',

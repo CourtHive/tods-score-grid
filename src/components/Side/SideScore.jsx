@@ -33,8 +33,8 @@ const pillStyle = css({
 
 const tieBreakStyle = css({
   position: 'absolute',
-  left: '17px',
-  top: '2px',
+  left: '1.1rem',
+  top: '.4rem',
   letterSpacing: '-0.2em',
   fontSize: '0.625rem',
   lineHeight: '0.75rem'
@@ -73,7 +73,8 @@ const scoreWrapperStyle = css({
 });
 
 const tickStyles = css({
-  color: 'green'
+  color: 'green',
+  marginInlineEnd: '1px'
 });
 
 const Set = ({ scoreStripes, set, sideNumber }) => {

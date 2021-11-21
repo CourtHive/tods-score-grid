@@ -61,7 +61,7 @@ export const Side = ({
     variants: {
       sideNumber: {
         1: {
-          borderBottom: '1px solid lightgray'
+          borderBottom: '1px solid $internalDividers'
         }
       }
     }

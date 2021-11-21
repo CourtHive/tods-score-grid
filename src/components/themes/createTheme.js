@@ -15,6 +15,7 @@ export const { createTheme } = createStitches({
       backgroundColor: 'white',
       border: 'darkgray',
       borderInlineStart: 'darkgray',
+      internalDividers: 'lightgray',
       color: 'black'
     },
     participant: {
