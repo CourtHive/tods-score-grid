@@ -56,7 +56,7 @@ const resultsItemStyle = css({
         textAlign: 'center'
       },
       points: {
-        marginRight: 3
+        marginInlineEnd: 3
       }
     }
   }
@@ -96,7 +96,7 @@ export function Decoration({ roundFactor, roundNumber }) {
   });
 
   const topTriangleStyle = css({
-    borderLeft: '30px solid #979797',
+    borderInlineStart: '30px solid #979797',
     right: '-1px',
     position: 'absolute',
     borderTop: '72px solid transparent',
@@ -110,7 +110,7 @@ export function Decoration({ roundFactor, roundNumber }) {
     borderBottom: '72px solid transparent',
     position: 'absolute',
     right: 0,
-    borderLeft: '30px solid #fff',
+    borderInlineStart: '30px solid #fff',
     // top: '-1px'
     top
   });

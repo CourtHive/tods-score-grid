@@ -5,7 +5,7 @@ export const itfTheme = createTheme('itf-theme', {
     backgroundColor: 'lightgray',
     connector: '#999',
     borderHover: '#0091d2',
-    borderLeft: 'darkgray',
+    borderInlineStart: 'darkgray',
     border: 'darkgray',
     matchUp: '#fff',
     color: 'black'
@@ -21,12 +21,8 @@ export const itfTheme = createTheme('itf-theme', {
     spacing: '1px',
     borderWidth: '1px'
   },
-  space: {
-    gameMarginRight: 0
-  },
   borderWidths: {
-    matchUp: '1px',
-    centerInfo: 1
-  },
-  connector: {}
+    centerInfo: 1,
+    factor: 1
+  }
 });

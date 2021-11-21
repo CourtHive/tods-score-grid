@@ -1,17 +1,17 @@
 import { drawEngine } from 'tods-competition-factory';
+import { compositions } from '../Data/compositions';
 import { generateMatchUps } from '../Data/matchUps';
 import { useDarkMode } from 'storybook-dark-mode';
-import { compositions } from './compositions';
+import { argTypes } from '../Data/argTypes';
 import { styled } from '@stitches/react';
 import { nightTheme } from '../themes';
 import { Round as RD } from './Round';
-import { argTypes } from './argTypes';
 import React from 'react';
 
 export default {
   title: 'Score Grid/Round',
   component: RD,
-  argTypes
+  argTypes: argTypes()
 };
 
 const Container = styled('div', {
@@ -33,7 +33,7 @@ export const Round = (args) => {
   const isLucky = hasOddMatchUpsCount;
 
   return (
-    <Container className={className}>
+    <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
         <RD
           {...args}
@@ -49,11 +49,11 @@ export const Round = (args) => {
 };
 
 Round.args = {
-  matchUpFormat: 'SET5-S:6/TB7',
+  direction: 'Left to Right',
   composition: 'Australian',
-  eventType: 'SINGLES',
+  matchUpFormat: 'grand',
+  eventType: 'Singles',
   completionGoal: 100,
-  drawType: 'FEED_IN',
-  direction: 'ltr',
+  drawType: 'Feed In',
   drawSize: 16
 };

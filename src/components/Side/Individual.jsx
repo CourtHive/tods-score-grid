@@ -16,8 +16,8 @@ const flagStyles = css({
   width: '1rem',
   minWidth: '1rem',
   borderRadius: 2,
-  marginLeft: 2,
-  marginRight: 2,
+  marginInlineStart: 2,
+  marginInlinEnd: 2,
   position: 'relative',
   display: 'inline-block',
   WebkitBoxSizing: 'border-box',
@@ -55,7 +55,7 @@ const seedStyle = css({
   textTransform: 'uppercase',
   fontSize: '0.75rem',
   lineHeight: '1rem',
-  marginLeft: '.5rem',
+  marginInlineStart: '.5rem',
   color: '$participant$seed'
 });
 

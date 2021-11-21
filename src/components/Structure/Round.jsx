@@ -12,7 +12,7 @@ export const Round = ({ composition, isLucky, matchUps, roundNumber }) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
-        marginRight: '32px',
+        marginInlineEnd: '32px',
         width: '460px'
       }}
     >

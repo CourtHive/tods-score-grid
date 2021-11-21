@@ -13,7 +13,7 @@ const participantTypeStyle = css({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  marginRight: '0rem',
+  marginInlineEnd: '0rem',
   overflowX: 'scroll',
   scrollbarWidth: 'none',
   fontWeight: 500,
@@ -49,7 +49,10 @@ export const Side = ({
     alignItems: 'center',
     backgroundColor: '$matchUp',
     justifyContent: 'space-between',
-    padding: '0.5rem 0rem 0.5rem 0.75rem',
+    paddingInlineStart: '0.75rem',
+    paddingInlineEnd: '0rem',
+    paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
     '& p': {
       fontFamily: 'Sharp Sans, Arial, sans-serif',
       color: '$color'
@@ -66,11 +69,12 @@ export const Side = ({
   const isTeam = matchUpType === 'TEAM';
   const isDoubles = matchUpType === 'DOUBLES';
   const side = sides?.find((side) => side.sideNumber === sideNumber);
-  const firstParticipant = isDoubles ? side.participant?.individualParticipants?.[0] : side?.participant;
-  const secondParticipant = isDoubles && side.participant?.individualParticipants?.[1];
+  const firstParticipant = isDoubles ? side?.participant?.individualParticipants?.[0] : side?.participant;
+  const secondParticipant = isDoubles && side?.participant?.individualParticipants?.[1];
   const isWinningSide = sideNumber === winningSide;
   const winnerChevron = composition?.winnerChevron && isWinningSide;
-  //   const drawPosition = side?.drawPosition;
+  const entryStatus = side?.entryStatus?.replace('_', ' ');
+  const EntryStatus = () => <CenterInfo height={30} sideNumber={sideNumber} entryStatus={entryStatus} />;
 
   const chevronHeight = (isDoubles ? 0.35 : 0.3) * participantHeight;
   const chevronStyle = css({
@@ -84,11 +88,8 @@ export const Side = ({
             borderTop: `${chevronHeight}px solid transparent`,
             borderBottom: `${chevronHeight}px solid transparent`,
             borderInlineStart: '8px solid #008f70',
-            left: 0
+            insetInlineStart: 0
           }
-        },
-        rtl: {
-          left: `calc(100% - 8px)`
         }
       }
     }
@@ -98,19 +99,19 @@ export const Side = ({
 
   return (
     <div className={sideContainerStyle()}>
-      {!centerInfo || sideNumber === 1 ? null : <CenterInfo height={30} sideNumber={sideNumber} />}
+      {!centerInfo || sideNumber === 1 ? null : <EntryStatus />}
       <div
         className={participantContainerStyle({
           sideNumber
           /*
-        css: {
-          '&:before': {
-            position: 'absolute',
-            insetInlineStart: -15,
-            content: `"${drawPosition || ''}"`
+          css: {
+            '&:before': {
+              position: 'absolute',
+              insetInlineStart: -15,
+              content: `"${side?.drawPosition || ''}"`
+            }
           }
-        }
-        */
+          */
         })}
       >
         <div className={participantTypeStyle({ variant: isDoubles ? 'doubles' : undefined })}>
@@ -141,7 +142,7 @@ export const Side = ({
           score={score}
         />
       </div>
-      {!centerInfo || sideNumber === 2 ? null : <CenterInfo height={30} sideNumber={sideNumber} />}
+      {!centerInfo || sideNumber === 2 ? null : <EntryStatus />}
     </div>
   );
 };

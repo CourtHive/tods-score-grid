@@ -1,24 +1,17 @@
-import { generateMatchUps } from '../Data/matchUps';
+import { generateEventData } from '../Data/generateEventData';
 import { compositions } from '../Data/compositions';
 import { useDarkMode } from 'storybook-dark-mode';
-import { Structure as ST } from './Structure';
+import { Draw as DrawComponent } from './Draw';
 import { argTypes } from '../Data/argTypes';
 import { styled } from '@stitches/react';
 import { nightTheme } from '../themes';
 import React from 'react';
-import { setConsoleOptions } from '@storybook/addon-console';
-
-const panelExclude = setConsoleOptions({}).panelExclude;
-setConsoleOptions({
-  panelExclude: [...panelExclude, /deprecated/],
-  log: 'ScoreGrid'
-});
 
 export default {
-  title: 'Score Grid/Structure',
-  component: ST,
+  title: 'Score Grid/Draw',
+  component: DrawComponent,
   parameters: { actions: { argTypesRegex: '^on.*' } },
-  argTypes: argTypes()
+  argTypes: argTypes('all')
 };
 
 const Container = styled('div', {
@@ -27,27 +20,29 @@ const Container = styled('div', {
   height: '100%'
 });
 
-export const Structure = (args) => {
+export const Draw = (args) => {
   const composition = compositions[args.composition];
-  const configuration = composition?.configuration || {};
-  const className = useDarkMode() ? nightTheme : composition.theme;
-  const { matchUps } = generateMatchUps({ ...args });
+  const className = useDarkMode() ? nightTheme : composition?.theme;
+  const { eventData } = generateEventData({ ...args }) || {};
+
+  const structures = eventData?.drawsData?.[0]?.structures || [];
+  const initialStructureId = structures[0]?.structureId;
 
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <ST {...args} composition={configuration} matchUps={matchUps} />
+        <DrawComponent {...args} composition={composition} structures={structures} structureId={initialStructureId} />
       </div>
     </Container>
   );
 };
 
-Structure.args = {
+Draw.args = {
   direction: 'Left to Right',
   composition: 'Australian',
-  matchUpFormat: 'grand',
+  matchUpFormat: 'standard',
   eventType: 'Singles',
   completionGoal: 100,
   drawType: 'Feed In',
-  drawSize: 16
+  drawSize: 32
 };

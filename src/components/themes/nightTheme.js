@@ -4,7 +4,7 @@ export const nightTheme = createTheme('dark-theme', {
   colors: {
     backgroundColor: '#333333',
     borderHover: '#0091d2',
-    borderLeft: 'darkgray',
+    borderInlineStart: 'darkgray',
     border: 'darkgray',
     color: 'white'
   },
@@ -15,11 +15,13 @@ export const nightTheme = createTheme('dark-theme', {
   matchUp: {
     spacing: '1px'
   },
+  /*
   space: {
-    gameMarginRight: '0.25rem'
+    gameMarginInlineEnd: '0.25rem'
   },
   borderWidths: {
     matchUp: '1px'
   },
+  */
   connector: {}
 });

@@ -3,7 +3,7 @@ import imageFile from './CourtHive.png';
 
 const theme = {
   brandTitle: 'CourtHive',
-  brandUrl: 'https://CourtHive.com/',
+  brandUrl: 'https://github.com/courthive',
   brandImage: imageFile
 };
 

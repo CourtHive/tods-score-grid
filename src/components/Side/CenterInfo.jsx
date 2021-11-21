@@ -1,7 +1,7 @@
 import { css } from '@stitches/react';
 import React from 'react';
 
-export function CenterInfo({ height, sideNumber }) {
+export function CenterInfo({ height, sideNumber, entryStatus }) {
   const infoStyle = css({
     borderBottom: 'solid 1px lightgray',
     backgroundColor: '$matchUp',
@@ -24,7 +24,7 @@ export function CenterInfo({ height, sideNumber }) {
     WebkitFontSmooting: 'antialiased',
     boxSizing: 'inherit',
     display: 'flex',
-    marginLeft: 'calc(20%)',
+    marginInlineStart: 'calc(20%)',
     WebkitBoxPack: 'center',
     WebkitBoxOrient: 'horizontal',
     WebKitBoxDirection: 'normal',
@@ -52,7 +52,7 @@ export function CenterInfo({ height, sideNumber }) {
       >
         <div className={entryStyle()}>
           <span className={statusStyle()}>Entry status:&nbsp;</span>
-          <span className={statusStyle()}>Direct Acceptance</span>
+          <span className={statusStyle()}>{entryStatus}</span>
         </div>
       </div>
     </div>

@@ -5,8 +5,12 @@ export const { createTheme } = createStitches({
     colors: {
       backgroundColor: 'white'
     },
+    borderWidths: {
+      matchUp: '1px',
+      factor: 2
+    },
     space: {
-      gameMarginRight: '0.25rem'
+      gameMarginInlineEnd: '0.25rem'
     }
   }
 });
