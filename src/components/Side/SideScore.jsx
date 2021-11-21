@@ -44,7 +44,7 @@ const gameScoreStyle = css({
   fontWeight: 500,
   position: 'relative',
   margin: 0,
-  width: '1.5rem',
+  width: '$score$setWidth',
   display: 'flex',
   justifyContent: 'center',
   fontSize: '0.875rem',

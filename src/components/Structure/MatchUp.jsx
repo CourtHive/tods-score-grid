@@ -4,7 +4,7 @@ import { Side } from '../Side/Side';
 import React from 'react';
 
 export const MatchUp = (params) => {
-  const { composition, isLucky, matchUp, moeity } = params;
+  const { composition, isLucky, matchUp, moeity, onClick } = params;
   const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound } = matchUp;
   const link =
     !matchUp.drawPositions || matchUp.isRoundRobin || isLucky ? 'mr' : preFeedRound ? 'm0' : moeity ? 'm1' : 'm2';
@@ -17,8 +17,10 @@ export const MatchUp = (params) => {
   const participantHeight = isDoubles ? 60 : 40;
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
 
+  const handleOnClick = () => typeof onClick === 'function' && onClick(matchUp?.matchUpId);
+
   return (
-    <>
+    <div onClick={handleOnClick}>
       {!itf ? null : <Decoration roundNumber={roundNumber} roundFactor={roundFactor} />}
       <div
         className={componentStyle({
@@ -31,24 +33,12 @@ export const MatchUp = (params) => {
         <Side sideNumber={2} {...matchUp} composition={composition} participantHeight={participantHeight} />
         {!resultsInfo ? null : <ResultsInfo {...matchUp} />}
       </div>
-    </>
+    </div>
   );
 };
 
-const resultsInfoStyle = css({
-  fontSize: 0,
-  textTransform: 'uppercase',
-  color: '#bbb',
-  position: 'absolute',
-  right: 4,
-  top: 38,
-  transform: 'translateY(-50%)',
-  backgroundColor: '#fff',
-  textAlign: 'center'
-});
-
 const resultsItemStyle = css({
-  width: 24,
+  width: '$score$setWidth',
   fontSize: 9,
   display: 'inline-block',
   variants: {
@@ -61,6 +51,18 @@ const resultsItemStyle = css({
       }
     }
   }
+});
+
+const resultsInfoStyle = css({
+  fontSize: 0,
+  textTransform: 'uppercase',
+  color: '#bbb',
+  position: 'absolute',
+  right: 4,
+  top: `calc(50% - 2px)`,
+  transform: 'translateY(-50%)',
+  backgroundColor: '#fff',
+  textAlign: 'center'
 });
 
 function ResultsInfo({ score }) {

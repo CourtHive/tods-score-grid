@@ -36,10 +36,12 @@ export const Match = (args) => {
     matchUps: [matchUp]
   } = generateMatchUps(args);
 
+  const onClick = (matchUpId) => console.log({ matchUpId });
+
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <MatchUp {...args} composition={composition} matchUp={matchUp} />
+        <MatchUp {...args} composition={composition} matchUp={matchUp} onClick={onClick} />
       </div>
     </Container>
   );

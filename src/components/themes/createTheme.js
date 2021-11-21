@@ -21,6 +21,9 @@ export const { createTheme } = createStitches({
     participant: {
       textTransform: 'capitalize',
       seed: 'gray'
+    },
+    score: {
+      setWidth: '1.5rem'
     }
   }
 });
