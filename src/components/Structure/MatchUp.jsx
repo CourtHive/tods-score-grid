@@ -12,7 +12,7 @@ export const MatchUp = (params) => {
   const firstRound = parseInt(roundNumber) === 1;
   const isDoubles = matchUpType === 'DOUBLES';
   const configuration = composition?.configuration || {};
-  const { resultsInfo, itf } = configuration || {};
+  const { resultsInfo } = configuration || {};
 
   const participantHeight = isDoubles ? 60 : 40;
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
@@ -21,7 +21,6 @@ export const MatchUp = (params) => {
 
   return (
     <div onClick={handleOnClick}>
-      {!itf ? null : <Decoration roundNumber={roundNumber} roundFactor={roundFactor} />}
       <div
         className={componentStyle({
           firstRound,
@@ -80,48 +79,6 @@ function ResultsInfo({ score }) {
               {index + 1}
             </div>
           ))}
-    </div>
-  );
-}
-
-export function Decoration({ roundFactor, roundNumber }) {
-  const factor = roundFactor || Math.pow(2, roundNumber - 1);
-  const top = 80 * (factor > 1 ? factor : 0);
-
-  const decorationStyle = css({
-    fontFamily: 'Lato,Arial,Helvetica,sans-serif',
-    WebkitFontSmooting: 'antialiased',
-    WebkitBoxDirection: 'normal',
-    boxSizing: 'inherit',
-    position: 'relative',
-    height: '100%',
-    right: -30
-  });
-
-  const topTriangleStyle = css({
-    borderInlineStart: '30px solid #979797',
-    right: '-1px',
-    position: 'absolute',
-    borderTop: '72px solid transparent',
-    borderBottom: '72px solid transparent',
-    top
-    // top: '-1px'
-  });
-
-  const bottomTriangleStyle = css({
-    borderTop: '72px solid transparent',
-    borderBottom: '72px solid transparent',
-    position: 'absolute',
-    right: 0,
-    borderInlineStart: '30px solid #fff',
-    // top: '-1px'
-    top
-  });
-
-  return (
-    <div className={decorationStyle()}>
-      <div className={topTriangleStyle()}></div>
-      <div className={bottomTriangleStyle()}></div>
     </div>
   );
 }
