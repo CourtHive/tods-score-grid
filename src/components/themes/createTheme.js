@@ -12,10 +12,7 @@ export const { createTheme } = createStitches({
       borderInlineStart: 'darkgray',
       color: 'black'
     },
-    matchUp: {
-      spacing: '1px',
-      borderWidth: '1px'
-    },
+    matchUp: {},
     participant: {
       textTransform: 'capitalize',
       seed: 'gray'

@@ -31,7 +31,7 @@ export const Draw = ({ composition, structures, structureId }) => {
       {!structures?.length ? (
         <Notice>Nothing to show with current configuration</Notice>
       ) : (
-        <Structure composition={composition.configuration} matchUps={matchUps} />
+        <Structure composition={composition} matchUps={matchUps} />
       )}
     </div>
   );
