@@ -28,10 +28,18 @@ export const Draw = (args) => {
   const structures = eventData?.drawsData?.[0]?.structures || [];
   const initialStructureId = structures[0]?.structureId;
 
+  const events = {};
+
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <DrawComponent {...args} composition={composition} structures={structures} structureId={initialStructureId} />
+        <DrawComponent
+          {...args}
+          composition={composition}
+          structureId={initialStructureId}
+          structures={structures}
+          events={events}
+        />
       </div>
     </Container>
   );

@@ -4,7 +4,8 @@ import { Side } from '../Side/Side';
 import React from 'react';
 
 export const MatchUp = (params) => {
-  const { composition, isLucky, matchUp, moeity, onClick } = params;
+  const { composition, isLucky, matchUp, moeity, selectedMatchUpId } = params;
+  const events = params.events || {};
   const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound } = matchUp;
   const link =
     !matchUp.drawPositions || matchUp.isRoundRobin || isLucky ? 'mr' : preFeedRound ? 'm0' : moeity ? 'm1' : 'm2';
@@ -17,7 +18,11 @@ export const MatchUp = (params) => {
   const participantHeight = isDoubles ? 60 : 40;
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
 
-  const handleOnClick = () => typeof onClick === 'function' && onClick(matchUp?.matchUpId);
+  const handleOnClick = () => {
+    if (typeof events?.matchUpClick === 'function') {
+      events.matchUpClick(matchUp?.matchUpId);
+    }
+  };
 
   return (
     <div onClick={handleOnClick}>
@@ -31,6 +36,18 @@ export const MatchUp = (params) => {
         <Side sideNumber={1} {...matchUp} composition={composition} participantHeight={participantHeight} />
         <Side sideNumber={2} {...matchUp} composition={composition} participantHeight={participantHeight} />
         {!resultsInfo ? null : <ResultsInfo {...matchUp} />}
+        <div
+          className="overlay"
+          style={{
+            display: selectedMatchUpId === matchUp.matchUpId ? '' : 'none',
+            position: 'absolute',
+            top: 0,
+            height: '100%',
+            width: '100%',
+            opacity: '0.75',
+            backgroundColor: 'magenta'
+          }}
+        ></div>
       </div>
     </div>
   );
