@@ -44,7 +44,7 @@ export const MatchUp = (params) => {
             top: 0,
             height: '100%',
             width: '100%',
-            opacity: '0.75',
+            opacity: '0.2',
             backgroundColor: 'magenta'
           }}
         ></div>
