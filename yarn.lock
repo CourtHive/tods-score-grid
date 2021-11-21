@@ -11506,10 +11506,10 @@ react-colorful@^5.1.2:
   resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.5.0.tgz#8359f218984a927095477a190ab9927eaf865c0c"
   integrity sha512-BuzrlrM0ylg7coPkXOrRqlf2BgHLw5L44sybbr9Lg4xy7w9e5N7fGYbojOO0s8J0nvrM3PERN2rVFkvSa24lnQ==
 
-react-country-flag@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-country-flag/-/react-country-flag-3.0.0.tgz#b34bf1d48ea1ed8e18093e75815e8c1270c0371d"
-  integrity sha512-UzBN3xqBSPbKmdKve1FCX3gDNzC5JPxSqn43qRH3D/D9M+5npSMks4H2az4TYFPcdfq9fPijbTaPWa6WVlZaow==
+react-country-flag@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-country-flag/-/react-country-flag-3.0.1.tgz#7573c52344bc837491ec2c1bb7a01041bfe4f471"
+  integrity sha512-EkbfTPSzWc3M9yb7i9KyuoaFVOBZikmQP8RUb9iSu3TM8Ajngs6FTo0MulPP6du5t9p7oNYSlyC+N/WyMVAujw==
 
 react-dev-utils@^11.0.3:
   version "11.0.4"
