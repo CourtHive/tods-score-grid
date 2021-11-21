@@ -72,7 +72,9 @@ export const Side = ({
   const firstParticipant = isDoubles ? side?.participant?.individualParticipants?.[0] : side?.participant;
   const secondParticipant = isDoubles && side?.participant?.individualParticipants?.[1];
   const isWinningSide = sideNumber === winningSide;
-  const winnerChevron = composition?.winnerChevron && isWinningSide;
+  const configuration = composition?.configuration || {};
+  const winnerChevron = configuration?.winnerChevron && isWinningSide;
+  console.log({ composition, configuration });
   const entryStatus = side?.entryStatus?.replace('_', ' ');
   const EntryStatus = () => <CenterInfo height={30} sideNumber={sideNumber} entryStatus={entryStatus} />;
 
@@ -95,7 +97,7 @@ export const Side = ({
     }
   });
 
-  const centerInfo = composition?.centerInfo;
+  const centerInfo = configuration?.centerInfo;
 
   return (
     <div className={sideContainerStyle()}>

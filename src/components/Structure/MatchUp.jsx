@@ -11,14 +11,15 @@ export const MatchUp = (params) => {
   const finalRound = parseInt(finishingRound) === 1;
   const firstRound = parseInt(roundNumber) === 1;
   const isDoubles = matchUpType === 'DOUBLES';
-  const { resultsInfo } = composition || {};
+  const configuration = composition?.configuration || {};
+  const { resultsInfo, itf } = configuration || {};
 
   const participantHeight = isDoubles ? 60 : 40;
-  const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
+  const componentStyle = matchUpStyle({ configuration, roundFactor, roundNumber, participantHeight });
 
   return (
     <>
-      {!composition?.itf ? null : <Decoration roundNumber={roundNumber} roundFactor={roundFactor} />}
+      {!itf ? null : <Decoration roundNumber={roundNumber} roundFactor={roundFactor} />}
       <div
         className={componentStyle({
           firstRound,

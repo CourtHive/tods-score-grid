@@ -31,7 +31,8 @@ export const Frill = ({
   className,
   side
 }) => {
-  const { bracketedSeeds } = composition || {};
+  const configuration = composition?.configuration || {};
+  const { bracketedSeeds } = configuration || {};
   const ratings = individualParticipant?.ratings?.[matchUpType];
   const rankings = individualParticipant?.rankings?.[matchUpType];
   if (ratings || rankings) {

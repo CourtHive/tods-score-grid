@@ -7,7 +7,8 @@ export const addressStyles = css({
   fontSize: 'smaller'
 });
 
-export const Address = ({ individualParticipant, className, showAddress }) => {
+export const Address = ({ individualParticipant, className, composition }) => {
+  const showAddress = composition?.configuration?.showAddress;
   const address = individualParticipant?.person?.addresses?.length
     ? Object.values(individualParticipant.person?.addresses?.[0] || {}).join(', ')
     : ' ';

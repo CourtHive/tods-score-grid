@@ -108,7 +108,7 @@ const StatusPill = ({ matchUpStatus }) => {
 export const SideScore = ({ composition, matchUpStatus, score, sideNumber, winningSide }) => {
   const isWinningSide = sideNumber === winningSide;
   const irregularEnding = ['RETIRED', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
-  const scoreStripes = composition?.winnerChevron;
+  const scoreStripes = composition?.configuration?.winnerChevron;
   const sets = score?.sets || [];
 
   return (

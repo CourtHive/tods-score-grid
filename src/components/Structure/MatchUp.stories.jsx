@@ -31,7 +31,6 @@ const Container = styled('div', {
 
 export const Match = (args) => {
   const composition = compositions[args.composition];
-  const configuration = composition?.configuration || {};
   const className = useDarkMode() ? nightTheme : composition.theme;
   const {
     matchUps: [matchUp]
@@ -40,7 +39,7 @@ export const Match = (args) => {
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <MatchUp {...args} composition={configuration} matchUp={matchUp} />
+        <MatchUp {...args} composition={composition} matchUp={matchUp} />
       </div>
     </Container>
   );

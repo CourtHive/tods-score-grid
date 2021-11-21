@@ -29,14 +29,13 @@ const Container = styled('div', {
 
 export const Structure = (args) => {
   const composition = compositions[args.composition];
-  const configuration = composition?.configuration || {};
   const className = useDarkMode() ? nightTheme : composition.theme;
   const { matchUps } = generateMatchUps({ ...args });
 
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <ST {...args} composition={configuration} matchUps={matchUps} />
+        <ST {...args} composition={composition} matchUps={matchUps} />
       </div>
     </Container>
   );
