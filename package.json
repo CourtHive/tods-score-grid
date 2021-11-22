@@ -15,14 +15,14 @@
   },
   "scripts": {
     "lint": "prettier --write src && eslint --cache --fix src",
-    "lint:staged": "lint-staged",
-    "prepare": "husky install",
+    "documentation": "storybook-to-ghpages -s ./public",
     "storybook": "start-storybook -p 7777 -s ./public",
     "build-storybook": "build-storybook -s ./public",
-    "documentation": "storybook-to-ghpages -s ./public",
-    "publish": "storybook-to-ghpages",
+    "lint:staged": "lint-staged",
     "prebuild": "rm -rf dist/*",
-    "build": "vite build"
+    "prepare": "husky install",
+    "build": "vite build",
+    "release": "np"
   },
   "repository": {
     "type": "git",
@@ -103,7 +103,7 @@
     "jest-cli": "27.3.1",
     "jest-environment-node": "27.3.1",
     "lint-staged": "12.1.2",
-    "np": "7.6.0",
+    "np": "^7.6.0",
     "pinst": "2.1.6",
     "prettier": "2.4.1",
     "prettier-eslint": "13.0.0",
