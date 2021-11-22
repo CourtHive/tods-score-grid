@@ -1,14 +1,12 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-import typescript from '@rollup/plugin-typescript';
+import { defineConfig } from 'vite';
 import { name } from './package.json';
+import path from 'path';
 
 export default defineConfig({
   server: {
     host: '0.0.0.0'
   },
-  plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
@@ -30,5 +28,10 @@ export default defineConfig({
         }
       }
     }
-  }
+  },
+  plugins: [
+    react({
+      babel: { configFile: true }
+    })
+  ]
 });
