@@ -40,7 +40,9 @@ export const Frill = ({
   }
 
   const seedValue = type === 'seed' && (side?.seedValue || side?.seedNumber);
-  const seedDisplay = bracketedSeeds ? `(${seedValue})` : seedValue;
+  const brackets =
+    typeof bracketedSeeds === 'boolean' ? ['(', ')'] : bracketedSeeds === 'square' ? ['[', ']'] : ['', ''];
+  const seedDisplay = `${brackets[0]}${seedValue}${brackets[1]}`;
 
   return !individualParticipant ? null : type === 'flag' && configuration.flags ? (
     <Flag className={className} individualParticipant={individualParticipant} />
