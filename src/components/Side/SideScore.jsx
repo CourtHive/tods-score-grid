@@ -33,8 +33,8 @@ const pillStyle = css({
 
 const tieBreakStyle = css({
   position: 'absolute',
-  left: '17px',
-  top: '2px',
+  left: '1.1rem',
+  top: '.4rem',
   letterSpacing: '-0.2em',
   fontSize: '0.625rem',
   lineHeight: '0.75rem'
@@ -44,7 +44,7 @@ const gameScoreStyle = css({
   fontWeight: 500,
   position: 'relative',
   margin: 0,
-  width: '1.5rem',
+  width: '$score$setWidth',
   display: 'flex',
   justifyContent: 'center',
   fontSize: '0.875rem',
@@ -73,7 +73,8 @@ const scoreWrapperStyle = css({
 });
 
 const tickStyles = css({
-  color: 'green'
+  color: 'green',
+  marginInlineEnd: '1px'
 });
 
 const Set = ({ scoreStripes, set, sideNumber }) => {
@@ -108,7 +109,7 @@ const StatusPill = ({ matchUpStatus }) => {
 export const SideScore = ({ composition, matchUpStatus, score, sideNumber, winningSide }) => {
   const isWinningSide = sideNumber === winningSide;
   const irregularEnding = ['RETIRED', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
-  const scoreStripes = composition?.winnerChevron;
+  const scoreStripes = composition?.configuration?.winnerChevron;
   const sets = score?.sets || [];
 
   return (

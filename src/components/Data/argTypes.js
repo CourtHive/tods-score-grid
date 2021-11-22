@@ -1,3 +1,5 @@
+import { compositions } from './compositions';
+
 const directions = { 'Left to Right': 'ltr', 'Right to Left': 'rtl' };
 const eventTypes = { Singles: 'SINGLES', Doubles: 'DOUBLES' };
 const drawTypes = {
@@ -45,7 +47,7 @@ export const argTypes = (type) => ({
     control: { type: 'select' }
   },
   composition: {
-    options: ['Australian', 'French', 'Wimbledon', 'US Open', 'ITF', 'Night'],
+    options: Object.keys(compositions),
     control: { type: 'select' }
   },
   matchUpFormat: {

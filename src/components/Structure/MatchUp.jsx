@@ -4,21 +4,28 @@ import { Side } from '../Side/Side';
 import React from 'react';
 
 export const MatchUp = (params) => {
-  const { composition, isLucky, matchUp, moeity } = params;
+  const { composition, isLucky, matchUp, moeity, selectedMatchUpId } = params;
+  const events = params.events || {};
   const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound } = matchUp;
   const link =
     !matchUp.drawPositions || matchUp.isRoundRobin || isLucky ? 'mr' : preFeedRound ? 'm0' : moeity ? 'm1' : 'm2';
   const finalRound = parseInt(finishingRound) === 1;
   const firstRound = parseInt(roundNumber) === 1;
   const isDoubles = matchUpType === 'DOUBLES';
-  const { resultsInfo } = composition || {};
+  const configuration = composition?.configuration || {};
+  const { resultsInfo } = configuration || {};
 
   const participantHeight = isDoubles ? 60 : 40;
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
 
+  const handleOnClick = () => {
+    if (typeof events?.matchUpClick === 'function') {
+      events.matchUpClick(matchUp?.matchUpId);
+    }
+  };
+
   return (
-    <>
-      {!composition?.itf ? null : <Decoration roundNumber={roundNumber} roundFactor={roundFactor} />}
+    <div onClick={handleOnClick}>
       <div
         className={componentStyle({
           firstRound,
@@ -29,25 +36,25 @@ export const MatchUp = (params) => {
         <Side sideNumber={1} {...matchUp} composition={composition} participantHeight={participantHeight} />
         <Side sideNumber={2} {...matchUp} composition={composition} participantHeight={participantHeight} />
         {!resultsInfo ? null : <ResultsInfo {...matchUp} />}
+        <div
+          className="overlay"
+          style={{
+            display: selectedMatchUpId === matchUp.matchUpId ? '' : 'none',
+            position: 'absolute',
+            top: 0,
+            height: '100%',
+            width: '100%',
+            opacity: '0.2',
+            backgroundColor: 'magenta'
+          }}
+        ></div>
       </div>
-    </>
+    </div>
   );
 };
 
-const resultsInfoStyle = css({
-  fontSize: 0,
-  textTransform: 'uppercase',
-  color: '#bbb',
-  position: 'absolute',
-  right: 4,
-  top: 38,
-  transform: 'translateY(-50%)',
-  backgroundColor: '#fff',
-  textAlign: 'center'
-});
-
 const resultsItemStyle = css({
-  width: 24,
+  width: '$score$setWidth',
   fontSize: 9,
   display: 'inline-block',
   variants: {
@@ -60,6 +67,18 @@ const resultsItemStyle = css({
       }
     }
   }
+});
+
+const resultsInfoStyle = css({
+  fontSize: 0,
+  textTransform: 'uppercase',
+  color: '#bbb',
+  position: 'absolute',
+  right: 4,
+  top: `calc(50% - 2px)`,
+  transform: 'translateY(-50%)',
+  backgroundColor: '#fff',
+  textAlign: 'center'
 });
 
 function ResultsInfo({ score }) {
@@ -77,48 +96,6 @@ function ResultsInfo({ score }) {
               {index + 1}
             </div>
           ))}
-    </div>
-  );
-}
-
-export function Decoration({ roundFactor, roundNumber }) {
-  const factor = roundFactor || Math.pow(2, roundNumber - 1);
-  const top = 80 * (factor > 1 ? factor : 0);
-
-  const decorationStyle = css({
-    fontFamily: 'Lato,Arial,Helvetica,sans-serif',
-    WebkitFontSmooting: 'antialiased',
-    WebkitBoxDirection: 'normal',
-    boxSizing: 'inherit',
-    position: 'relative',
-    height: '100%',
-    right: -30
-  });
-
-  const topTriangleStyle = css({
-    borderInlineStart: '30px solid #979797',
-    right: '-1px',
-    position: 'absolute',
-    borderTop: '72px solid transparent',
-    borderBottom: '72px solid transparent',
-    top
-    // top: '-1px'
-  });
-
-  const bottomTriangleStyle = css({
-    borderTop: '72px solid transparent',
-    borderBottom: '72px solid transparent',
-    position: 'absolute',
-    right: 0,
-    borderInlineStart: '30px solid #fff',
-    // top: '-1px'
-    top
-  });
-
-  return (
-    <div className={decorationStyle()}>
-      <div className={topTriangleStyle()}></div>
-      <div className={bottomTriangleStyle()}></div>
     </div>
   );
 }

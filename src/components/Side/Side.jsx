@@ -35,6 +35,7 @@ export const Side = ({
   matchUpStatus,
   composition,
   matchUpType,
+  roundNumber,
   winningSide,
   sideNumber,
   score,
@@ -60,7 +61,7 @@ export const Side = ({
     variants: {
       sideNumber: {
         1: {
-          borderBottom: '1px solid lightgray'
+          borderBottom: '1px solid $internalDividers'
         }
       }
     }
@@ -72,7 +73,8 @@ export const Side = ({
   const firstParticipant = isDoubles ? side?.participant?.individualParticipants?.[0] : side?.participant;
   const secondParticipant = isDoubles && side?.participant?.individualParticipants?.[1];
   const isWinningSide = sideNumber === winningSide;
-  const winnerChevron = composition?.winnerChevron && isWinningSide;
+  const configuration = composition?.configuration || {};
+  const winnerChevron = configuration?.winnerChevron && isWinningSide;
   const entryStatus = side?.entryStatus?.replace('_', ' ');
   const EntryStatus = () => <CenterInfo height={30} sideNumber={sideNumber} entryStatus={entryStatus} />;
 
@@ -95,23 +97,31 @@ export const Side = ({
     }
   });
 
-  const centerInfo = composition?.centerInfo;
+  const centerInfo = configuration?.centerInfo;
+  const drawPosition =
+    configuration.drawPositions && side.drawPosition && (roundNumber === 1 || side.participantFed)
+      ? side.drawPosition
+      : '';
 
   return (
     <div className={sideContainerStyle()}>
       {!centerInfo || sideNumber === 1 ? null : <EntryStatus />}
       <div
         className={participantContainerStyle({
-          sideNumber
-          /*
-          css: {
+          sideNumber,
+          css: drawPosition && {
             '&:before': {
+              display: 'flex',
               position: 'absolute',
-              insetInlineStart: -15,
-              content: `"${side?.drawPosition || ''}"`
+              insetInlineStart: -10,
+              width: 20,
+              color: '#55AFFE',
+              alignContent: 'center',
+              justifyContent: 'center',
+              backgroundColor: '$backgroundColor',
+              content: `${drawPosition}`
             }
           }
-          */
         })}
       >
         <div className={participantTypeStyle({ variant: isDoubles ? 'doubles' : undefined })}>

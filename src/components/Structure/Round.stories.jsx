@@ -22,7 +22,6 @@ const Container = styled('div', {
 
 export const Round = (args) => {
   const composition = compositions[args.composition];
-  const configuration = composition?.configuration || {};
   const className = useDarkMode() ? nightTheme : composition.theme;
   const { matchUps } = generateMatchUps(args);
 
@@ -37,7 +36,7 @@ export const Round = (args) => {
       <div style={{ padding: '1rem' }}>
         <RD
           {...args}
-          composition={configuration}
+          composition={composition}
           className={className}
           matchUps={matchUps}
           isLucky={isLucky}
