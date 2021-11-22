@@ -5,6 +5,7 @@
 .env
 .env.test
 .eslintcache
+.parcel-cache
 .npm
 .nvim*
 .yarn-integrity
