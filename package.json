@@ -10,6 +10,7 @@
     "storybook": "start-storybook -p 7777 -s ./public",
     "build-storybook": "build-storybook -s ./public",
     "documentation": "storybook-to-ghpages -s ./public",
+    "prebuild": "rm -rf dist/*",
     "publish": "storybook-to-ghpages"
   },
   "repository": {
