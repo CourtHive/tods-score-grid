@@ -87,7 +87,7 @@
     "@types/react-dom": "17.0.11",
     "@typescript-eslint/eslint-plugin": "5.4.0",
     "@typescript-eslint/parser": "5.4.0",
-    "@vitejs/plugin-react": "^1.1.0",
+    "@vitejs/plugin-react": "1.1.0",
     "babel-jest": "27.3.1",
     "babel-loader": "8.2.3",
     "eslint": "8.3.0",
@@ -103,7 +103,7 @@
     "jest-cli": "27.3.1",
     "jest-environment-node": "27.3.1",
     "lint-staged": "12.1.2",
-    "np": "^7.6.0",
+    "np": "7.6.0",
     "pinst": "2.1.6",
     "prettier": "2.4.1",
     "prettier-eslint": "13.0.0",
@@ -112,8 +112,8 @@
     "source-map-resolve": "0.6.0",
     "storybook-addon-outline": "1.4.1",
     "storybook-dark-mode": "1.0.8",
-    "vite": "^2.6.10",
-    "vite-web-test-runner-plugin": "^0.1.0",
+    "vite": "2.6.14",
+    "vite-web-test-runner-plugin": "0.1.0",
     "webpack": "5.64.2"
   }
 }
