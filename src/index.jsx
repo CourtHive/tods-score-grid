@@ -1,2 +1,2 @@
-export { Draw } from 'src/components/Draw/Draw';
-export { Structure } from 'src/components/Structure/Structure';
+export { Draw } from './components/Draw/Draw.jsx';
+export { Structure } from './components/Structure/Structure.jsx';
