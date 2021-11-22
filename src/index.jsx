@@ -1,9 +1,2 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { ScoreGrid } from './score-grid';
-
-const App = () => {
-  return <ScoreGrid />;
-};
-
-ReactDOM.render(<App />, document.getElementById('root'));
+export { Draw } from 'src/components/Draw/Draw';
+export { Structure } from 'src/components/Structure/Structure';

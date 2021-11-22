@@ -47,3 +47,5 @@ export const Draw = ({ composition, events, structures, structureId }) => {
     </div>
   );
 };
+
+export default Draw;

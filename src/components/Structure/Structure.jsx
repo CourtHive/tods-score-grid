@@ -25,3 +25,5 @@ export const Structure = ({ composition, events, matchUps, selectedMatchUpId }) 
     </div>
   );
 };
+
+export default Structure;
