@@ -30,7 +30,7 @@ export const Draw = ({ composition, events, structures, structureId }) => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      {structures.length <= 1 ? null : (
+      {!structures?.length || structures.length === 1 ? null : (
         <StructureSelector structures={structures} structureId={selectedStructureId} onSelect={onSelect} />
       )}
       <div style={{ height: '30px' }}> </div>
