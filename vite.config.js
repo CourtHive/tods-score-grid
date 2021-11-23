@@ -15,8 +15,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.jsx'),
-      name,
-      fileName: (format) => `${name}.${format}.js`
+      fileName: (format) => `${name}.${format}.js`,
+      name
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],

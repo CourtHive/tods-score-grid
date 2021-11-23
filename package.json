@@ -1,28 +1,28 @@
 {
   "name": "tods-score-grid",
-  "version": "0.2.7",
+  "version": "0.3.3",
   "description": "React component to visualize TODS `matchUps`",
   "files": [
     "dist"
   ],
-  "main": "./dist/score-grid.umd.js",
-  "module": "./dist/score-grid.es.js",
+  "main": "./dist/tods-score-grid.umd.js",
+  "module": "./dist/tods-score-grid.es.js",
   "exports": {
     ".": {
-      "import": "./dist/score-grid.es.js",
-      "require": "./dist/score-grid.umd.js"
+      "import": "./dist/tods-score-grid.es.js",
+      "require": "./dist/tods-score-grid.umd.js"
     }
   },
   "scripts": {
     "lint": "prettier --write src && eslint --cache --fix src",
-    "lint:staged": "lint-staged",
-    "prepare": "husky install",
+    "documentation": "storybook-to-ghpages -s ./public",
     "storybook": "start-storybook -p 7777 -s ./public",
     "build-storybook": "build-storybook -s ./public",
-    "documentation": "storybook-to-ghpages -s ./public",
-    "publish": "storybook-to-ghpages",
+    "lint:staged": "lint-staged",
     "prebuild": "rm -rf dist/*",
-    "build": "vite build"
+    "prepare": "husky install",
+    "build": "vite build",
+    "release": "np"
   },
   "repository": {
     "type": "git",
@@ -47,21 +47,10 @@
     "@radix-ui/react-icons": "^1.0.3",
     "@radix-ui/react-popover": "^0.1.1",
     "@stitches/react": "^1.2.5",
-    "@storybook/addon-console": "^1.2.3",
-    "@storybook/addon-docs": "^6.3.12",
-    "@storybook/addons": "^6.3.12",
-    "@storybook/api": "^6.3.12",
-    "@storybook/components": "^6.3.12",
-    "@storybook/core-events": "^6.3.12",
-    "@storybook/storybook-deployer": "^2.8.10",
-    "@storybook/theming": "^6.3.12",
-    "beautiful-react-hooks": "^1.0.2",
     "classnames": "^2.3.1",
-    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-country-flag": "3.0.2",
-    "react-dom": "^17.0.2",
-    "tods-competition-factory": "0.70.3"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/core": "7.16.0",
@@ -76,10 +65,18 @@
     "@rollup/plugin-node-resolve": "13.0.6",
     "@rollup/plugin-typescript": "8.3.0",
     "@storybook/addon-actions": "6.3.12",
+    "@storybook/addon-console": "1.2.3",
+    "@storybook/addon-docs": "6.3.12",
     "@storybook/addon-essentials": "6.3.12",
     "@storybook/addon-links": "6.3.12",
     "@storybook/addon-viewport": "6.3.12",
+    "@storybook/addons": "6.3.12",
+    "@storybook/api": "6.3.12",
+    "@storybook/components": "6.3.12",
+    "@storybook/core-events": "6.3.12",
     "@storybook/react": "6.3.12",
+    "@storybook/storybook-deployer": "2.8.10",
+    "@storybook/theming": "6.3.12",
     "@types/jest": "27.0.3",
     "@types/mocha": "9.0.0",
     "@types/node": "16.11.9",
@@ -87,13 +84,13 @@
     "@types/react-dom": "17.0.11",
     "@typescript-eslint/eslint-plugin": "5.4.0",
     "@typescript-eslint/parser": "5.4.0",
-    "@vitejs/plugin-react": "^1.1.0",
+    "@vitejs/plugin-react": "1.1.0",
     "babel-jest": "27.3.1",
     "babel-loader": "8.2.3",
     "eslint": "8.3.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "2.25.3",
-    "eslint-plugin-jest": "25.2.4",
+    "eslint-plugin-jest": "25.3.0",
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-mocha": "9.0.0",
     "eslint-plugin-prettier": "4.0.0",
@@ -107,13 +104,15 @@
     "pinst": "2.1.6",
     "prettier": "2.4.1",
     "prettier-eslint": "13.0.0",
+    "prop-types": "15.7.2",
     "rollup": "2.60.1",
     "rollup-plugin-terser": "7.0.2",
     "source-map-resolve": "0.6.0",
     "storybook-addon-outline": "1.4.1",
     "storybook-dark-mode": "1.0.8",
-    "vite": "^2.6.10",
-    "vite-web-test-runner-plugin": "^0.1.0",
+    "tods-competition-factory": "0.72.0",
+    "vite": "2.6.14",
+    "vite-web-test-runner-plugin": "0.1.0",
     "webpack": "5.64.2"
   }
 }

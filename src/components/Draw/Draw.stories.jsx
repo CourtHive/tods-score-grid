@@ -20,7 +20,7 @@ const Container = styled('div', {
   height: '100%'
 });
 
-export const Draw = (args) => {
+export const Demo = (args) => {
   const composition = compositions[args.composition];
   const className = useDarkMode() ? nightTheme : composition?.theme;
   const { eventData } = generateEventData({ ...args }) || {};
@@ -45,7 +45,7 @@ export const Draw = (args) => {
   );
 };
 
-Draw.args = {
+Demo.args = {
   direction: 'Left to Right',
   composition: 'Australian',
   matchUpFormat: 'standard',
@@ -53,4 +53,8 @@ Draw.args = {
   completionGoal: 100,
   drawType: 'Feed In',
   drawSize: 32
+};
+
+export const Nada = () => {
+  return <DrawComponent />;
 };

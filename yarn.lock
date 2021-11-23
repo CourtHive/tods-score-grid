@@ -2228,7 +2228,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-console@^1.2.3":
+"@storybook/addon-console@1.2.3":
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@storybook/addon-console/-/addon-console-1.2.3.tgz#f6c88a8f54fe00c8de9b77720eaef2bc1daa3af1"
   integrity sha512-w5uCUwECA28fdZWoa+A4e/RS9XzBStdd3TwwmpSM5m4fjURJI7Qr+uVq30UeRdgZRH1K7CdWzYUE6RxWXMdVyw==
@@ -2249,7 +2249,7 @@
     core-js "^3.8.2"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-docs@6.3.12", "@storybook/addon-docs@^6.3.12":
+"@storybook/addon-docs@6.3.12":
   version "6.3.12"
   resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-6.3.12.tgz#2ec73b4f231d9f190d5c89295bc47bea6a95c6d1"
   integrity sha512-iUrqJBMTOn2PgN8AWNQkfxfIPkh8pEg27t8UndMgfOpeGK/VWGw2UEifnA82flvntcilT4McxmVbRHkeBY9K5A==
@@ -2372,7 +2372,7 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.3.12", "@storybook/addons@^6.3.0", "@storybook/addons@^6.3.12":
+"@storybook/addons@6.3.12", "@storybook/addons@^6.3.0":
   version "6.3.12"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.3.12.tgz#8773dcc113c5086dfff722388b7b65580e43b65b"
   integrity sha512-UgoMyr7Qr0FS3ezt8u6hMEcHgyynQS9ucr5mAwZky3wpXRPFyUTmMto9r4BBUdqyUvTUj/LRKIcmLBfj+/l0Fg==
@@ -2387,7 +2387,7 @@
     global "^4.4.0"
     regenerator-runtime "^0.13.7"
 
-"@storybook/api@6.3.12", "@storybook/api@^6.3.0", "@storybook/api@^6.3.12":
+"@storybook/api@6.3.12", "@storybook/api@^6.3.0":
   version "6.3.12"
   resolved "https://registry.yarnpkg.com/@storybook/api/-/api-6.3.12.tgz#2845c20464d5348d676d09665e8ab527825ed7b5"
   integrity sha512-LScRXUeCWEW/OP+jiooNMQICVdusv7azTmULxtm72fhkXFRiQs2CdRNTiqNg46JLLC9z95f1W+pGK66X6HiiQA==
@@ -2543,7 +2543,7 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components@6.3.12", "@storybook/components@^6.3.0", "@storybook/components@^6.3.12":
+"@storybook/components@6.3.12", "@storybook/components@^6.3.0":
   version "6.3.12"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.3.12.tgz#0c7967c60354c84afa20dfab4753105e49b1927d"
   integrity sha512-kdQt8toUjynYAxDLrJzuG7YSNL6as1wJoyzNUaCfG06YPhvIAlKo7le9tS2mThVFN5e9nbKrW3N1V1sp6ypZXQ==
@@ -2650,7 +2650,7 @@
     util-deprecate "^1.0.2"
     webpack "4"
 
-"@storybook/core-events@6.3.12", "@storybook/core-events@^6.3.0", "@storybook/core-events@^6.3.12":
+"@storybook/core-events@6.3.12", "@storybook/core-events@^6.3.0":
   version "6.3.12"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.3.12.tgz#73f6271d485ef2576234e578bb07705b92805290"
   integrity sha512-SXfD7xUUMazaeFkB92qOTUV8Y/RghE4SkEYe5slAdjeocSaH7Nz2WV0rqNEgChg0AQc+JUI66no8L9g0+lw4Gw==
@@ -2875,7 +2875,7 @@
     prettier "~2.2.1"
     regenerator-runtime "^0.13.7"
 
-"@storybook/storybook-deployer@^2.8.10":
+"@storybook/storybook-deployer@2.8.10":
   version "2.8.10"
   resolved "https://registry.yarnpkg.com/@storybook/storybook-deployer/-/storybook-deployer-2.8.10.tgz#3cf96aea823d424fbfce98e76fca108d07470ec2"
   integrity sha512-2uleH0AFuI98sdTkbyHt1BgPa0kmLxhC3zwfwtacE8FB+2ffdRdqBlp6GYDZ7CZ+R4B4XuPYhsgUKWkB+zngyQ==
@@ -2886,7 +2886,7 @@
     shelljs "^0.8.1"
     yargs "^15.0.0"
 
-"@storybook/theming@6.3.12", "@storybook/theming@^6.3.12":
+"@storybook/theming@6.3.12":
   version "6.3.12"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.3.12.tgz#5bddf9bd90a60709b5ab238ecdb7d9055dd7862e"
   integrity sha512-wOJdTEa/VFyFB2UyoqyYGaZdym6EN7RALuQOAMT6zHA282FBmKw8nL5DETHEbctpnHdcrMC/391teK4nNSrdOA==
@@ -3538,7 +3538,7 @@
     "@typescript-eslint/types" "5.4.0"
     eslint-visitor-keys "^3.0.0"
 
-"@vitejs/plugin-react@^1.1.0":
+"@vitejs/plugin-react@1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-react/-/plugin-react-1.1.0.tgz#8dc889a3b37d475c4c5196bfa9dd6052182d6a1e"
   integrity sha512-hRAqG6/lYf0mfDm/1r0U81vwPWMpyi87e4bFK+LvVQQeIgdh6TwvfuF20waenSGSumz6JH2bfk9DbxdgDLRp/w==
@@ -4547,14 +4547,6 @@ batch-processor@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
   integrity sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=
-
-beautiful-react-hooks@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/beautiful-react-hooks/-/beautiful-react-hooks-1.0.2.tgz#d21c126676359cf44ddd61799c8800ee60b6e442"
-  integrity sha512-U+gQgvobi2JV7N6bIWb8SsLoqG0FNQ8ckRXwBwRVUP6I/IFdAIY0XRYjqkSdtjiNxbjlge5vIDp8NdYWUQjqkg==
-  dependencies:
-    lodash.debounce "^4.0.8"
-    lodash.throttle "^4.1.1"
 
 better-opn@^2.1.1:
   version "2.1.1"
@@ -6551,10 +6543,10 @@ eslint-plugin-import@2.25.3:
     resolve "^1.20.0"
     tsconfig-paths "^3.11.0"
 
-eslint-plugin-jest@25.2.4:
-  version "25.2.4"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-25.2.4.tgz#bb9f6a0bd1fd524ffb0b8b7a159cd70a58a1a793"
-  integrity sha512-HRyinpgmEdkVr7pNPaYPHCoGqEzpgk79X8pg/xCeoAdurbyQjntJQ4pTzHl7BiVEBlam/F1Qsn+Dk0HtJO7Aaw==
+eslint-plugin-jest@25.3.0:
+  version "25.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-25.3.0.tgz#6c04bbf13624a75684a05391a825b58e2e291950"
+  integrity sha512-79WQtuBsTN1S8Y9+7euBYwxIOia/k7ykkl9OCBHL3xuww5ecursHy/D8GCIlvzHVWv85gOkS5Kv6Sh7RxOgK1Q==
   dependencies:
     "@typescript-eslint/experimental-utils" "^5.0.0"
 
@@ -9791,11 +9783,6 @@ lodash.merge@^4.6.0, lodash.merge@^4.6.2:
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-lodash.throttle@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
-  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
-
 lodash.truncate@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.truncate/-/lodash.truncate-4.4.2.tgz#5a350da0b1113b837ecfffd5812cbe58d6eae193"
@@ -11481,7 +11468,7 @@ prompts@^2.0.1, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.0.0, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.0.0, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -13443,10 +13430,10 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-tods-competition-factory@0.70.3:
-  version "0.70.3"
-  resolved "https://registry.yarnpkg.com/tods-competition-factory/-/tods-competition-factory-0.70.3.tgz#2aa1524d5ea258eff7b0069163dbbf0059910c52"
-  integrity sha512-Cf90sYgrz/D9/nJFVLs0/GWT58Hb9tY62W3+rldMD7mycf6PkoSWSQoqwNNRi4AaZcw5QJmGHOXPGcIHXDz9EA==
+tods-competition-factory@0.72.0:
+  version "0.72.0"
+  resolved "https://registry.yarnpkg.com/tods-competition-factory/-/tods-competition-factory-0.72.0.tgz#6abf932199bfa269f81983bdab3c9fdb1397986a"
+  integrity sha512-kBdKtUFakfKw6n1BljbiY9/V/llx1pmmk7hoTJD5rEQ0ffEips8WFZ6/dYWm8q70kndx9OowWg6GuUSMK3Zg1A==
 
 toggle-selection@^1.0.6:
   version "1.0.6"
@@ -14012,12 +13999,12 @@ vfile@^4.0.0:
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
 
-vite-web-test-runner-plugin@^0.1.0:
+vite-web-test-runner-plugin@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/vite-web-test-runner-plugin/-/vite-web-test-runner-plugin-0.1.0.tgz#f6909daf826d27fe375fa6ff213a3fc8ec888669"
   integrity sha512-AXrkMbtU/QW9mJWzl0j7Zn9UKKwMo4zQw4BPeS4TknwF/tIMqluFdb9J2+QbLIUP72TeiAgobpS72oo/c7kDPw==
 
-vite@^2.6.10:
+vite@2.6.14:
   version "2.6.14"
   resolved "https://registry.yarnpkg.com/vite/-/vite-2.6.14.tgz#35c09a15e4df823410819a2a239ab11efb186271"
   integrity sha512-2HA9xGyi+EhY2MXo0+A2dRsqsAG3eFNEVIo12olkWhOmc8LfiM+eMdrXf+Ruje9gdXgvSqjLI9freec1RUM5EA==
