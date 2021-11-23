@@ -5,12 +5,12 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/score-grid.umd.js",
-  "module": "./dist/score-grid.es.js",
+  "main": "./dist/tods-score-grid.umd.js",
+  "module": "./dist/tods-score-grid.es.js",
   "exports": {
     ".": {
-      "import": "./dist/score-grid.es.js",
-      "require": "./dist/score-grid.umd.js"
+      "import": "./dist/tods-score-grid.es.js",
+      "require": "./dist/tods-score-grid.umd.js"
     }
   },
   "scripts": {
