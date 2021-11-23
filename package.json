@@ -21,6 +21,7 @@
     "lint:staged": "lint-staged",
     "prebuild": "rm -rf dist/*",
     "prepare": "husky install",
+    "prerelease": "vite build",
     "build": "vite build",
     "release": "np"
   },
