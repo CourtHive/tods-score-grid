@@ -23,6 +23,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
     boxShadow: '$matchUp$boxShadow',
     WebkitTransition: 'all 0.30s linear',
     transition: 'all 0.30s linear',
+    marginTop: '$space$1',
     marginBottom: '$space$1',
     '&:hover': {
       border: 'solid $borderHover',
