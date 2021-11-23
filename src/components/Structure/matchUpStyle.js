@@ -25,11 +25,6 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
     transition: 'all 0.30s linear',
     marginTop: '$space$1',
     marginBottom: '$space$1',
-    '&:hover': {
-      border: 'solid $borderHover',
-      borderInlineStart: 'solid $borderHover',
-      borderWidth: '$borderWidths$matchUp'
-    },
     '&::before': {
       borderRadius: 2,
       position: 'absolute',
