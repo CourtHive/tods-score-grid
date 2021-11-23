@@ -1,7 +1,7 @@
 import { css } from '@stitches/react';
 
 export const matchUpStyle = ({ composition, roundFactor, roundNumber, participantHeight }) => {
-  const configuration = composition.configuration;
+  const configuration = composition?.configuration || {};
   const centerInfoHeight = configuration?.centerInfo || 0;
   const connectorWidth = configuration?.connectorWidth || 16;
   const connectorHeight =

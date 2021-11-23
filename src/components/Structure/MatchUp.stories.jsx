@@ -31,7 +31,7 @@ const Container = styled('div', {
 
 export const Match = (args) => {
   const composition = compositions[args.composition];
-  const className = useDarkMode() ? nightTheme : composition.theme;
+  const className = useDarkMode() ? nightTheme : composition?.theme;
   const {
     matchUps: [matchUp]
   } = generateMatchUps(args);

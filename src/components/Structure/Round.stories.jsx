@@ -22,7 +22,7 @@ const Container = styled('div', {
 
 export const Round = (args) => {
   const composition = compositions[args.composition];
-  const className = useDarkMode() ? nightTheme : composition.theme;
+  const className = useDarkMode() ? nightTheme : composition?.theme;
   const { matchUps } = generateMatchUps(args);
 
   const { hasOddMatchUpsCount } = drawEngine.getRoundMatchUps({
