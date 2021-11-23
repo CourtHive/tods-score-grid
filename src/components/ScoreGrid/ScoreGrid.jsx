@@ -19,3 +19,5 @@ export const ScoreGrid = ({ compositionName, eventData, events }) => {
     />
   );
 };
+
+export default ScoreGrid;
