@@ -9,8 +9,6 @@ export const ScoreGrid = ({ compositionName, eventData, events }) => {
   const composition = compositions?.[compositionName] || compositions['Australian'];
   const className = composition.theme;
 
-  console.log({ className, compositionName });
-
   return (
     <Draw
       structureId={initialStructureId}
