@@ -33,16 +33,16 @@ const participantStyle = css({
 });
 
 const participantNameStyle = css({
-  margin: '0 0.375rem 0 0.375rem',
+  marginInlineStart: '$space$2',
+  marginInlineEnd: '$space$2',
   textTransform: '$participant$textTransform',
   fontSize: '0.875rem',
-  lineHeight: '1.5rem',
   fontWeight: 500,
   variants: {
     variant: {
       winner: {
         fontWeight: 700,
-        color: '$winner'
+        color: '$winnerName'
       },
       loser: {
         fontWeight: 500
@@ -60,13 +60,13 @@ const seedStyle = css({
 });
 
 export function Individual(params) {
-  const { isWinningSide, onClickIndividual, side, individualParticipant, className } = params;
+  const { isWinningSide, onClickIndividual, side, individualParticipant } = params;
   const variant = isWinningSide ? 'winner' : undefined;
 
   const participantName = individualParticipant?.participantName;
 
   return (
-    <div className={className} key={`${params.index}`}>
+    <div key={`${params.index}`}>
       <div className={participantStyle()} onClick={onClickIndividual}>
         <Frill {...params} className={flagStyles()} />
 

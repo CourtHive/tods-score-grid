@@ -47,13 +47,16 @@ const gameScoreStyle = css({
   width: '$score$setWidth',
   display: 'flex',
   justifyContent: 'center',
-  fontSize: '0.875rem',
+  fontSize: '$1',
   lineHeight: '2.5rem',
   variants: {
     variant: {
       winner: {
         color: '$winner!important',
         fontWeight: 700
+      },
+      loser: {
+        color: '$loser!important'
       }
     }
   }
@@ -73,13 +76,13 @@ const scoreWrapperStyle = css({
 });
 
 const tickStyles = css({
-  color: 'green',
-  marginInlineEnd: '1px'
+  marginInlineEnd: '.25rem',
+  color: 'green'
 });
 
-const Set = ({ scoreStripes, set, sideNumber }) => {
+const Set = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
   const isWinningSide = sideNumber === set?.winningSide;
-  const variant = isWinningSide ? 'winner' : undefined;
+  const variant = isWinningSide ? 'winner' : set?.winningSide ? 'loser' : undefined;
   const gameScore = sideNumber === 2 ? set.side2Score : set.side1Score;
   const tieBreakScore = sideNumber === 2 ? set.side2TiebreakScore : set.side1TiebreakScore;
   const tieBreakSet = gameScore === undefined && tieBreakScore;
@@ -89,7 +92,7 @@ const Set = ({ scoreStripes, set, sideNumber }) => {
   return (
     <p className={gameScoreStyle({ variant })} style={{ backgroundColor: stripedScore }}>
       {!isNaN(scoreDisplay) ? scoreDisplay : ''}
-      <span className={tieBreakStyle()}>{!tieBreakSet ? tieBreakScore : ''}</span>
+      {gameScoreOnly ? null : <span className={tieBreakStyle()}>{!tieBreakSet ? tieBreakScore : ''}</span>}
     </p>
   );
 };
@@ -110,17 +113,20 @@ export const SideScore = ({ composition, matchUpStatus, score, sideNumber, winni
   const isWinningSide = sideNumber === winningSide;
   const irregularEnding = ['RETIRED', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
   const scoreStripes = composition?.configuration?.winnerChevron;
+  const gameScoreOnly = composition?.configuration?.gameScoreOnly;
+  const scoreBox = composition?.configuration?.scoreBox;
   const sets = score?.sets || [];
 
   return (
     <div className={scoreWrapperStyle()}>
       <div style={{ lineHeight: 0 }}>
-        {!isWinningSide ? null : <Tick className={tickStyles()} />}
+        {!isWinningSide || gameScoreOnly ? null : <Tick className={tickStyles()} />}
         {!irregularEnding ? null : <StatusPill matchUpStatus={matchUpStatus} />}
-      </div>{' '}
+      </div>
+      {!scoreBox ? null : <div style={{ height: '2.5em', border: '1px solid lightgray' }}> </div>}
       <div className={gameWrapperStyle()}>
         {sets?.map((set, i) => (
-          <Set key={`Side${sideNumber}-Set-${i}`} set={set} scoreStripes={scoreStripes} sideNumber={sideNumber} />
+          <Set key={`Side${sideNumber}-Set-${i}`} scoreStripes={scoreStripes} sideNumber={sideNumber} set={set} />
         ))}
       </div>
     </div>

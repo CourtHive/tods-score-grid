@@ -13,9 +13,9 @@ export const MatchUp = (params) => {
   const firstRound = parseInt(roundNumber) === 1;
   const isDoubles = matchUpType === 'DOUBLES';
   const configuration = composition?.configuration || {};
-  const { resultsInfo } = configuration || {};
+  const { resultsInfo, showAddress } = configuration || {};
 
-  const participantHeight = isDoubles ? 60 : 40;
+  const participantHeight = isDoubles ? (showAddress ? 80 : 60) : showAddress ? 50 : 40;
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
 
   const handleOnClick = () => {

@@ -3,8 +3,10 @@ import cx from 'classnames';
 import React from 'react';
 
 export const addressStyles = css({
-  color: 'gray',
-  fontSize: 'smaller'
+  marginInlineStart: '$space$2',
+  marginInlineEnd: '$space$2',
+  fontSize: 'smaller',
+  color: 'gray'
 });
 
 export const Address = ({ individualParticipant, className, composition }) => {

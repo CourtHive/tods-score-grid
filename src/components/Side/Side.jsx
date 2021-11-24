@@ -75,6 +75,7 @@ export const Side = ({
   const isWinningSide = sideNumber === winningSide;
   const configuration = composition?.configuration || {};
   const winnerChevron = configuration?.winnerChevron && isWinningSide;
+  const teamLogo = configuration?.teamLogo;
   const entryStatus = side?.entryStatus?.replace('_', ' ');
   const EntryStatus = () => <CenterInfo height={30} sideNumber={sideNumber} entryStatus={entryStatus} />;
 
@@ -124,6 +125,11 @@ export const Side = ({
           }
         })}
       >
+        {!teamLogo ? null : (
+          <div
+            style={{ height: 40, width: 40, backgroundColor: 'pink', marginInlineEnd: '.5rem', marginInlineStart: 2 }}
+          ></div>
+        )}
         <div className={participantTypeStyle({ variant: isDoubles ? 'doubles' : undefined })}>
           {isTeam ? null : (
             <div className={chevronStyle({ variant: winnerChevron ? 'winner' : undefined })}>

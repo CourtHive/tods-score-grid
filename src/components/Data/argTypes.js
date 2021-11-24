@@ -26,7 +26,8 @@ const matchUpFormats = {
   standard: 'SET3-S:6/TB7',
   grand: 'SET5-S:6/TB7',
   doubles: 'SET3-S:6/TB7-F:TB10',
-  'tb sets': 'SET3-S:TB10'
+  'Timed Sets': 'SET1-S:T20',
+  'Tiebreak Sets': 'SET3-S:TB10'
 };
 
 export const argTypes = (type) => ({
