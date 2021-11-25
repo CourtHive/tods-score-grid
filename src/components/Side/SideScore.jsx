@@ -58,6 +58,7 @@ const Set = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
 
 export const SideScore = ({ composition, score, sideNumber, participantHeight }) => {
   const scoreStripes = composition?.configuration?.winnerChevron;
+  const gameScoreOnly = composition?.configuration?.gameScoreOnly;
   const sets = score?.sets || [];
 
   const scoreBox = composition?.configuration?.scoreBox;
@@ -82,7 +83,13 @@ export const SideScore = ({ composition, score, sideNumber, participantHeight })
     <div className={scoreWrapperStyle({ sideNumber: !scoreBox && sideNumber })}>
       <div className={gameWrapperStyle()}>
         {sets?.map((set, i) => (
-          <Set key={`Side${sideNumber}-Set-${i}`} scoreStripes={scoreStripes} sideNumber={sideNumber} set={set} />
+          <Set
+            key={`Side${sideNumber}-Set-${i}`}
+            gameScoreOnly={gameScoreOnly}
+            scoreStripes={scoreStripes}
+            sideNumber={sideNumber}
+            set={set}
+          />
         ))}
       </div>
     </div>

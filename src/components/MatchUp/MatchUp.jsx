@@ -4,7 +4,7 @@ import { Side } from '../Side/Side';
 import React from 'react';
 
 export const MatchUp = (params) => {
-  const { composition, isLucky, matchUp, moeity, selectedMatchUpId } = params;
+  const { className, composition, isLucky, matchUp, moeity, selectedMatchUpId } = params;
   const events = params.events || {};
   const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound, stage } = matchUp;
   const noProgression = stage !== 'QUALIFUYING' && parseInt(finishingRound) === 1;
@@ -34,7 +34,7 @@ export const MatchUp = (params) => {
   };
 
   return (
-    <div onClick={handleOnClick}>
+    <div className={className} onClick={handleOnClick}>
       <div
         className={componentStyle({
           isFirstRound,

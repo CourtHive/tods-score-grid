@@ -1,3 +1,4 @@
+import { utilities } from 'tods-competition-factory';
 import { generateMatchUps } from '../Data/matchUps';
 import { compositions } from '../Data/compositions';
 import { useDarkMode } from 'storybook-dark-mode';
@@ -12,7 +13,6 @@ export default {
   component: MatchUp,
   argTypes: {
     eventType: argTypes().eventType,
-    composition: argTypes().composition,
     matchUpFormat: argTypes().matchUpFormat,
     direction: argTypes().direction
   },
@@ -29,6 +29,35 @@ const Container = styled('div', {
   height: '100vh',
   width: 400
 });
+
+export const Compositions = (args) => {
+  const compositionValues = Object.values(compositions);
+
+  const { matchUps } = generateMatchUps({ ...args, drawSize: 16 });
+  const range = utilities.generateRange(0, Object.keys(compositions).length);
+
+  return (
+    <Container style={{ direction: args.direction }}>
+      {range.map((index) => (
+        <div key={index} style={{ padding: '.5rem' }}>
+          <MatchUp
+            {...args}
+            moeity={(index - 1) % 2}
+            className={compositionValues[index].theme}
+            composition={compositionValues[index]}
+            matchUp={matchUps[index]}
+          />
+        </div>
+      ))}
+    </Container>
+  );
+};
+
+Compositions.args = {
+  direction: 'Left to Right',
+  matchUpFormat: 'standard',
+  eventType: 'Singles'
+};
 
 export const Outcomes = (args) => {
   const composition = compositions[args.composition];
@@ -69,7 +98,6 @@ export const Outcomes = (args) => {
 Outcomes.args = {
   direction: 'Left to Right',
   matchUpFormat: 'standard',
-  composition: 'Australian',
   eventType: 'Singles'
 };
 
@@ -116,6 +144,5 @@ export const Sides = (args) => {
 Sides.args = {
   direction: 'Left to Right',
   matchUpFormat: 'standard',
-  composition: 'Australian',
   eventType: 'Singles'
 };

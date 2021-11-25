@@ -3,13 +3,16 @@ import { css } from '@stitches/react';
 export const matchUpStyle = ({ composition, roundFactor, roundNumber, participantHeight }) => {
   const configuration = composition?.configuration || {};
   const centerInfoHeight = configuration?.centerInfo || 0;
+  const scheduleInfoHeight = configuration?.scheduleInfo || 0;
   const connectorWidth = configuration?.connectorWidth || 16;
   const connectorHeight =
-    (participantHeight + connectorWidth + centerInfoHeight - 2) * (roundFactor || Math.pow(2, roundNumber - 1));
-  const topOffset = -1 * (participantHeight + centerInfoHeight) - 2 - 1;
-  const bottomOffset = centerInfoHeight ? participantHeight + centerInfoHeight : participantHeight - 2;
+    (participantHeight + connectorWidth + scheduleInfoHeight + centerInfoHeight - 2) *
+    (roundFactor || Math.pow(2, roundNumber - 1));
+  const topOffset = -1 * (participantHeight + scheduleInfoHeight + centerInfoHeight) - 2 - 1;
+  let bottomOffset = centerInfoHeight ? participantHeight + centerInfoHeight : participantHeight - 2;
+  if (scheduleInfoHeight) bottomOffset += scheduleInfoHeight;
 
-  const height = 2 * (participantHeight + centerInfoHeight) + 2;
+  const height = 2 * (participantHeight + scheduleInfoHeight + centerInfoHeight) + 2;
 
   return css({
     position: 'relative',
