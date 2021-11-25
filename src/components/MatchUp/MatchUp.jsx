@@ -98,7 +98,7 @@ function ResultsInfo({ score }) {
   return (
     <div className={resultsInfoStyle()}>
       {!points ? null : <div className={resultsItemStyle({ variant: 'points' })}>PTS</div>}
-      {!sets.length
+      {!sets?.length
         ? null
         : sets.map((_, index) => (
             <div key={`set-${index}`} className={resultsItemStyle({ variant: 'set' })}>
