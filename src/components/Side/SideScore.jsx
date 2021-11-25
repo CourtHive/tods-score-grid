@@ -1,38 +1,5 @@
 import { css } from '@stitches/react';
-import { Tick } from './Tick';
 import React from 'react';
-
-const pillStyle = css({
-  width: 'auto',
-  display: 'inline-block',
-  textTransform: 'uppercase',
-  fontFamily: 'Sharp Sans, Arial, sans-serif',
-  fontSize: '0.625rem',
-  lineHeight: '1rem',
-  marginInline: '0.25rem 0.25rem',
-  paddingInline: '0.25rem 0.25rem',
-  fontWeight: 700,
-  borderRadius: '4px',
-  color: '#fff',
-  textAlign: 'center',
-  whiteSpace: 'nowrap',
-  variants: {
-    variant: {
-      defaulted: {
-        backgroundColor: '#df164c'
-      },
-      retired: {
-        backgroundColor: '#df164c'
-      },
-      walkover: {
-        backgroundColor: 'black'
-      },
-      double_walkover: {
-        backgroundColor: 'black'
-      }
-    }
-  }
-});
 
 const tieBreakStyle = css({
   position: 'absolute',
@@ -72,17 +39,6 @@ const gameWrapperStyle = css({
   marginInlineEnd: '$space$gameMarginInlineEnd'
 });
 
-const scoreWrapperStyle = css({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-end'
-});
-
-const tickStyles = css({
-  marginInlineEnd: '.25rem',
-  color: 'green'
-});
-
 const Set = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
   const isWinningSide = sideNumber === set?.winningSide;
   const variant = isWinningSide ? 'winner' : set?.winningSide ? 'loser' : undefined;
@@ -100,34 +56,30 @@ const Set = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
   );
 };
 
-const StatusPill = ({ matchUpStatus }) => {
-  const variant = matchUpStatus?.toLowerCase();
-  const statusText = ['WALKOVER', 'DOUBLE_WALKOVER'].includes(matchUpStatus) ? 'WO' : matchUpStatus?.slice(0, 3) || '';
-  return (
-    <div className={pillStyle({ variant })}>
-      <abbr title={matchUpStatus} style={{ textDecoration: 'none', borderBottom: 'none' }}>
-        {statusText}
-      </abbr>
-    </div>
-  );
-};
-
-export const SideScore = ({ composition, matchUpStatus, score, sideNumber, winningSide }) => {
-  const isWinningSide = sideNumber === winningSide;
-  const irregularEnding =
-    ['RETIRED', 'DOUBLE_WALKOVER', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
+export const SideScore = ({ composition, score, sideNumber, participantHeight }) => {
   const scoreStripes = composition?.configuration?.winnerChevron;
-  const gameScoreOnly = composition?.configuration?.gameScoreOnly;
-  const scoreBox = composition?.configuration?.scoreBox;
   const sets = score?.sets || [];
 
+  const scoreBox = composition?.configuration?.scoreBox;
+
+  const scoreWrapperStyle = css({
+    display: 'flex',
+    alignItems: 'center',
+    height: participantHeight - 1, // to account for border
+    justifyContent: 'flex-end',
+    borderBottom: '1px solid transparent',
+    backgroundColor: '$matchUp',
+    variants: {
+      sideNumber: {
+        1: {
+          borderBottom: '1px solid $internalDividers'
+        }
+      }
+    }
+  });
+
   return (
-    <div className={scoreWrapperStyle()}>
-      <div style={{ lineHeight: 0 }}>
-        {!isWinningSide || gameScoreOnly ? null : <Tick className={tickStyles()} />}
-        {!irregularEnding ? null : <StatusPill matchUpStatus={matchUpStatus} />}
-      </div>
-      {!scoreBox ? null : <div style={{ height: '2.5em', border: '1px solid lightgray' }}> </div>}
+    <div className={scoreWrapperStyle({ sideNumber: !scoreBox && sideNumber })}>
       <div className={gameWrapperStyle()}>
         {sets?.map((set, i) => (
           <Set key={`Side${sideNumber}-Set-${i}`} scoreStripes={scoreStripes} sideNumber={sideNumber} set={set} />

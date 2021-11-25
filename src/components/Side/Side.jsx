@@ -2,11 +2,18 @@ import { CenterInfo } from './CenterInfo';
 import { Individual } from './Individual';
 import { SideScore } from './SideScore';
 import { css } from '@stitches/react';
+import { Tick } from './Tick';
 import React from 'react';
+import { StatusPill } from './StatusPill';
 
 const sideContainerStyle = css({
   display: 'flex',
   flexDirection: 'column'
+});
+
+const sideRowStyle = css({
+  display: 'flex',
+  alignItems: 'stretch'
 });
 
 const participantTypeStyle = css({
@@ -30,6 +37,11 @@ const participantTypeStyle = css({
   }
 });
 
+const tickStyles = css({
+  marginInlineEnd: '.25rem',
+  color: 'green'
+});
+
 export const Side = ({
   participantHeight,
   matchUpStatus,
@@ -44,6 +56,7 @@ export const Side = ({
   const participantContainerStyle = css({
     display: 'flex',
     position: 'relative',
+    flexGrow: 1,
     height: participantHeight,
     boxSizing: 'border-box',
     minWidth: '15rem',
@@ -79,6 +92,10 @@ export const Side = ({
   const entryStatus = side?.entryStatus?.replace('_', ' ');
   const EntryStatus = () => <CenterInfo height={30} sideNumber={sideNumber} entryStatus={entryStatus} />;
 
+  const irregularEnding =
+    ['RETIRED', 'DOUBLE_WALKOVER', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
+  const gameScoreOnly = composition?.configuration?.gameScoreOnly;
+
   const chevronHeight = (isDoubles ? 0.35 : 0.3) * participantHeight;
   const chevronStyle = css({
     variants: {
@@ -104,59 +121,72 @@ export const Side = ({
       ? side.drawPosition
       : '';
 
+  const hasScore = score?.scoreStringSide1;
+  const scoreBox = composition?.configuration?.scoreBox && hasScore;
+
   return (
     <div className={sideContainerStyle()}>
       {!centerInfo || sideNumber === 1 ? null : <EntryStatus />}
-      <div
-        className={participantContainerStyle({
-          sideNumber,
-          css: drawPosition && {
-            '&:before': {
-              display: 'flex',
-              position: 'absolute',
-              insetInlineStart: -10,
-              width: 20,
-              color: '#55AFFE',
-              alignContent: 'center',
-              justifyContent: 'center',
-              backgroundColor: '$backgroundColor',
-              content: `${drawPosition}`
+      <div className={sideRowStyle()}>
+        <div
+          className={participantContainerStyle({
+            sideNumber,
+            css: drawPosition && {
+              '&:before': {
+                display: 'flex',
+                position: 'absolute',
+                insetInlineStart: -10,
+                width: 20,
+                color: '#55AFFE',
+                alignContent: 'center',
+                justifyContent: 'center',
+                backgroundColor: '$backgroundColor',
+                content: `${drawPosition}`
+              }
             }
-          }
-        })}
-      >
-        {!teamLogo ? null : (
-          <div
-            style={{ height: 40, width: 40, backgroundColor: 'pink', marginInlineEnd: '.5rem', marginInlineStart: 2 }}
-          ></div>
-        )}
-        <div className={participantTypeStyle({ variant: isDoubles ? 'doubles' : undefined })}>
-          {isTeam ? null : (
-            <div className={chevronStyle({ variant: winnerChevron ? 'winner' : undefined })}>
-              <Individual
-                individualParticipant={firstParticipant}
-                isWinningSide={isWinningSide}
-                composition={composition}
-                side={side}
-              />
-              {!secondParticipant ? null : (
+          })}
+        >
+          {!teamLogo ? null : (
+            <div
+              style={{ height: 40, width: 40, backgroundColor: 'pink', marginInlineEnd: '.5rem', marginInlineStart: 2 }}
+            ></div>
+          )}
+          <div className={participantTypeStyle({ variant: isDoubles ? 'doubles' : undefined })}>
+            {isTeam ? null : (
+              <div className={chevronStyle({ variant: winnerChevron ? 'winner' : undefined })}>
                 <Individual
-                  individualParticipant={secondParticipant}
+                  individualParticipant={firstParticipant}
                   isWinningSide={isWinningSide}
                   composition={composition}
                   side={side}
                 />
-              )}
-            </div>
-          )}
-        </div>{' '}
-        <SideScore
-          matchUpStatus={matchUpStatus}
-          composition={composition}
-          winningSide={winningSide}
-          sideNumber={sideNumber}
-          score={score}
-        />
+                {!secondParticipant ? null : (
+                  <Individual
+                    individualParticipant={secondParticipant}
+                    isWinningSide={isWinningSide}
+                    composition={composition}
+                    side={side}
+                  />
+                )}
+              </div>
+            )}
+          </div>
+          <div style={{ lineHeight: 0 }}>
+            {!isWinningSide || gameScoreOnly ? null : <Tick className={tickStyles()} />}
+            {!irregularEnding ? null : <StatusPill matchUpStatus={matchUpStatus} />}
+          </div>
+        </div>
+        {!scoreBox ? null : <div style={{ height: participantHeight - 1, border: `1px solid lightgray` }}> </div>}
+        {!hasScore ? null : (
+          <SideScore
+            participantHeight={participantHeight}
+            matchUpStatus={matchUpStatus}
+            composition={composition}
+            winningSide={winningSide}
+            sideNumber={sideNumber}
+            score={score}
+          />
+        )}
       </div>
       {!centerInfo || sideNumber === 2 ? null : <EntryStatus />}
     </div>
