@@ -1,10 +1,12 @@
+import { utilities } from 'tods-competition-factory';
 import { CenterInfo } from './CenterInfo';
 import { Individual } from './Individual';
+import { StatusPill } from './StatusPill';
 import { SideScore } from './SideScore';
 import { css } from '@stitches/react';
 import { Tick } from './Tick';
 import React from 'react';
-import { StatusPill } from './StatusPill';
+import dayjs from 'dayjs';
 
 const sideContainerStyle = css({
   display: 'flex',
@@ -50,9 +52,23 @@ export const Side = ({
   roundNumber,
   winningSide,
   sideNumber,
+  schedule,
   score,
   sides
 }) => {
+  const schedulingStyle = css({
+    display: 'flex',
+    width: '100%',
+    boxSizing: 'border-box',
+    alignItems: 'center',
+    backgroundColor: '#F8F9F9',
+    justifyContent: 'space-between',
+    padding: '0.5rem',
+    color: '#7F8080',
+    height: scheduleInfo - 1,
+    borderBottom: '1px solid darkgray'
+  });
+
   const participantContainerStyle = css({
     display: 'flex',
     position: 'relative',
@@ -89,7 +105,7 @@ export const Side = ({
   const configuration = composition?.configuration || {};
   const winnerChevron = configuration?.winnerChevron && isWinningSide;
   const teamLogo = configuration?.teamLogo;
-  const entryStatus = side?.entryStatus?.replace('_', ' ');
+  const entryStatus = side?.participant?.entryStatus?.replace('_', ' ');
   const EntryStatus = () => <CenterInfo height={30} sideNumber={sideNumber} entryStatus={entryStatus} />;
 
   const irregularEnding =
@@ -124,11 +140,28 @@ export const Side = ({
 
   const hasScore = score?.scoreStringSide1;
   const scoreBox = composition?.configuration?.scoreBox && hasScore;
+  const { scheduledTime, scheduledDate, venueAbbreviation, courtName } = schedule || {};
+  const {
+    dateTime: { extractDate, extractTime }
+  } = utilities;
+  const time = extractTime(scheduledTime);
+  const date = extractDate(scheduledDate);
+  let constructedDateString = date;
+  let dateFormat = 'ddd D MMMM';
+  if (time) {
+    dateFormat += ', hh:mm';
+    constructedDateString += `T${time}`;
+  }
+  const displayDate = scheduledDate ? dayjs(constructedDateString).format(dateFormat) : '';
+  const location = venueAbbreviation && courtName ? `${venueAbbreviation} ${courtName}` : '';
 
   return (
     <div className={sideContainerStyle()}>
       {!scheduleInfo || sideNumber === 2 ? null : (
-        <div style={{ height: scheduleInfo - 1, borderBottom: '1px solid darkgray', backgroundColor: '#F8F9F9' }}></div>
+        <div className={schedulingStyle()}>
+          <div>{displayDate}</div>
+          <div> {location}</div>
+        </div>
       )}
       {!centerInfo || sideNumber === 1 ? null : <EntryStatus />}
       <div className={sideRowStyle()}>
