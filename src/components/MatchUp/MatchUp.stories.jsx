@@ -60,7 +60,7 @@ Compositions.args = {
 };
 
 export const Outcomes = (args) => {
-  const composition = compositions[args.composition];
+  const composition = compositions['Australian'];
   const className = useDarkMode() ? nightTheme : composition?.theme;
 
   // prettier-ignore
@@ -102,7 +102,7 @@ Outcomes.args = {
 };
 
 export const Sides = (args) => {
-  const composition = compositions[args.composition];
+  const composition = compositions['Australian'];
   const className = useDarkMode() ? nightTheme : composition?.theme;
 
   const qualifyingProfiles = [{ drawSize: 8, qualifyingPositions: 2 }];
