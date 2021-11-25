@@ -3,16 +3,15 @@ import { css } from '@stitches/react';
 export const matchUpStyle = ({ composition, roundFactor, roundNumber, participantHeight }) => {
   const configuration = composition?.configuration || {};
   const centerInfoHeight = configuration?.centerInfo || 0;
-  const scheduleInfoHeight = configuration?.scheduleInfo || 0;
+  const topInfoHeight = configuration?.scheduleInfo || 0;
   const connectorWidth = configuration?.connectorWidth || 16;
   const connectorHeight =
-    (participantHeight + connectorWidth + scheduleInfoHeight + centerInfoHeight - 2) *
+    (participantHeight + connectorWidth + topInfoHeight + centerInfoHeight - 2) *
     (roundFactor || Math.pow(2, roundNumber - 1));
-  const topOffset = -1 * (participantHeight + scheduleInfoHeight + centerInfoHeight) - 2 - 1;
+  const topOffset = -1 * (participantHeight + centerInfoHeight) - 2 - 1;
   let bottomOffset = centerInfoHeight ? participantHeight + centerInfoHeight : participantHeight - 2;
-  if (scheduleInfoHeight) bottomOffset += scheduleInfoHeight;
 
-  const height = 2 * (participantHeight + scheduleInfoHeight + centerInfoHeight) + 2;
+  const height = 2 * (participantHeight + centerInfoHeight) + 2 + topInfoHeight;
 
   return css({
     position: 'relative',
@@ -21,8 +20,9 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
     height,
     border: 'solid $border',
     backgroundColor: '$matchUpBackgroundColor',
-    borderInlineStart: 'solid $borderInlineStart',
-    borderWidth: '$borderWidths$matchUp',
+    borderBlockStartWidth: '$borderWidths$matchUp',
+    borderBlockEndWidth: '$borderWidths$matchUp',
+    borderInlineWidth: '$borderWidths$matchUpInline',
     boxShadow: '$matchUp$boxShadow',
     WebkitTransition: 'all 0.30s linear',
     transition: 'all 0.30s linear',

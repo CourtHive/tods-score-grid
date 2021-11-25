@@ -11,7 +11,7 @@ export const compositions = {
   National: {
     name: 'ngb',
     theme: australianTheme,
-    configuration: { id: 'U', bracketedSeeds: 'square', drawPositions: true, showAddress: true }
+    configuration: { id: 'U', bracketedSeeds: 'square', drawPositions: true, showAddress: true, scheduleInfo: 30 }
   },
   Night: { name: 'xx', theme: nightTheme, configuration: { id: 'N', flags: true } }
 };

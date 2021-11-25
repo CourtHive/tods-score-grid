@@ -26,6 +26,7 @@ export default {
 const Container = styled('div', {
   backgroundColor: '$colors$backgroundColor',
   color: '$colors$color',
+  marginLeft: '2rem',
   height: '100vh',
   width: 400
 });

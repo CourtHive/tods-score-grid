@@ -116,6 +116,7 @@ export const Side = ({
   });
 
   const centerInfo = configuration?.centerInfo;
+  const scheduleInfo = configuration?.scheduleInfo;
   const drawPosition =
     configuration.drawPositions && side.drawPosition && (roundNumber === 1 || side.participantFed)
       ? side.drawPosition
@@ -126,6 +127,9 @@ export const Side = ({
 
   return (
     <div className={sideContainerStyle()}>
+      {!scheduleInfo || sideNumber === 2 ? null : (
+        <div style={{ height: scheduleInfo - 1, borderBottom: '1px solid darkgray', backgroundColor: '#F8F9F9' }}></div>
+      )}
       {!centerInfo || sideNumber === 1 ? null : <EntryStatus />}
       <div className={sideRowStyle()}>
         <div
