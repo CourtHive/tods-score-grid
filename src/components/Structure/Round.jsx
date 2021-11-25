@@ -1,4 +1,4 @@
-import { MatchUp } from './MatchUp';
+import { MatchUp } from '../MatchUp/MatchUp';
 import React from 'react';
 
 export const Round = ({ composition, events, isLucky, matchUps, selectedMatchUpId, roundNumber }) => {

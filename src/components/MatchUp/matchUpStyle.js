@@ -50,7 +50,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
       height: connectorHeight
     },
     variants: {
-      firstRound: {
+      isFirstRound: {
         true: {
           '&:before': {
             width: 0,
@@ -99,7 +99,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
           }
         }
       },
-      finalRound: {
+      noProgression: {
         true: {
           '&:after': {
             width: 0,

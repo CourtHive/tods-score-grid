@@ -9,8 +9,8 @@ const pillStyle = css({
   fontFamily: 'Sharp Sans, Arial, sans-serif',
   fontSize: '0.625rem',
   lineHeight: '1rem',
-  marginInline: '0 0.25rem',
-  paddingInline: '0 0.25rem',
+  marginInline: '0.25rem 0.25rem',
+  paddingInline: '0.25rem 0.25rem',
   fontWeight: 700,
   borderRadius: '4px',
   color: '#fff',
@@ -25,6 +25,9 @@ const pillStyle = css({
         backgroundColor: '#df164c'
       },
       walkover: {
+        backgroundColor: 'black'
+      },
+      double_walkover: {
         backgroundColor: 'black'
       }
     }
@@ -99,7 +102,7 @@ const Set = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
 
 const StatusPill = ({ matchUpStatus }) => {
   const variant = matchUpStatus?.toLowerCase();
-  const statusText = matchUpStatus === 'WALKOVER' ? 'WO' : matchUpStatus?.slice(0, 3) || '';
+  const statusText = ['WALKOVER', 'DOUBLE_WALKOVER'].includes(matchUpStatus) ? 'WO' : matchUpStatus?.slice(0, 3) || '';
   return (
     <div className={pillStyle({ variant })}>
       <abbr title={matchUpStatus} style={{ textDecoration: 'none', borderBottom: 'none' }}>
@@ -111,7 +114,8 @@ const StatusPill = ({ matchUpStatus }) => {
 
 export const SideScore = ({ composition, matchUpStatus, score, sideNumber, winningSide }) => {
   const isWinningSide = sideNumber === winningSide;
-  const irregularEnding = ['RETIRED', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
+  const irregularEnding =
+    ['RETIRED', 'DOUBLE_WALKOVER', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
   const scoreStripes = composition?.configuration?.winnerChevron;
   const gameScoreOnly = composition?.configuration?.gameScoreOnly;
   const scoreBox = composition?.configuration?.scoreBox;

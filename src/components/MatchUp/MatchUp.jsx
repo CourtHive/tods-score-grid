@@ -6,12 +6,21 @@ import React from 'react';
 export const MatchUp = (params) => {
   const { composition, isLucky, matchUp, moeity, selectedMatchUpId } = params;
   const events = params.events || {};
-  const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound } = matchUp;
-  const link =
-    !matchUp.drawPositions || matchUp.isRoundRobin || isLucky ? 'mr' : preFeedRound ? 'm0' : moeity ? 'm1' : 'm2';
-  const finalRound = parseInt(finishingRound) === 1;
-  const firstRound = parseInt(roundNumber) === 1;
+  const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound, stage } = matchUp;
+  const noProgression = stage !== 'QUALIFUYING' && parseInt(finishingRound) === 1;
+  const isQualifying = stage === 'QUALIFYING' && parseInt(finishingRound) === 1;
+  const isFirstRound = parseInt(roundNumber) === 1;
   const isDoubles = matchUpType === 'DOUBLES';
+
+  const link =
+    !matchUp.drawPositions || matchUp.isRoundRobin || isLucky
+      ? 'mr'
+      : isQualifying || preFeedRound
+      ? 'm0'
+      : moeity
+      ? 'm1'
+      : 'm2';
+
   const configuration = composition?.configuration || {};
   const { resultsInfo, showAddress } = configuration || {};
 
@@ -28,8 +37,8 @@ export const MatchUp = (params) => {
     <div onClick={handleOnClick}>
       <div
         className={componentStyle({
-          firstRound,
-          finalRound,
+          isFirstRound,
+          noProgression,
           link
         })}
       >
