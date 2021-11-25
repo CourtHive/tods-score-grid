@@ -3,6 +3,7 @@ import { mocksEngine, tournamentEngine } from 'tods-competition-factory';
 export function generateMatchUps({
   matchUpFormat = 'SET5-S:6/TB7',
   qualifyingProfiles,
+  participantsCount,
   completionGoal,
   drawSize = 4,
   eventType,
@@ -14,6 +15,7 @@ export function generateMatchUps({
   const drawProfile = {
     completionGoal: complete,
     qualifyingProfiles,
+    participantsCount,
     seedsCount: 8,
     matchUpFormat,
     eventType,

@@ -42,8 +42,7 @@ export const Outcomes = (args) => {
     { stage: 'MAIN',roundNumber: 1, roundPosition: 4, matchUpStatus: 'DOUBLE_WALKOVER' }
   ];
 
-  const qualifyingProfiles = [{ drawSize: 8, qualifyingPositions: 2 }];
-  const { matchUps } = generateMatchUps({ ...args, drawSize: 16, qualifyingProfiles, outcomes });
+  const { matchUps } = generateMatchUps({ ...args, drawSize: 16, outcomes });
 
   matchUps[2].preFeedRound = true;
   matchUps[3].finishingRound = 1;
@@ -68,6 +67,53 @@ export const Outcomes = (args) => {
 };
 
 Outcomes.args = {
+  direction: 'Left to Right',
+  matchUpFormat: 'standard',
+  composition: 'Australian',
+  eventType: 'Singles'
+};
+
+export const Sides = (args) => {
+  const composition = compositions[args.composition];
+  const className = useDarkMode() ? nightTheme : composition?.theme;
+
+  const qualifyingProfiles = [{ drawSize: 8, qualifyingPositions: 2 }];
+  const matchUps = generateMatchUps({
+    ...args,
+    participantsCount: 14,
+    qualifyingProfiles,
+    drawSize: 16
+  }).matchUps;
+
+  const qualifyingMatchUps = matchUps.filter(({ stage }) => stage === 'QUALIFYING');
+  const qualifierMatchUps = matchUps.filter(
+    ({ stage, sides }) => stage === 'MAIN' && sides.some(({ qualifier }) => qualifier)
+  );
+
+  const m = generateMatchUps({
+    ...args,
+    participantsCount: 12,
+    drawSize: 16
+  }).matchUps;
+
+  const byeMatchUps = m.filter(({ matchUpStatus }) => matchUpStatus === 'BYE');
+
+  return (
+    <Container className={className} style={{ direction: args.direction }}>
+      <div style={{ padding: '1rem' }}>
+        <MatchUp {...args} composition={composition} matchUp={qualifyingMatchUps[0]} />
+      </div>
+      <div style={{ padding: '1rem' }}>
+        <MatchUp {...args} composition={composition} matchUp={qualifierMatchUps[0]} />
+      </div>
+      <div style={{ padding: '1rem' }}>
+        <MatchUp {...args} composition={composition} matchUp={byeMatchUps[0]} />
+      </div>
+    </Container>
+  );
+};
+
+Sides.args = {
   direction: 'Left to Right',
   matchUpFormat: 'standard',
   composition: 'Australian',
