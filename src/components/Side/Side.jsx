@@ -134,8 +134,8 @@ export const Side = ({
   const centerInfo = configuration?.centerInfo;
   const scheduleInfo = configuration?.scheduleInfo;
   const drawPosition =
-    configuration.drawPositions && side.drawPosition && (roundNumber === 1 || side.participantFed)
-      ? side.drawPosition
+    configuration.drawPositions && side?.drawPosition && (roundNumber === 1 || side.participantFed)
+      ? side?.drawPosition
       : '';
 
   const hasScore = score?.scoreStringSide1;
@@ -152,7 +152,7 @@ export const Side = ({
     dateFormat += ', hh:mm';
     constructedDateString += `T${time}`;
   }
-  const displayDate = scheduledDate ? dayjs(constructedDateString).format(dateFormat) : '';
+  const displayDate = scheduledDate ? dayjs(constructedDateString).format(dateFormat) : 'Not scheduled';
   const location = venueAbbreviation && courtName ? `${venueAbbreviation} ${courtName}` : '';
 
   return (

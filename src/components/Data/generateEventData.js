@@ -1,4 +1,4 @@
-import { mocksEngine, tournamentEngine } from 'tods-competition-factory';
+import { fixtures, utilities, mocksEngine, tournamentEngine } from 'tods-competition-factory';
 
 export function generateEventData({
   matchUpFormat = 'SET5-S:6/TB7',
@@ -9,19 +9,61 @@ export function generateEventData({
 } = {}) {
   const complete = completionGoal < 100 ? Math.floor(drawSize * 0.01 * completionGoal) : undefined;
 
-  const drawProfile = { drawSize, drawType, completionGoal: complete, seedsCount: 8, matchUpFormat, eventType };
+  const drawId = 'drawId';
+  const drawProfile = { drawId, drawSize, drawType, completionGoal: complete, seedsCount: 8, matchUpFormat, eventType };
   if (drawType === 'AD_HOC') Object.assign(drawProfile, { drawMatic: true, roundsCount: 3 });
 
-  const result = mocksEngine.generateTournamentRecord({
-    drawProfiles: [drawProfile],
+  return genData({ drawProfile });
+}
+
+function genData({ drawProfile }) {
+  const drawId = 'drawId';
+  const venueId = 'venueId';
+  const startTime = '08:00';
+  const endTime = '20:00';
+  const startDate = utilities.dateTime.extractDate(new Date().toISOString());
+  const drawProfiles = [drawProfile];
+  const venueProfiles = [
+    {
+      venueId,
+      venueName: 'Venue',
+      venueAbbreviation: 'VNU',
+      courtNames: ['One', 'Two', 'Three'],
+      courtIds: ['c1', 'c2', 'c3'],
+      courtsCount: 8,
+      startTime,
+      endTime
+    }
+  ];
+  const schedulingProfile = [
+    {
+      scheduleDate: startDate,
+      venues: [
+        {
+          venueId,
+          rounds: [
+            { drawId, roundNumber: 1 },
+            { drawId, roundNumber: 2 }
+          ]
+        }
+      ]
+    }
+  ];
+  const {
+    eventIds: [eventId],
+    tournamentRecord
+  } = mocksEngine.generateTournamentRecord({
+    policyDefinitions: fixtures.policies.POLICY_SCHEDULING_NO_DAILY_LIMITS,
+    scheduleCompletedMatchUps: true,
     completeAllMatchUps: true,
-    randomWinningSide: true
+    autoSchedule: true,
+    schedulingProfile,
+    venueProfiles,
+    drawProfiles,
+    startDate
   });
 
-  const { tournamentRecord, eventIds } = result || {};
-  const eventId = eventIds?.[0];
-
-  const { eventData } = tournamentEngine.setState(tournamentRecord).getEventData({ eventId }) || {};
-
+  tournamentEngine.setState(tournamentRecord);
+  const { eventData } = tournamentEngine.getEventData({ eventId });
   return { eventData };
 }
