@@ -56,6 +56,8 @@ export const Side = ({
   score,
   sides
 }) => {
+  const scheduleInfo = configuration?.scheduleInfo;
+
   const schedulingStyle = css({
     display: 'flex',
     width: '100%',
@@ -132,7 +134,6 @@ export const Side = ({
   });
 
   const centerInfo = configuration?.centerInfo;
-  const scheduleInfo = configuration?.scheduleInfo;
   const drawPosition =
     configuration.drawPositions && side?.drawPosition && (roundNumber === 1 || side.participantFed)
       ? side?.drawPosition
