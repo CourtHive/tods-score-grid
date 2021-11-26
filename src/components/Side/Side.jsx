@@ -56,6 +56,7 @@ export const Side = ({
   score,
   sides
 }) => {
+  const configuration = composition?.configuration || {};
   const scheduleInfo = configuration?.scheduleInfo;
 
   const schedulingStyle = css({
@@ -104,7 +105,6 @@ export const Side = ({
   const firstParticipant = isDoubles ? side?.participant?.individualParticipants?.[0] : side?.participant;
   const secondParticipant = isDoubles && side?.participant?.individualParticipants?.[1];
   const isWinningSide = sideNumber === winningSide;
-  const configuration = composition?.configuration || {};
   const winnerChevron = configuration?.winnerChevron && isWinningSide;
   const teamLogo = configuration?.teamLogo;
   const entryStatus = side?.participant?.entryStatus?.replace('_', ' ');
