@@ -8,7 +8,7 @@ import { nightTheme } from '../themes';
 import React from 'react';
 
 export default {
-  title: 'Score Grid/Draw',
+  title: 'Score Grid/Qualifying',
   component: DrawComponent,
   parameters: { actions: { argTypesRegex: '^on.*' } },
   argTypes: argTypes('qualifying')
@@ -53,8 +53,4 @@ Qualifying.args = {
   drawType: 'Single Elimination',
   completionGoal: 100,
   drawSize: 32
-};
-
-export const Nada = () => {
-  return <DrawComponent />;
 };

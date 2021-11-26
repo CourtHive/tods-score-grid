@@ -51,10 +51,8 @@ function genData({ drawProfile }) {
       ]
     }
   ];
-  const {
-    eventIds: [eventId],
-    tournamentRecord
-  } = mocksEngine.generateTournamentRecord({
+
+  const result = mocksEngine.generateTournamentRecord({
     policyDefinitions: fixtures.policies.POLICY_SCHEDULING_NO_DAILY_LIMITS,
     scheduleCompletedMatchUps: true,
     completeAllMatchUps: true,
@@ -65,7 +63,15 @@ function genData({ drawProfile }) {
     startDate
   });
 
+  if (result.error) return { eventData };
+
+  const {
+    eventIds: [eventId],
+    tournamentRecord
+  } = result;
+
   tournamentEngine.setState(tournamentRecord);
-  const { eventData } = tournamentEngine.getEventData({ eventId });
+  const { eventData } = tournamentEngine.getEventData({ eventId }) || {};
+
   return { eventData };
 }
