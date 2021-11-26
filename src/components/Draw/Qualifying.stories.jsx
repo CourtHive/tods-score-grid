@@ -11,7 +11,7 @@ export default {
   title: 'Score Grid/Draw',
   component: DrawComponent,
   parameters: { actions: { argTypesRegex: '^on.*' } },
-  argTypes: argTypes('all')
+  argTypes: argTypes('qualifying')
 };
 
 const Container = styled('div', {
@@ -20,10 +20,10 @@ const Container = styled('div', {
   height: '100%'
 });
 
-export const MultiStructure = (args) => {
+export const Qualifying = (args) => {
   const composition = compositions[args.composition];
   const className = useDarkMode() ? nightTheme : composition?.theme;
-  const { eventData } = generateEventData({ ...args }) || {};
+  const { eventData } = generateEventData({ ...args, addQualifying: true }) || {};
 
   const structures = eventData?.drawsData?.[0]?.structures || [];
   const initialStructureId = structures[0]?.structureId;
@@ -45,13 +45,13 @@ export const MultiStructure = (args) => {
   );
 };
 
-MultiStructure.args = {
+Qualifying.args = {
   direction: 'Left to Right',
   composition: 'Australian',
   matchUpFormat: 'standard',
   eventType: 'Singles',
+  drawType: 'Single Elimination',
   completionGoal: 100,
-  drawType: 'Compass',
   drawSize: 32
 };
 

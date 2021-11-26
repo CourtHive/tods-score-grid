@@ -3,6 +3,7 @@ import { fixtures, utilities, mocksEngine, tournamentEngine } from 'tods-competi
 export function generateEventData({
   matchUpFormat = 'SET5-S:6/TB7',
   completionGoal,
+  addQualifying,
   drawSize = 4,
   eventType,
   drawType
@@ -11,6 +12,7 @@ export function generateEventData({
 
   const drawId = 'drawId';
   const drawProfile = { drawId, drawSize, drawType, completionGoal: complete, seedsCount: 8, matchUpFormat, eventType };
+  if (addQualifying) drawProfile.qualifyingProfiles = [{ drawSize: 16, qualifyingPositions: 4 }];
   if (drawType === 'AD_HOC') Object.assign(drawProfile, { drawMatic: true, roundsCount: 3 });
 
   return genData({ drawProfile });
