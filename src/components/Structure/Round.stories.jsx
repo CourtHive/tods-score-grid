@@ -49,7 +49,7 @@ export const Round = (args) => {
 
 Round.args = {
   direction: 'Left to Right',
-  composition: 'Australian',
+  composition: 'US Open',
   matchUpFormat: 'grand',
   eventType: 'Singles',
   completionGoal: 100,

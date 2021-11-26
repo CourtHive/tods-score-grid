@@ -43,7 +43,7 @@ export const Structure = (args) => {
 
 Structure.args = {
   direction: 'Left to Right',
-  composition: 'Australian',
+  composition: 'French',
   matchUpFormat: 'grand',
   eventType: 'Singles',
   completionGoal: 100,

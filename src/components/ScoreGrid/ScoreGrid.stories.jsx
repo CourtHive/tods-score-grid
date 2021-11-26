@@ -38,8 +38,8 @@ export const Grid = (args) => {
 
 Grid.args = {
   direction: 'Left to Right',
-  composition: 'Australian',
   matchUpFormat: 'standard',
+  composition: 'National',
   eventType: 'Singles',
   completionGoal: 100,
   drawType: 'Feed In',
