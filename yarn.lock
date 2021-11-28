@@ -11933,7 +11933,7 @@ react-draggable@^4.4.3:
     clsx "^1.1.1"
     prop-types "^15.6.0"
 
-react-dropzone@^11.4.2:
+react-dropzone@11.4.2:
   version "11.4.2"
   resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-11.4.2.tgz#1eb99e9def4cc7520f4f58e85c853ce52c483d56"
   integrity sha512-ocYzYn7Qgp0tFc1gQtUTOaHHSzVTwhWHxxY+r7cj2jJTPfMTZB5GWSJHdIVoxsl+EQENpjJ/6Zvcw0BqKZQ+Eg==
