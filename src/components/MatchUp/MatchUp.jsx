@@ -4,32 +4,41 @@ import { Side } from '../Side/Side';
 import React from 'react';
 
 export const MatchUp = (params) => {
-  const { composition, isLucky, matchUp, moeity, selectedMatchUpId } = params;
-  const events = params.events || {};
-  const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound } = matchUp;
-  const link =
-    !matchUp.drawPositions || matchUp.isRoundRobin || isLucky ? 'mr' : preFeedRound ? 'm0' : moeity ? 'm1' : 'm2';
-  const finalRound = parseInt(finishingRound) === 1;
-  const firstRound = parseInt(roundNumber) === 1;
+  const { className, composition, isLucky, matchUp, moeity, selectedMatchUpId } = params;
+  const eventHandlers = params.eventHandlers || {};
+  const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound, stage } = matchUp;
+  const noProgression = stage !== 'QUALIFUYING' && parseInt(finishingRound) === 1;
+  const isQualifying = stage === 'QUALIFYING' && parseInt(finishingRound) === 1;
+  const isFirstRound = parseInt(roundNumber) === 1;
   const isDoubles = matchUpType === 'DOUBLES';
-  const configuration = composition?.configuration || {};
-  const { resultsInfo } = configuration || {};
 
-  const participantHeight = isDoubles ? 60 : 40;
+  const link =
+    !matchUp.drawPositions || matchUp.isRoundRobin || isLucky
+      ? 'mr'
+      : isQualifying || preFeedRound
+      ? 'm0'
+      : moeity
+      ? 'm1'
+      : 'm2';
+
+  const configuration = composition?.configuration || {};
+  const { resultsInfo, showAddress } = configuration || {};
+
+  const participantHeight = isDoubles ? (showAddress ? 80 : 60) : showAddress ? 50 : 40;
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
 
-  const handleOnClick = () => {
-    if (typeof events?.matchUpClick === 'function') {
-      events.matchUpClick(matchUp?.matchUpId);
+  const handleOnClick = (event) => {
+    if (typeof eventHandlers?.matchUpClick === 'function') {
+      eventHandlers.matchUpClick({ event, matchUpId: matchUp?.matchUpId });
     }
   };
 
   return (
-    <div onClick={handleOnClick}>
+    <div className={className} onClick={handleOnClick}>
       <div
         className={componentStyle({
-          firstRound,
-          finalRound,
+          isFirstRound,
+          noProgression,
           link
         })}
       >
@@ -89,7 +98,7 @@ function ResultsInfo({ score }) {
   return (
     <div className={resultsInfoStyle()}>
       {!points ? null : <div className={resultsItemStyle({ variant: 'points' })}>PTS</div>}
-      {!sets.length
+      {!sets?.length
         ? null
         : sets.map((_, index) => (
             <div key={`set-${index}`} className={resultsItemStyle({ variant: 'set' })}>

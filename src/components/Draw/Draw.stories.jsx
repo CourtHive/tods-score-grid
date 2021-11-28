@@ -20,7 +20,7 @@ const Container = styled('div', {
   height: '100%'
 });
 
-export const Demo = (args) => {
+export const MultiStructure = (args) => {
   const composition = compositions[args.composition];
   const className = useDarkMode() ? nightTheme : composition?.theme;
   const { eventData } = generateEventData({ ...args }) || {};
@@ -28,7 +28,7 @@ export const Demo = (args) => {
   const structures = eventData?.drawsData?.[0]?.structures || [];
   const initialStructureId = structures[0]?.structureId;
 
-  const events = {};
+  const eventHandlers = {};
 
   return (
     <Container className={className} style={{ direction: args.direction }}>
@@ -38,20 +38,20 @@ export const Demo = (args) => {
           composition={composition}
           structureId={initialStructureId}
           structures={structures}
-          events={events}
+          eventHandlers={eventHandlers}
         />
       </div>
     </Container>
   );
 };
 
-Demo.args = {
+MultiStructure.args = {
   direction: 'Left to Right',
   composition: 'Australian',
   matchUpFormat: 'standard',
   eventType: 'Singles',
   completionGoal: 100,
-  drawType: 'Feed In',
+  drawType: 'Compass',
   drawSize: 32
 };
 

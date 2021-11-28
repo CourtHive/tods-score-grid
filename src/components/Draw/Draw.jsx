@@ -3,15 +3,20 @@ import { Structure } from '../Structure/Structure';
 import React, { useEffect } from 'react';
 import { styled } from '@stitches/react';
 
-export const Draw = ({ composition, events, structures, structureId }) => {
+export const Draw = ({ composition, eventHandlers, structures, structureId }) => {
   const [selectedStructureId, setSelectedStructureId] = React.useState(structureId);
   const [selectedMatchUpId, setSelectedMatchUpId] = React.useState();
   const onSelect = (structureId) => setSelectedStructureId(structureId);
 
   useEffect(() => setSelectedStructureId(structureId), [structureId]);
 
-  if (events)
-    events.matchUpClick = (matchUpId) => {
+  if (eventHandlers)
+    eventHandlers.matchUpClick = ({ event, matchUpId }) => {
+      const menuPosition = { left: event?.clientX, top: event?.clientY };
+      const matchUpCoords = event?.currentTarget?.getBoundingClientRect();
+      if (menuPosition || matchUpCoords) {
+        // console.log({ menuPosition, matchUpCoords });
+      }
       setSelectedMatchUpId(selectedMatchUpId === matchUpId ? undefined : matchUpId);
     };
 
@@ -41,7 +46,7 @@ export const Draw = ({ composition, events, structures, structureId }) => {
           selectedMatchUpId={selectedMatchUpId}
           composition={composition}
           matchUps={matchUps}
-          events={events}
+          eventHandlers={eventHandlers}
         />
       )}
     </div>

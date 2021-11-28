@@ -2,7 +2,7 @@ import { drawEngine } from 'tods-competition-factory';
 import { Round } from './Round';
 import React from 'react';
 
-export const Structure = ({ composition, events, matchUps, selectedMatchUpId }) => {
+export const Structure = ({ composition, eventHandlers, matchUps, selectedMatchUpId }) => {
   const { roundNumbers, hasOddMatchUpsCount } = drawEngine.getRoundMatchUps({
     matchUps
   });
@@ -19,7 +19,7 @@ export const Structure = ({ composition, events, matchUps, selectedMatchUpId }) 
           matchUps={matchUps}
           key={`round-${i}`}
           isLucky={isLucky}
-          events={events}
+          eventHandlers={eventHandlers}
         />
       ))}
     </div>

@@ -1,24 +1,17 @@
-import { generateMatchUps } from '../Data/matchUps';
+import { generateEventData } from '../Data/generateEventData';
 import { compositions } from '../Data/compositions';
 import { useDarkMode } from 'storybook-dark-mode';
-import { Structure as ST } from './Structure';
 import { argTypes } from '../Data/argTypes';
+import { ScoreGrid } from './ScoreGrid';
 import { styled } from '@stitches/react';
 import { nightTheme } from '../themes';
 import React from 'react';
-import { setConsoleOptions } from '@storybook/addon-console';
-
-const panelExclude = setConsoleOptions({}).panelExclude;
-setConsoleOptions({
-  panelExclude: [...panelExclude, /deprecated/],
-  log: 'ScoreGrid'
-});
 
 export default {
-  title: 'Score Grid/Structure',
-  component: ST,
+  title: 'Score Grid/Grid',
+  component: ScoreGrid,
   parameters: { actions: { argTypesRegex: '^on.*' } },
-  argTypes: argTypes()
+  argTypes: argTypes('all')
 };
 
 const Container = styled('div', {
@@ -27,26 +20,28 @@ const Container = styled('div', {
   height: '100%'
 });
 
-export const Structure = (args) => {
+export const Grid = (args) => {
   const composition = compositions[args.composition];
   const className = useDarkMode() ? nightTheme : composition?.theme;
-  const { matchUps } = generateMatchUps({ ...args });
+  const { eventData } = generateEventData({ ...args }) || {};
+
+  const eventHandlers = {};
 
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <ST {...args} composition={composition} matchUps={matchUps} />
+        <ScoreGrid {...args} compositionName={args.composition} eventData={eventData} eventHandlers={eventHandlers} />
       </div>
     </Container>
   );
 };
 
-Structure.args = {
+Grid.args = {
   direction: 'Left to Right',
-  composition: 'French',
-  matchUpFormat: 'grand',
+  matchUpFormat: 'standard',
+  composition: 'National',
   eventType: 'Singles',
   completionGoal: 100,
   drawType: 'Feed In',
-  drawSize: 16
+  drawSize: 32
 };

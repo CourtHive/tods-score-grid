@@ -2,14 +2,16 @@ import { createTheme } from './createTheme';
 
 export const wimbledonTheme = createTheme('wimbledon-theme', {
   borderWidths: {
-    matchUp: '1px 1px 1px 10px'
+    matchUpInline: '10px 1px'
+  },
+  matchUp: {
+    borderInlineStart: '10px solid green'
   },
   colors: {
     backgroundColor: '#00703c',
     connector: 'transparent',
     borderHover: 'lightgray',
-    border: 'lightgray',
-    borderInlineStart: '#00703c',
+    border: '#00703c',
     matchUp: '#fff'
   },
   participant: {

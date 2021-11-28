@@ -1,15 +1,17 @@
 import { css } from '@stitches/react';
 
 export const matchUpStyle = ({ composition, roundFactor, roundNumber, participantHeight }) => {
-  const configuration = composition.configuration;
+  const configuration = composition?.configuration || {};
   const centerInfoHeight = configuration?.centerInfo || 0;
+  const topInfoHeight = configuration?.scheduleInfo || 0;
   const connectorWidth = configuration?.connectorWidth || 16;
   const connectorHeight =
-    (participantHeight + connectorWidth + centerInfoHeight - 2) * (roundFactor || Math.pow(2, roundNumber - 1));
+    (participantHeight + connectorWidth + topInfoHeight + centerInfoHeight - 2) *
+    (roundFactor || Math.pow(2, roundNumber - 1));
   const topOffset = -1 * (participantHeight + centerInfoHeight) - 2 - 1;
-  const bottomOffset = centerInfoHeight ? participantHeight + centerInfoHeight : participantHeight - 2;
+  let bottomOffset = centerInfoHeight ? participantHeight + centerInfoHeight : participantHeight - 2;
 
-  const height = 2 * (participantHeight + centerInfoHeight) + 2;
+  const height = 2 * (participantHeight + centerInfoHeight) + 2 + topInfoHeight;
 
   return css({
     position: 'relative',
@@ -18,17 +20,14 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
     height,
     border: 'solid $border',
     backgroundColor: '$matchUpBackgroundColor',
-    borderInlineStart: 'solid $borderInlineStart',
-    borderWidth: '$borderWidths$matchUp',
+    borderBlockStartWidth: '$borderWidths$matchUp',
+    borderBlockEndWidth: '$borderWidths$matchUp',
+    borderInlineWidth: '$borderWidths$matchUpInline',
     boxShadow: '$matchUp$boxShadow',
     WebkitTransition: 'all 0.30s linear',
     transition: 'all 0.30s linear',
+    marginTop: '$space$1',
     marginBottom: '$space$1',
-    '&:hover': {
-      border: 'solid $borderHover',
-      borderInlineStart: 'solid $borderHover',
-      borderWidth: '$borderWidths$matchUp'
-    },
     '&::before': {
       borderRadius: 2,
       position: 'absolute',
@@ -54,7 +53,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
       height: connectorHeight
     },
     variants: {
-      firstRound: {
+      isFirstRound: {
         true: {
           '&:before': {
             width: 0,
@@ -103,7 +102,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
           }
         }
       },
-      finalRound: {
+      noProgression: {
         true: {
           '&:after': {
             width: 0,
