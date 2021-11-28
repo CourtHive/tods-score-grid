@@ -27,9 +27,9 @@ export const MatchUp = (params) => {
   const participantHeight = isDoubles ? (showAddress ? 80 : 60) : showAddress ? 50 : 40;
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
 
-  const handleOnClick = () => {
+  const handleOnClick = (event) => {
     if (typeof eventHandlers?.matchUpClick === 'function') {
-      eventHandlers.matchUpClick(matchUp?.matchUpId);
+      eventHandlers.matchUpClick({ event, matchUpId: matchUp?.matchUpId });
     }
   };
 
