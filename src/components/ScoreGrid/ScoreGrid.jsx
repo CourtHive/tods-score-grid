@@ -2,7 +2,7 @@ import { compositions } from '../Data/compositions';
 import Draw from '../Draw/Draw';
 import React from 'react';
 
-export const ScoreGrid = ({ compositionName, eventData, events }) => {
+export const ScoreGrid = ({ compositionName, eventData, eventHandlers }) => {
   const structures = eventData?.drawsData?.[0]?.structures || [];
   const initialStructureId = structures[0]?.structureId;
 
@@ -15,7 +15,7 @@ export const ScoreGrid = ({ compositionName, eventData, events }) => {
       composition={composition}
       structures={structures}
       className={className}
-      events={events}
+      eventHandlers={eventHandlers}
     />
   );
 };

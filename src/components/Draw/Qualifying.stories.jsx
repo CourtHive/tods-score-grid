@@ -28,7 +28,7 @@ export const Qualifying = (args) => {
   const structures = eventData?.drawsData?.[0]?.structures || [];
   const initialStructureId = structures[0]?.structureId;
 
-  const events = {};
+  const eventHandlers = {};
 
   return (
     <Container className={className} style={{ direction: args.direction }}>
@@ -38,7 +38,7 @@ export const Qualifying = (args) => {
           composition={composition}
           structureId={initialStructureId}
           structures={structures}
-          events={events}
+          eventHandlers={eventHandlers}
         />
       </div>
     </Container>

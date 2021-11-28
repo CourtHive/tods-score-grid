@@ -5,7 +5,7 @@ import React from 'react';
 
 export const MatchUp = (params) => {
   const { className, composition, isLucky, matchUp, moeity, selectedMatchUpId } = params;
-  const events = params.events || {};
+  const eventHandlers = params.eventHandlers || {};
   const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound, stage } = matchUp;
   const noProgression = stage !== 'QUALIFUYING' && parseInt(finishingRound) === 1;
   const isQualifying = stage === 'QUALIFYING' && parseInt(finishingRound) === 1;
@@ -28,8 +28,8 @@ export const MatchUp = (params) => {
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
 
   const handleOnClick = () => {
-    if (typeof events?.matchUpClick === 'function') {
-      events.matchUpClick(matchUp?.matchUpId);
+    if (typeof eventHandlers?.matchUpClick === 'function') {
+      eventHandlers.matchUpClick(matchUp?.matchUpId);
     }
   };
 

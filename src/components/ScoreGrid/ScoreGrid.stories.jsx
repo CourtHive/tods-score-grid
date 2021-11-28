@@ -25,12 +25,12 @@ export const Grid = (args) => {
   const className = useDarkMode() ? nightTheme : composition?.theme;
   const { eventData } = generateEventData({ ...args }) || {};
 
-  const events = {};
+  const eventHandlers = {};
 
   return (
     <Container className={className} style={{ direction: args.direction }}>
       <div style={{ padding: '1rem' }}>
-        <ScoreGrid {...args} compositionName={args.composition} eventData={eventData} events={events} />
+        <ScoreGrid {...args} compositionName={args.composition} eventData={eventData} eventHandlers={eventHandlers} />
       </div>
     </Container>
   );
