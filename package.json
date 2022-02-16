@@ -83,7 +83,7 @@
     "@types/jest": "27.0.3",
     "@types/mocha": "9.0.0",
     "@types/node": "16.11.14",
-    "@types/react": "17.0.37",
+    "@types/react": "17.0.39",
     "@types/react-dom": "17.0.11",
     "@typescript-eslint/eslint-plugin": "5.7.0",
     "@typescript-eslint/parser": "5.7.0",
