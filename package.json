@@ -1,6 +1,6 @@
 {
   "name": "tods-score-grid",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "React component to visualize TODS `matchUps`",
   "files": [
     "dist"
