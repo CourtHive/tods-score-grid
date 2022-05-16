@@ -2070,6 +2070,11 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@colors/colors@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
+  integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
+
 "@discoveryjs/json-ext@^0.5.3":
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.5.tgz#9283c9ce5b289a3c4f61c12757469e59377f81f3"
@@ -3474,6 +3479,14 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
+"@storybook/client-logger@6.4.22":
+  version "6.4.22"
+  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-6.4.22.tgz#51abedb7d3c9bc21921aeb153ac8a19abc625cd6"
+  integrity sha512-LXhxh/lcDsdGnK8kimqfhu3C0+D2ylCSPPQNbU0IsLRmTfbpQYMdyl0XBjPdHiRVwlL7Gkw5OMjYemQgJ02zlw==
+  dependencies:
+    core-js "^3.8.2"
+    global "^4.4.0"
+
 "@storybook/components@6.4.19":
   version "6.4.19"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.19.tgz#084ba21f26a3eeab82f45178de6899688eecb2fc"
@@ -3963,6 +3976,24 @@
     "@emotion/is-prop-valid" "^0.8.6"
     "@emotion/styled" "^10.0.27"
     "@storybook/client-logger" "6.4.19"
+    core-js "^3.8.2"
+    deep-object-diff "^1.1.0"
+    emotion-theming "^10.0.27"
+    global "^4.4.0"
+    memoizerific "^1.11.3"
+    polished "^4.0.5"
+    resolve-from "^5.0.0"
+    ts-dedent "^2.0.0"
+
+"@storybook/theming@6.4.22":
+  version "6.4.22"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.4.22.tgz#19097eec0366447ddd0d6917b0e0f81d0ec5e51e"
+  integrity sha512-NVMKH/jxSPtnMTO4VCN1k47uztq+u9fWv4GSnzq/eezxdGg9ceGL4/lCrNGoNajht9xbrsZ4QvsJ/V2sVGM8wA==
+  dependencies:
+    "@emotion/core" "^10.1.1"
+    "@emotion/is-prop-valid" "^0.8.6"
+    "@emotion/styled" "^10.0.27"
+    "@storybook/client-logger" "6.4.22"
     core-js "^3.8.2"
     deep-object-diff "^1.1.0"
     emotion-theming "^10.0.27"
@@ -6253,13 +6284,13 @@ cli-cursor@^3.1.0:
     restore-cursor "^3.1.0"
 
 cli-table3@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/cli-table3/-/cli-table3-0.6.1.tgz#36ce9b7af4847f288d3cdd081fbd09bf7bd237b8"
-  integrity sha512-w0q/enDHhPLq44ovMGdQeeDLvwxwavsJX7oQGYt/LrBlYsyaxyDnp6z3QzFut/6kLLKnlcUVJLrpB7KBfgG/RA==
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/cli-table3/-/cli-table3-0.6.2.tgz#aaf5df9d8b5bf12634dc8b3040806a0c07120d2a"
+  integrity sha512-QyavHCaIC80cMivimWu4aWHilIpiDpfm3hGmqAmXVL1UsnbLuBSMd21hTX6VY4ZSDSM73ESLeF8TOYId3rBTbw==
   dependencies:
     string-width "^4.2.0"
   optionalDependencies:
-    colors "1.4.0"
+    "@colors/colors" "1.5.0"
 
 cli-truncate@^0.2.1:
   version "0.2.1"
@@ -6400,11 +6431,6 @@ colorette@^2.0.16:
   version "2.0.16"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.16.tgz#713b9af84fdb000139f04546bd4a93f62a5085da"
   integrity sha512-hUewv7oMjCp+wkBv5Rm0v87eJhq4woh5rSR+42YSQJKecCqgIqNkZ6lAlQms/BwHPJA5NKMRlpxPRv0n8HQW6g==
-
-colors@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
-  integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
 
 combined-stream@^1.0.8:
   version "1.0.8"
