@@ -71,7 +71,11 @@ function genData({ drawProfile }) {
   } = result;
 
   tournamentEngine.setState(tournamentRecord);
-  const { eventData } = tournamentEngine.getEventData({ eventId }) || {};
+  const { eventData } =
+    tournamentEngine.getEventData({
+      participantsProfile: { withIOC: true, withISO2: true },
+      eventId
+    }) || {};
 
   return { eventData };
 }

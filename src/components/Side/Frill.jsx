@@ -3,7 +3,8 @@ import React from 'react';
 
 export const Flag = ({ className, individualParticipant }) => {
   const alt = individualParticipant?.person?.nationalityCode || '';
-  const nationalityCode = individualParticipant?.person?.isoNationalityCode || '';
+  const nationalityCode = individualParticipant?.person?.iso2NationalityCode || '';
+  console.log(individualParticipant?.person);
 
   return (
     <span className={className}>

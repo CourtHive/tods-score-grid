@@ -60,7 +60,9 @@ export function generateMatchUps({
   };
   tournamentEngine.bulkScheduleMatchUps({ matchUpIds, schedule });
 
-  const { matchUps } = tournamentEngine.allTournamentMatchUps({ participantsProfile: { withISO: true } });
+  const { matchUps } = tournamentEngine.allTournamentMatchUps({
+    participantsProfile: { withISO2: true, withIOC: true }
+  });
 
   return { matchUps };
 }
