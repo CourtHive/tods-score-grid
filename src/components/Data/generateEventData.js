@@ -12,7 +12,8 @@ export function generateEventData({
 
   const drawId = 'drawId';
   const drawProfile = { drawId, drawSize, drawType, completionGoal: complete, seedsCount: 8, matchUpFormat, eventType };
-  if (addQualifying) drawProfile.qualifyingProfiles = [{ drawSize: 16, qualifyingPositions: 4 }];
+  if (addQualifying)
+    drawProfile.qualifyingProfiles = [{ structureProfiles: [{ drawSize: 16, qualifyingPositions: 4 }] }];
   if (drawType === 'AD_HOC') Object.assign(drawProfile, { drawMatic: true, roundsCount: 3 });
 
   return genData({ drawProfile });
@@ -62,6 +63,8 @@ function genData({ drawProfile }) {
     drawProfiles,
     startDate
   });
+
+  console.log({ result, drawProfiles });
 
   if (result.error) return { eventData };
 

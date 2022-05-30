@@ -106,7 +106,7 @@ export const Sides = (args) => {
   const composition = compositions['Australian'];
   const className = useDarkMode() ? nightTheme : composition?.theme;
 
-  const qualifyingProfiles = [{ drawSize: 8, qualifyingPositions: 2 }];
+  const qualifyingProfiles = [{ structureProfiles: [{ drawSize: 8, qualifyingPositions: 2 }] }];
   const matchUps = generateMatchUps({
     ...args,
     participantsCount: 14,
