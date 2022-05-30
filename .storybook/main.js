@@ -3,5 +3,8 @@ module.exports = {
   features: {
     buildStoriesJson: true
   },
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', 'storybook-dark-mode']
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', 'storybook-dark-mode'],
+  core: {
+    builder: 'webpack5'
+  }
 };
