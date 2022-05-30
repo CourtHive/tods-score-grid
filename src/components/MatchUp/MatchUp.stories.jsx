@@ -1,4 +1,4 @@
-import { utilities, tournamentEngine } from 'tods-competition-factory';
+import { utilities } from 'tods-competition-factory';
 import { generateMatchUps } from '../Data/matchUps';
 import { compositions } from '../Data/compositions';
 import { useDarkMode } from 'storybook-dark-mode';
