@@ -78,7 +78,7 @@
     "@storybook/components": "6.4.19",
     "@storybook/core-events": "6.4.19",
     "@storybook/react": "6.4.19",
-    "@storybook/storybook-deployer": "2.8.10",
+    "@storybook/storybook-deployer": "2.8.11",
     "@storybook/theming": "6.4.22",
     "@types/jest": "27.0.3",
     "@types/mocha": "9.1.1",
