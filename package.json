@@ -1,6 +1,6 @@
 {
   "name": "tods-score-grid",
-  "version": "0.6.0",
+  "version": "0.6.4",
   "description": "React component to visualize TODS `matchUps`",
   "files": [
     "dist"
@@ -62,7 +62,7 @@
     "@babel/preset-env": "7.17.10",
     "@babel/preset-typescript": "7.16.7",
     "@esm-bundle/chai": "4.3.4-fix.0",
-    "@rollup/plugin-babel": "5.3.0",
+    "@rollup/plugin-babel": "5.3.1",
     "@rollup/plugin-commonjs": "21.0.1",
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.1.3",
