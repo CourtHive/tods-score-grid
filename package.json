@@ -105,7 +105,7 @@
     "husky": "7.0.4",
     "jest-cli": "27.5.1",
     "jest-environment-node": "27.5.1",
-    "lint-staged": "12.1.2",
+    "lint-staged": "12.5.0",
     "np": "7.6.1",
     "pinst": "2.1.6",
     "prettier": "2.5.1",
