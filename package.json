@@ -112,7 +112,7 @@
     "prettier-eslint": "13.0.0",
     "prop-types": "15.8.1",
     "react-dropzone": "11.7.1",
-    "rollup": "2.73.0",
+    "rollup": "2.77.2",
     "rollup-plugin-terser": "7.0.2",
     "source-map-resolve": "0.6.0",
     "storybook-addon-outline": "1.4.2",
