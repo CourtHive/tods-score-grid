@@ -22,5 +22,5 @@ test('render Side with correct date format (showin hours in 24-hour format)', ()
 
   render(<Side schedule={scheduleObject} composition={compositions.National} />);
 
-  expect(screen.getByText('Wed 24 August, 17:30')).toBeDefined();
+  expect(screen.getByText('Wed 24 August, 05:30 PM')).toBeDefined();
 });

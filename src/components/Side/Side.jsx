@@ -150,7 +150,7 @@ export const Side = ({
   let constructedDateString = date;
   let dateFormat = 'ddd D MMMM';
   if (time) {
-    dateFormat += ', HH:mm';
+    dateFormat += ', hh:mm A';
     constructedDateString += `T${time}`;
   }
   const displayDate = scheduledDate ? dayjs(constructedDateString).format(dateFormat) : 'Not scheduled';
