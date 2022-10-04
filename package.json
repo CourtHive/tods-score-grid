@@ -109,7 +109,7 @@
     "husky": "8.0.1",
     "jest-cli": "27.5.1",
     "jest-environment-node": "27.5.1",
-    "jsdom": "20.0.0",
+    "jsdom": "20.0.1",
     "lint-staged": "13.0.3",
     "np": "7.6.2",
     "pinst": "2.1.6",
