@@ -112,7 +112,7 @@
     "jsdom": "20.0.1",
     "lint-staged": "13.0.3",
     "np": "7.6.2",
-    "pinst": "2.1.6",
+    "pinst": "3.0.0",
     "prettier": "2.7.1",
     "prettier-eslint": "13.0.0",
     "prop-types": "15.8.1",
