@@ -16173,10 +16173,10 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-tods-competition-factory@0.353.0:
-  version "0.353.0"
-  resolved "https://registry.yarnpkg.com/tods-competition-factory/-/tods-competition-factory-0.353.0.tgz#f74fc35e64b8c9ca2eee719005d8f404195d2bc1"
-  integrity sha512-J1PFGpvjXkRGQ4Ns2Tt0REDhlYdfRhj9hrj+ftdsYVucLCkUkprnn8DJxm0RkrMQSFqZGMd6hSNWs3O0FlhtOQ==
+tods-competition-factory@0.472.0:
+  version "0.472.0"
+  resolved "https://registry.yarnpkg.com/tods-competition-factory/-/tods-competition-factory-0.472.0.tgz#e68a84c3884f0b19834fbd6aa7ec7a25ea05e644"
+  integrity sha512-kPtWl9DNgU0kUwQLSVMq7ZNT/Jd2YZX+/dZHB7uwFiVppFwxQpgqJx2XmndqoxLEqUxGXpXD/FohSjub5ZAP8w==
 
 toidentifier@1.0.0:
   version "1.0.0"
