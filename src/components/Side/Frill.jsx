@@ -44,9 +44,12 @@ export const Frill = ({
     typeof bracketedSeeds === 'boolean' ? ['(', ')'] : bracketedSeeds === 'square' ? ['[', ']'] : ['', ''];
   const seedDisplay = `${brackets[0]}${seedValue}${brackets[1]}`;
 
-  return !individualParticipant ? null : type === 'flag' && configuration.flags ? (
-    <Flag className={className} individualParticipant={individualParticipant} />
-  ) : seedValue ? (
-    <sup className={className}>{seedDisplay}</sup>
-  ) : null;
+  return (
+    (!individualParticipant && null) ||
+    (type === 'flag' && configuration.flags && (
+      <Flag className={className} individualParticipant={individualParticipant} />
+    )) ||
+    (seedValue && <sup className={className}>{seedDisplay}</sup>) ||
+    null
+  );
 };
