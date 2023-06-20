@@ -49,6 +49,7 @@ MultiStructure.args = {
   direction: 'Left to Right',
   composition: 'Australian',
   matchUpFormat: 'standard',
+  participantsCount: 32,
   eventType: 'Singles',
   completionGoal: 100,
   drawType: 'Compass',
