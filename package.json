@@ -106,7 +106,7 @@
     "eslint-plugin-react": "7.31.8",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-storybook": "0.6.4",
-    "husky": "8.0.1",
+    "husky": "8.0.3",
     "jest-cli": "29.5.0",
     "jest-environment-node": "29.5.0",
     "jsdom": "20.0.3",
