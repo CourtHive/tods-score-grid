@@ -59,11 +59,11 @@
     "tods-competition-factory": "^1.0.3"
   },
   "devDependencies": {
-    "@babel/core": "7.19.3",
+    "@babel/core": "7.22.5",
     "@babel/plugin-proposal-nullish-coalescing-operator": "7.18.6",
-    "@babel/plugin-proposal-optional-chaining": "7.18.9",
-    "@babel/preset-env": "7.19.3",
-    "@babel/preset-typescript": "7.18.6",
+    "@babel/plugin-proposal-optional-chaining": "7.21.0",
+    "@babel/preset-env": "7.22.5",
+    "@babel/preset-typescript": "7.22.5",
     "@esm-bundle/chai": "4.3.4-fix.0",
     "@rollup/plugin-babel": "5.3.1",
     "@rollup/plugin-commonjs": "22.0.2",
@@ -83,7 +83,7 @@
     "@storybook/core-events": "6.5.16",
     "@storybook/manager-webpack5": "6.5.16",
     "@storybook/react": "6.5.16",
-    "@storybook/storybook-deployer": "2.8.12",
+    "@storybook/storybook-deployer": "2.8.16",
     "@storybook/theming": "6.5.16",
     "@testing-library/react": "13.4.0",
     "@types/jest": "29.5.2",
@@ -124,7 +124,7 @@
     "source-map-resolve": "0.6.0",
     "storybook-addon-outline": "1.4.2",
     "storybook-dark-mode": "1.1.2",
-    "vite": "2.9.16",
+    "vite": "^4.3.9",
     "vite-web-test-runner-plugin": "0.1.0",
     "vitest": "0.23.4",
     "webpack": "5.74.0"
