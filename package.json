@@ -37,6 +37,12 @@
     "react",
     "bracket"
   ],
+  "np": {
+    "contents": "."
+  },
+  "engines": {
+    "node": ">=16.16.0 < 19"
+  },
   "author": "Charles Allen",
   "license": "MIT",
   "bugs": {
@@ -111,7 +117,7 @@
     "jest-environment-node": "29.5.0",
     "jsdom": "20.0.3",
     "lint-staged": "13.0.3",
-    "np": "7.6.2",
+    "np": "^8.0.4",
     "pinst": "3.0.0",
     "prettier": "2.7.1",
     "prettier-eslint": "15.0.1",
