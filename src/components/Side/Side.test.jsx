@@ -1,6 +1,7 @@
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { compositions } from '../Data/compositions';
 import { Side } from './Side';
+import React from 'react';
 
 test('empty side renders TBD', () => {
   render(<Side />);
