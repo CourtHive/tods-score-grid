@@ -13,14 +13,14 @@ export function generateEventData({
 
   const drawId = 'drawId';
   const drawProfile = {
-    drawId,
-    drawSize,
-    participantsCount,
-    drawType,
     completionGoal: complete,
-    seedsCount: 8,
+    participantsCount,
     matchUpFormat,
-    eventType
+    seedsCount: 8,
+    eventType,
+    drawType,
+    drawSize,
+    drawId
   };
   if (addQualifying)
     drawProfile.qualifyingProfiles = [{ structureProfiles: [{ drawSize: 16, qualifyingPositions: 4 }] }];
