@@ -25,7 +25,7 @@
     "prepare": "husky install",
     "prerelease": "vite build",
     "build": "vite build",
-    "release": "npx np --no-tests",
+    "release": "np --no-tests",
     "test": "vitest"
   },
   "repository": {
