@@ -23,7 +23,7 @@ export const MatchUp = (params) => {
 
   const handleOnClick = (event) => {
     if (typeof eventHandlers?.matchUpClick === 'function') {
-      eventHandlers.matchUpClick({ event, matchUpId: matchUp?.matchUpId });
+      eventHandlers.matchUpClick({ event, matchUp });
     }
   };
 
@@ -40,15 +40,15 @@ export const MatchUp = (params) => {
           participantHeight={participantHeight}
           eventHandlers={eventHandlers}
           composition={composition}
+          matchUp={matchUp}
           sideNumber={1}
-          {...matchUp}
         />
         <Side
           participantHeight={participantHeight}
           eventHandlers={eventHandlers}
           composition={composition}
+          matchUp={matchUp}
           sideNumber={2}
-          {...matchUp}
         />
         {!resultsInfo ? null : <ResultsInfo {...matchUp} />}
         <div

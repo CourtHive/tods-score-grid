@@ -1,5 +1,6 @@
 import { css } from '@stitches/react';
 import React from 'react';
+import { scoreWrapperStyle } from './scoreWrapperStyle';
 
 const tieBreakStyle = css({
   position: 'absolute',
@@ -56,37 +57,24 @@ const ScoreSet = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
   );
 };
 
-export const SideScore = ({ composition, score, sideNumber, participantHeight, eventHandlers, matchUpId }) => {
+export const SideScore = ({ composition, sideNumber, participantHeight, eventHandlers, matchUp }) => {
   const scoreStripes = composition?.configuration?.winnerChevron;
   const gameScoreOnly = composition?.configuration?.gameScoreOnly;
-  const sets = score?.sets || [];
+  const sets = matchUp?.score?.sets || [];
 
   const scoreBox = composition?.configuration?.scoreBox;
 
-  const scoreWrapperStyle = css({
-    display: 'flex',
-    alignItems: 'center',
-    height: participantHeight - 1, // to account for border
-    justifyContent: 'flex-end',
-    borderBottom: '1px solid transparent',
-    backgroundColor: '$matchUp',
-    variants: {
-      sideNumber: {
-        1: {
-          borderBottom: '1px solid $internalDividers'
-        }
-      }
-    }
-  });
+  const scoreStyle = scoreWrapperStyle(participantHeight);
 
   const handleScoreClick = (event) => {
     if (typeof eventHandlers?.scoreClick === 'function') {
-      eventHandlers.scoreClick({ event, matchUpId });
+      event.stopPropagation();
+      eventHandlers.scoreClick({ event, matchUp });
     }
   };
 
   return (
-    <div className={scoreWrapperStyle({ sideNumber: !scoreBox && sideNumber })} onClick={handleScoreClick}>
+    <div className={scoreStyle({ fontSize: '5px', sideNumber: !scoreBox && sideNumber })} onClick={handleScoreClick}>
       <div className={gameWrapperStyle()}>
         {sets?.map((set) => (
           <ScoreSet

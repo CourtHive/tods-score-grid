@@ -1,11 +1,16 @@
 import { ReactCountryFlag } from 'react-country-flag';
+import { fixtures } from 'tods-competition-factory';
 import React from 'react';
 
 export const Flag = ({ className, individualParticipant }) => {
   const alt = individualParticipant?.person?.nationalityCode || '';
   const nationalityCode = individualParticipant?.person?.iso2NationalityCode || '';
 
-  return (
+  const iocFlag = nationalityCode ? fixtures.countryToFlag(nationalityCode)?.slice(0, 4) : '';
+
+  return iocFlag ? (
+    <span className={className}>{iocFlag}</span>
+  ) : (
     <span className={className}>
       <ReactCountryFlag
         alt={alt}

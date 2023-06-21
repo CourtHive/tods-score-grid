@@ -60,7 +60,7 @@ const seedStyle = css({
 });
 
 export function Individual(params) {
-  const { isWinningSide, side, individualParticipant, matchUpId } = params;
+  const { isWinningSide, side, individualParticipant, matchUp } = params;
   const eventHandlers = params.eventHandlers || {};
   const variant = isWinningSide ? 'winner' : undefined;
 
@@ -68,7 +68,8 @@ export function Individual(params) {
 
   const handleOnClick = (event) => {
     if (typeof eventHandlers?.participantClick === 'function') {
-      eventHandlers.participantClick({ event, side, individualParticipant, matchUpId });
+      event.stopPropagation();
+      eventHandlers.participantClick({ event, side, individualParticipant, matchUp });
     }
   };
 
