@@ -46,9 +46,9 @@ Grid.args = {
   direction: 'Left to Right',
   matchUpFormat: 'standard',
   composition: 'National',
-  participantsCount: 30,
+  participantsCount: 15,
   eventType: 'Singles',
-  completionGoal: 100,
   drawType: 'Feed In',
-  drawSize: 32
+  completionGoal: 50,
+  drawSize: 16
 };
