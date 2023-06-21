@@ -76,7 +76,7 @@ function genData({ drawProfile }) {
 
   console.log({ result, drawProfiles });
 
-  if (result.error) return { eventData };
+  if (result.error) return result;
 
   const {
     eventIds: [eventId],

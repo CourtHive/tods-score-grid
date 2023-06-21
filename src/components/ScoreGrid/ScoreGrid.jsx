@@ -12,10 +12,10 @@ export const ScoreGrid = ({ compositionName, eventData, eventHandlers }) => {
   return (
     <Draw
       structureId={initialStructureId}
+      eventHandlers={eventHandlers}
       composition={composition}
       structures={structures}
       className={className}
-      eventHandlers={eventHandlers}
     />
   );
 };

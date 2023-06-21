@@ -10,13 +10,13 @@ export const Flag = ({ className, individualParticipant }) => {
       <ReactCountryFlag
         alt={alt}
         countryCode={nationalityCode}
-        loading="lazy"
+        cdnUrl="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/"
+        cdnSuffix="svg"
         style={{
           height: '100%',
           width: '100%',
           verticalAlign: 'initial'
         }}
-        svg
       />
       {'  '}
     </span>
