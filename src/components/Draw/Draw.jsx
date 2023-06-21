@@ -3,7 +3,7 @@ import { Structure } from '../Structure/Structure';
 import React, { useEffect } from 'react';
 import { styled } from '@stitches/react';
 
-export const Draw = ({ composition, eventHandlers, structures, structureId }) => {
+export const Draw = ({ composition, eventHandlers, structures, structureId, useStructureSelector }) => {
   const [selectedStructureId, setSelectedStructureId] = React.useState(structureId);
   const [selectedMatchUpId, setSelectedMatchUpId] = React.useState();
   const onSelect = (structureId) => setSelectedStructureId(structureId);
@@ -35,7 +35,7 @@ export const Draw = ({ composition, eventHandlers, structures, structureId }) =>
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      {!structures?.length || structures.length === 1 ? null : (
+      {!structures?.length || structures.length === 1 || !useStructureSelector ? null : (
         <StructureSelector structures={structures} structureId={selectedStructureId} onSelect={onSelect} />
       )}
       <div style={{ height: '30px' }}> </div>
