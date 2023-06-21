@@ -33,6 +33,8 @@ export const Draw = ({ composition, eventHandlers, structures, structureId, useS
     justifyItems: 'center'
   });
 
+  if (window.dev) console.log({ composition });
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       {!structures?.length || structures.length === 1 || !useStructureSelector ? null : (

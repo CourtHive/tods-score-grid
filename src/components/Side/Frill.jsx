@@ -6,7 +6,10 @@ export const Flag = ({ className, individualParticipant }) => {
   const nationalityCode = individualParticipant?.person?.iso2NationalityCode?.toLowerCase() || '';
 
   const src = `https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/${nationalityCode}.svg`;
-  const onError = () => {};
+  if (window.dev) console.log({ src });
+  const onError = () => {
+    if (window.dev) console.log('error');
+  };
   return (
     <span className={className}>
       {' '}
