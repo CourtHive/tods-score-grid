@@ -1,24 +1,16 @@
-import { ReactCountryFlag } from 'react-country-flag';
+import '/node_modules/flag-icons/css/flag-icons.min.css';
 import React from 'react';
 
 export const Flag = ({ className, individualParticipant }) => {
   const alt = individualParticipant?.person?.nationalityCode || '';
-  const nationalityCode = individualParticipant?.person?.iso2NationalityCode || '';
+  const nationalityCode = individualParticipant?.person?.iso2NationalityCode?.toLowerCase() || '';
 
+  const src = `https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/${nationalityCode}.svg`;
+  const onError = () => {};
   return (
     <span className={className}>
-      <ReactCountryFlag
-        alt={alt}
-        countryCode={nationalityCode}
-        cdnUrl="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/"
-        cdnSuffix="svg"
-        style={{
-          height: '100%',
-          width: '100%',
-          verticalAlign: 'initial'
-        }}
-      />
-      {'  '}
+      {' '}
+      <img src={src} alt={alt} onError={onError} />{' '}
     </span>
   );
 };
