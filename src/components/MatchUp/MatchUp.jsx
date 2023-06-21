@@ -106,8 +106,8 @@ function ResultsInfo({ score }) {
       {!points ? null : <div className={resultsItemStyle({ variant: 'points' })}>PTS</div>}
       {!sets?.length
         ? null
-        : sets.map((_, index) => (
-            <div key={`set-${index}`} className={resultsItemStyle({ variant: 'set' })}>
+        : sets.map((set, index) => (
+            <div key={set.setNumber} className={resultsItemStyle({ variant: 'set' })}>
               {index + 1}
             </div>
           ))}

@@ -39,9 +39,9 @@ const gameWrapperStyle = css({
   marginInlineEnd: '$space$gameMarginInlineEnd'
 });
 
-const Set = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
+const ScoreSet = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
   const isWinningSide = sideNumber === set?.winningSide;
-  const variant = isWinningSide ? 'winner' : set?.winningSide ? 'loser' : undefined;
+  const variant = (isWinningSide && 'winner') || set?.winningSide ? 'loser' : undefined;
   const gameScore = sideNumber === 2 ? set.side2Score : set.side1Score;
   const tieBreakScore = sideNumber === 2 ? set.side2TiebreakScore : set.side1TiebreakScore;
   const tieBreakSet = gameScore === undefined && tieBreakScore;
@@ -89,7 +89,7 @@ export const SideScore = ({ composition, score, sideNumber, participantHeight, e
     <div className={scoreWrapperStyle({ sideNumber: !scoreBox && sideNumber })} onClick={handleScoreClick}>
       <div className={gameWrapperStyle()}>
         {sets?.map((set) => (
-          <Set
+          <ScoreSet
             key={`Side${sideNumber}-Set-${set.setNumber}`}
             gameScoreOnly={gameScoreOnly}
             scoreStripes={scoreStripes}
