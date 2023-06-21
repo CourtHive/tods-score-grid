@@ -5,12 +5,13 @@ import { styled } from '@stitches/react';
 
 export const Draw = ({ composition, eventHandlers, structures, structureId, useStructureSelector }) => {
   const [selectedStructureId, setSelectedStructureId] = React.useState(structureId);
-  const [selectedMatchUpId, setSelectedMatchUpId] = React.useState();
+  // const [selectedMatchUpId, setSelectedMatchUpId] = React.useState();
   const onSelect = (structureId) => setSelectedStructureId(structureId);
 
   useEffect(() => setSelectedStructureId(structureId), [structureId]);
 
   if (eventHandlers && !eventHandlers.matchUpClick) {
+    /*
     eventHandlers.matchUpClick = ({ event, matchUpId }) => {
       const menuPosition = { left: event?.clientX, top: event?.clientY };
       const matchUpCoords = event?.currentTarget?.getBoundingClientRect();
@@ -19,7 +20,10 @@ export const Draw = ({ composition, eventHandlers, structures, structureId, useS
       }
       setSelectedMatchUpId(matchUpId);
     };
+    */
   }
+
+  const selectedMatchUpId = undefined;
 
   const structure = structures?.find((structure) => structure.structureId === selectedStructureId);
   const roundMatchUps = structure?.roundMatchUps;
