@@ -25,7 +25,13 @@ export const Grid = (args) => {
   const className = useDarkMode() ? nightTheme : composition?.theme;
   const { eventData } = generateEventData({ ...args }) || {};
 
-  const eventHandlers = {};
+  const eventHandlers = {
+    participantClick: (props) => console.log('participant', props),
+    matchUpClick: (props) => console.log('matchUp', props),
+    headerClick: (props) => console.log('header', props),
+    scoreClick: (props) => console.log('score', props),
+    sideClick: (props) => console.log('side', props)
+  };
 
   return (
     <Container className={className} style={{ direction: args.direction }}>

@@ -56,7 +56,7 @@ const Set = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
   );
 };
 
-export const SideScore = ({ composition, score, sideNumber, participantHeight }) => {
+export const SideScore = ({ composition, score, sideNumber, participantHeight, eventHandlers, matchUpId }) => {
   const scoreStripes = composition?.configuration?.winnerChevron;
   const gameScoreOnly = composition?.configuration?.gameScoreOnly;
   const sets = score?.sets || [];
@@ -79,12 +79,18 @@ export const SideScore = ({ composition, score, sideNumber, participantHeight })
     }
   });
 
+  const handleScoreClick = (event) => {
+    if (typeof eventHandlers?.scoreClick === 'function') {
+      eventHandlers.scoreClick({ event, matchUpId });
+    }
+  };
+
   return (
-    <div className={scoreWrapperStyle({ sideNumber: !scoreBox && sideNumber })}>
+    <div className={scoreWrapperStyle({ sideNumber: !scoreBox && sideNumber })} onClick={handleScoreClick}>
       <div className={gameWrapperStyle()}>
-        {sets?.map((set, i) => (
+        {sets?.map((set) => (
           <Set
-            key={`Side${sideNumber}-Set-${i}`}
+            key={`Side${sideNumber}-Set-${set.setNumber}`}
             gameScoreOnly={gameScoreOnly}
             scoreStripes={scoreStripes}
             sideNumber={sideNumber}

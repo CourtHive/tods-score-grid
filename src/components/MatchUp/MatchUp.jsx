@@ -13,18 +13,15 @@ export const MatchUp = (params) => {
   const isDoubles = matchUpType === 'DOUBLES';
 
   const link =
-    !matchUp.drawPositions || matchUp.isRoundRobin || isLucky
-      ? 'mr'
-      : isQualifying || preFeedRound
-      ? 'm0'
-      : moeity
-      ? 'm1'
-      : 'm2';
+    ((!matchUp.drawPositions || matchUp.isRoundRobin || isLucky) && 'mr') ||
+    ((isQualifying || preFeedRound) && 'm0') ||
+    (moeity && 'm1') ||
+    'm2';
 
   const configuration = composition?.configuration || {};
   const { resultsInfo, showAddress } = configuration || {};
 
-  const participantHeight = isDoubles ? (showAddress ? 80 : 60) : showAddress ? 50 : 40;
+  const participantHeight = (isDoubles && ((showAddress && 80) || 60)) || showAddress ? 50 : 40;
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
 
   const handleOnClick = (event) => {
@@ -42,8 +39,20 @@ export const MatchUp = (params) => {
           link
         })}
       >
-        <Side sideNumber={1} {...matchUp} composition={composition} participantHeight={participantHeight} />
-        <Side sideNumber={2} {...matchUp} composition={composition} participantHeight={participantHeight} />
+        <Side
+          participantHeight={participantHeight}
+          eventHandlers={eventHandlers}
+          composition={composition}
+          sideNumber={1}
+          {...matchUp}
+        />
+        <Side
+          participantHeight={participantHeight}
+          eventHandlers={eventHandlers}
+          composition={composition}
+          sideNumber={2}
+          {...matchUp}
+        />
         {!resultsInfo ? null : <ResultsInfo {...matchUp} />}
         <div
           className="overlay"

@@ -10,15 +10,16 @@ export const Draw = ({ composition, eventHandlers, structures, structureId, useS
 
   useEffect(() => setSelectedStructureId(structureId), [structureId]);
 
-  if (eventHandlers)
+  if (eventHandlers && !eventHandlers.matchUpClick) {
     eventHandlers.matchUpClick = ({ event, matchUpId }) => {
       const menuPosition = { left: event?.clientX, top: event?.clientY };
       const matchUpCoords = event?.currentTarget?.getBoundingClientRect();
       if (menuPosition || matchUpCoords) {
         // console.log({ menuPosition, matchUpCoords });
       }
-      setSelectedMatchUpId(selectedMatchUpId === matchUpId ? undefined : matchUpId);
+      setSelectedMatchUpId(matchUpId);
     };
+  }
 
   const structure = structures?.find((structure) => structure.structureId === selectedStructureId);
   const roundMatchUps = structure?.roundMatchUps;
