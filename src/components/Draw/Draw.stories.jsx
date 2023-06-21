@@ -51,8 +51,8 @@ MultiStructure.args = {
   matchUpFormat: 'standard',
   participantsCount: 32,
   eventType: 'Singles',
-  completionGoal: 100,
   drawType: 'Compass',
+  completionGoal: 50,
   drawSize: 32
 };
 

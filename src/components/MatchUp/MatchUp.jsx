@@ -15,6 +15,8 @@ export const MatchUp = (params) => {
   const link =
     ((matchUp.isRoundRobin || isLucky) && 'mr') || ((isQualifying || preFeedRound) && 'm0') || (moeity && 'm1') || 'm2';
 
+  if (link === 'mr') console.log({ link, preFeedRound, moeity });
+
   const configuration = composition?.configuration || {};
   const { resultsInfo, showAddress } = configuration || {};
 
