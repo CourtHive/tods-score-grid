@@ -39,7 +39,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.22.5.tgz#b1f6c86a02d85d2dd3368a2b67c09add8cd0c255"
   integrity sha512-4Jc/YuIaYqKnDDz892kPIledykKg12Aw1PYX5i/TY28anJtacvM1Rrr8wbieB9GfEJwlzqT0hUEao0CxEebiDA==
 
-"@babel/core@7.22.5", "@babel/core@^7.11.6", "@babel/core@^7.12.10", "@babel/core@^7.12.3", "@babel/core@^7.13.16", "@babel/core@^7.19.6", "@babel/core@^7.20.2", "@babel/core@^7.7.5":
+"@babel/core@7.22.5", "@babel/core@^7.11.6", "@babel/core@^7.12.10", "@babel/core@^7.12.3", "@babel/core@^7.13.16", "@babel/core@^7.20.2", "@babel/core@^7.22.5", "@babel/core@^7.7.5":
   version "7.22.5"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.22.5.tgz#d67d9747ecf26ee7ecd3ebae1ee22225fe902a89"
   integrity sha512-SBuTAjg91A3eKOvD+bPEz3LlhHZRNu1nFOVts9lzDJTXshHTjII0BAtDS3Y2DAkdZdDKWVZGVwkDfc4Clxn1dg==
@@ -1020,21 +1020,21 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-react-jsx-development@^7.18.6", "@babel/plugin-transform-react-jsx-development@^7.22.5":
+"@babel/plugin-transform-react-jsx-development@^7.22.5":
   version "7.22.5"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-development/-/plugin-transform-react-jsx-development-7.22.5.tgz#e716b6edbef972a92165cd69d92f1255f7e73e87"
   integrity sha512-bDhuzwWMuInwCYeDeMzyi7TaBgRQei6DqxhbyniL7/VG4RSS7HtSL2QbY4eESy1KJqlWt8g3xeEBGPuo+XqC8A==
   dependencies:
     "@babel/plugin-transform-react-jsx" "^7.22.5"
 
-"@babel/plugin-transform-react-jsx-self@^7.18.6":
+"@babel/plugin-transform-react-jsx-self@^7.22.5":
   version "7.22.5"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-self/-/plugin-transform-react-jsx-self-7.22.5.tgz#ca2fdc11bc20d4d46de01137318b13d04e481d8e"
   integrity sha512-nTh2ogNUtxbiSbxaT4Ds6aXnXEipHweN9YRgOX/oNXdf0cCrGn/+2LozFa3lnPV5D90MkjhgckCPBrsoSc1a7g==
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-react-jsx-source@^7.19.6":
+"@babel/plugin-transform-react-jsx-source@^7.22.5":
   version "7.22.5"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-source/-/plugin-transform-react-jsx-source-7.22.5.tgz#49af1615bfdf6ed9d3e9e43e425e0b2b65d15b6c"
   integrity sha512-yIiRO6yobeEIaI0RTbIr8iAK9FcBHLtZq0S89ZPjDLQXBA4xvghaKqI0etp/tF3htTM0sazJKKLz9oEiGRtu7w==
@@ -3950,17 +3950,14 @@
     "@typescript-eslint/types" "5.60.0"
     eslint-visitor-keys "^3.3.0"
 
-"@vitejs/plugin-react@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@vitejs/plugin-react/-/plugin-react-2.2.0.tgz#1b9f63b8b6bc3f56258d20cd19b33f5cc761ce6e"
-  integrity sha512-FFpefhvExd1toVRlokZgxgy2JtnBOdp4ZDsq7ldCWaqGSGn9UhWMAVm/1lxPL14JfNS5yGz+s9yFrQY6shoStA==
+"@vitejs/plugin-react@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-react/-/plugin-react-4.0.1.tgz#793aa790633433558da7ac0a38c58ddf47dff518"
+  integrity sha512-g25lL98essfeSj43HJ0o4DMp0325XK0ITkxpgChzJU/CyemgyChtlxfnRbjfwxDGCTRxTiXtQAsdebQXKMRSOA==
   dependencies:
-    "@babel/core" "^7.19.6"
-    "@babel/plugin-transform-react-jsx" "^7.19.0"
-    "@babel/plugin-transform-react-jsx-development" "^7.18.6"
-    "@babel/plugin-transform-react-jsx-self" "^7.18.6"
-    "@babel/plugin-transform-react-jsx-source" "^7.19.6"
-    magic-string "^0.26.7"
+    "@babel/core" "^7.22.5"
+    "@babel/plugin-transform-react-jsx-self" "^7.22.5"
+    "@babel/plugin-transform-react-jsx-source" "^7.22.5"
     react-refresh "^0.14.0"
 
 "@vitest/expect@0.32.2":
@@ -9178,13 +9175,6 @@ lz-string@^1.5.0:
   resolved "https://registry.yarnpkg.com/lz-string/-/lz-string-1.5.0.tgz#c1ab50f77887b712621201ba9fd4e3a6ed099941"
   integrity sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==
 
-magic-string@^0.26.7:
-  version "0.26.7"
-  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.26.7.tgz#caf7daf61b34e9982f8228c4527474dac8981d6f"
-  integrity sha512-hX9XH3ziStPoPhJxLq1syWuZMxbDvGNbVchfrdCtanC7D13888bMFow61x8axrx+GfHLtVeAx2kxL7tTGRl+Ow==
-  dependencies:
-    sourcemap-codec "^1.4.8"
-
 magic-string@^0.27.0:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.27.0.tgz#e4a3413b4bab6d98d2becffd48b4a257effdbbf3"
@@ -11480,11 +11470,6 @@ source-map@^0.7.3:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.4.tgz#a9bbe705c9d8846f4e08ff6765acf0f1b0898656"
   integrity sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==
-
-sourcemap-codec@^1.4.8:
-  version "1.4.8"
-  resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
-  integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
 space-separated-tokens@^1.0.0:
   version "1.1.5"
