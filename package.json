@@ -119,7 +119,7 @@
     "jest-cli": "29.5.0",
     "jest-environment-node": "29.5.0",
     "jsdom": "20.0.3",
-    "lint-staged": "13.0.3",
+    "lint-staged": "13.2.2",
     "np": "^8.0.4",
     "pinst": "3.0.0",
     "prettier": "2.7.1",
