@@ -7,8 +7,6 @@ export const Structure = ({ composition, eventHandlers, matchUps, selectedMatchU
     matchUps
   });
 
-  console.log({ roundNumbers });
-
   const isLucky = hasOddMatchUpsCount;
 
   return (

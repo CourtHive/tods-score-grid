@@ -5,10 +5,8 @@ import { styled } from '@stitches/react';
 
 export const Draw = ({ composition, eventHandlers, structures, structureId, useStructureSelector }) => {
   const [selectedStructureId, setSelectedStructureId] = React.useState(structureId);
-  // const [selectedMatchUpId, setSelectedMatchUpId] = React.useState();
   const onSelect = (structureId) => setSelectedStructureId(structureId);
 
-  console.log({ eventHandlers });
   useEffect(() => setSelectedStructureId(structureId), [structureId]);
 
   if (eventHandlers && !eventHandlers.matchUpClick) {
