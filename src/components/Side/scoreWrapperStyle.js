@@ -4,7 +4,7 @@ export const scoreWrapperStyle = (participantHeight) => {
   return css({
     display: 'flex',
     alignItems: 'center',
-    height: participantHeight - 1, // to account for border
+    height: participantHeight,
     justifyContent: 'flex-end',
     borderBottom: '1px solid transparent',
     backgroundColor: '$matchUp',

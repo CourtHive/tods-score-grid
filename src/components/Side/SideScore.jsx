@@ -1,6 +1,6 @@
+import { scoreWrapperStyle } from './scoreWrapperStyle';
 import { css } from '@stitches/react';
 import React from 'react';
-import { scoreWrapperStyle } from './scoreWrapperStyle';
 
 const tieBreakStyle = css({
   position: 'absolute',
