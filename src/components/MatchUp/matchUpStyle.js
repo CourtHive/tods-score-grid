@@ -10,7 +10,7 @@ export const matchUpStyle = ({ composition, roundFactor, roundNumber, participan
     (roundFactor || Math.pow(2, roundNumber - 1));
   const topOffset = -1 * (participantHeight + centerInfoHeight) - 2 - 1;
   const bottomOffset = centerInfoHeight ? participantHeight + centerInfoHeight : participantHeight - 2;
-  const topInfoOffset = topInfoHeight ? topInfoHeight / 2 - 1 : 0;
+  const topInfoOffset = topInfoHeight ? topInfoHeight / 2 : 0;
 
   const height = 2 * (participantHeight + centerInfoHeight) + 2 + topInfoHeight;
 

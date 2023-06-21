@@ -53,7 +53,7 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
   const configuration = composition?.configuration || {};
   const scheduleInfo = configuration?.scheduleInfo;
 
-  const { matchUpStatus, matchUpId, matchUpType, winningSide, roundNumber, isRoundRobin } = matchUp;
+  const { matchUpStatus, matchUpType, winningSide, roundNumber, isRoundRobin } = matchUp;
 
   const schedulingStyle = css({
     display: 'flex',
@@ -238,7 +238,7 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
             {!irregularEnding ? null : <StatusPill matchUpStatus={matchUpStatus} />}
           </div>
         </div>
-        {!scoreBox ? null : <div style={{ height: participantHeight - 1, border: `1px solid lightgray` }}> </div>}
+        {!scoreBox ? null : <div style={{ height: participantHeight, border: `1px solid lightgray` }}> </div>}
         {!hasScore ? null : (
           <SideScore
             participantHeight={participantHeight}
