@@ -74,8 +74,6 @@ function genData({ drawProfile }) {
     startDate
   });
 
-  console.log({ result, drawProfiles });
-
   if (result.error) return result;
 
   const {

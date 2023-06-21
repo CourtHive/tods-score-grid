@@ -52,6 +52,7 @@ export const Side = ({
   participantHeight,
   eventHandlers,
   matchUpStatus,
+  isRoundRobin,
   composition,
   matchUpType,
   roundNumber,
@@ -140,7 +141,7 @@ export const Side = ({
 
   const centerInfo = configuration?.centerInfo;
   const drawPosition =
-    configuration.drawPositions && side?.drawPosition && (roundNumber === 1 || side.participantFed)
+    configuration.drawPositions && side?.drawPosition && (roundNumber === 1 || side.participantFed || isRoundRobin)
       ? side?.drawPosition
       : '';
 

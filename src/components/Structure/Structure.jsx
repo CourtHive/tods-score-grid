@@ -7,17 +7,19 @@ export const Structure = ({ composition, eventHandlers, matchUps, selectedMatchU
     matchUps
   });
 
+  console.log({ roundNumbers });
+
   const isLucky = hasOddMatchUpsCount;
 
   return (
     <div style={{ marginInlineStart: '1rem', display: 'flex', overflowX: 'auto' }}>
-      {roundNumbers.map((roundNumber, i) => (
+      {roundNumbers.map((roundNumber) => (
         <Round
           selectedMatchUpId={selectedMatchUpId}
           composition={composition}
           roundNumber={roundNumber}
+          key={roundNumber || 1}
           matchUps={matchUps}
-          key={`round-${i}`}
           isLucky={isLucky}
           eventHandlers={eventHandlers}
         />

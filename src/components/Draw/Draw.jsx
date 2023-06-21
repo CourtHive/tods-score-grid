@@ -31,15 +31,13 @@ export const Draw = ({ composition, eventHandlers, structures, structureId, useS
   const matchUps = roundMatchUps ? Object.values(roundMatchUps)?.flat() : [];
 
   const Notice = styled('div', {
+    justifyContent: 'center',
+    alignContent: 'center',
+    justifyItems: 'center',
     display: 'flex',
     width: 'auto',
-    height: 60,
-    alignContent: 'center',
-    justifyContent: 'center',
-    justifyItems: 'center'
+    height: 60
   });
-
-  if (window.dev) console.log({ composition });
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -52,9 +50,9 @@ export const Draw = ({ composition, eventHandlers, structures, structureId, useS
       ) : (
         <Structure
           selectedMatchUpId={selectedMatchUpId}
+          eventHandlers={eventHandlers}
           composition={composition}
           matchUps={matchUps}
-          eventHandlers={eventHandlers}
         />
       )}
     </div>
