@@ -2,7 +2,9 @@ import { fixtures, utilities, mocksEngine, tournamentEngine } from 'tods-competi
 
 export function generateEventData({
   matchUpFormat = 'SET5-S:6/TB7',
+  completeAllMatchUps = true,
   participantsCount = 4,
+  autoSchedule = true,
   completionGoal,
   addQualifying,
   drawSize = 4,
@@ -26,10 +28,10 @@ export function generateEventData({
     drawProfile.qualifyingProfiles = [{ structureProfiles: [{ drawSize: 16, qualifyingPositions: 4 }] }];
   if (drawType === 'AD_HOC') Object.assign(drawProfile, { drawMatic: true, roundsCount: 3 });
 
-  return genData({ drawProfile });
+  return genData({ drawProfile, completeAllMatchUps, autoSchedule });
 }
 
-function genData({ drawProfile }) {
+function genData({ drawProfile, completeAllMatchUps, autoSchedule }) {
   const drawId = 'drawId';
   const venueId = 'venueId';
   const startTime = '08:00';
@@ -66,9 +68,9 @@ function genData({ drawProfile }) {
   const result = mocksEngine.generateTournamentRecord({
     policyDefinitions: fixtures.policies.POLICY_SCHEDULING_NO_DAILY_LIMITS,
     scheduleCompletedMatchUps: true,
-    completeAllMatchUps: true,
-    autoSchedule: true,
+    completeAllMatchUps,
     schedulingProfile,
+    autoSchedule,
     venueProfiles,
     drawProfiles,
     startDate

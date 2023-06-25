@@ -97,7 +97,6 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
 
   const scoringStyle = scoreWrapperStyle(participantHeight);
 
-  const isTeam = matchUpType === 'TEAM';
   const isDoubles = matchUpType === 'DOUBLES';
   const side = matchUp?.sides?.find((side) => side.sideNumber === sideNumber);
   const firstParticipant = isDoubles ? side?.participant?.individualParticipants?.[0] : side?.participant;
@@ -210,7 +209,7 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
             ></div>
           )}
           <div className={participantTypeStyle({ variant: isDoubles ? 'doubles' : undefined })}>
-            {isTeam ? null : (
+            {
               <div className={chevronStyle({ variant: winnerChevron ? 'winner' : undefined })}>
                 <Individual
                   individualParticipant={firstParticipant}
@@ -231,7 +230,7 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
                   />
                 )}
               </div>
-            )}
+            }
           </div>
           <div style={{ lineHeight: 0 }}>
             {!isWinningSide || gameScoreOnly ? null : <Tick className={tickStyles()} />}

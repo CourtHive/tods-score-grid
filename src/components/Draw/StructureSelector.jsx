@@ -31,17 +31,17 @@ const StructureButton = styled('button', {
   '&:focus': { boxShadow: `0 0 0 2px black` }
 });
 
+const StructureItem = ({ structureName, structureId, keyCombo, handleSelect }) => (
+  <DropdownMenuItem onSelect={(e) => handleSelect(e, structureId)}>
+    {structureName}
+    {!keyCombo ? null : <RightSlot>{keyCombo}</RightSlot>}
+  </DropdownMenuItem>
+);
+
 export const StructureSelector = ({ structures = [], structureId, onSelect }) => {
   const handleSelect = (e, structureId) => {
     if (typeof onSelect === 'function') onSelect(structureId);
   };
-
-  const StructureItem = ({ structureName, structureId, keyCombo }) => (
-    <DropdownMenuItem onSelect={(e) => handleSelect(e, structureId)}>
-      {structureName}
-      {!keyCombo ? null : <RightSlot>{keyCombo}</RightSlot>}
-    </DropdownMenuItem>
-  );
 
   const label = structures?.find((structure) => structure.structureId === structureId)?.structureName || 'Select...';
 
@@ -55,6 +55,7 @@ export const StructureSelector = ({ structures = [], structureId, onSelect }) =>
         <DropdownMenuContent sideOffset={-10}>
           {structures?.map((structure) => (
             <StructureItem
+              handleSelect={handleSelect}
               structureName={structure.structureName}
               structureId={structure.structureId}
               key={structure.structureId}
