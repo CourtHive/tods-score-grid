@@ -3,11 +3,22 @@ import { Structure } from '../Structure/Structure';
 import React, { useEffect } from 'react';
 import { styled } from '@stitches/react';
 
-export const Draw = ({ composition, eventHandlers, structures, structureId, useStructureSelector }) => {
+export const Draw = ({
+  useStructureSelector,
+  eventHandlers,
+  disableFlags,
+  composition,
+  structureId,
+  structures,
+  teamLogo
+}) => {
   const [selectedStructureId, setSelectedStructureId] = React.useState(structureId);
   const onSelect = (structureId) => setSelectedStructureId(structureId);
 
   useEffect(() => setSelectedStructureId(structureId), [structureId]);
+
+  if (teamLogo) composition.teamLogo = teamLogo;
+  if (disableFlags) composition.flags = false;
 
   if (eventHandlers && !eventHandlers.matchUpClick) {
     /*

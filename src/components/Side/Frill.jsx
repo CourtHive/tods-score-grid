@@ -27,8 +27,8 @@ export const Flag = ({ className, individualParticipant }) => {
 };
 
 export const Frill = ({
-  individualParticipant,
   matchUpType = 'SINGLES',
+  individualParticipant,
   type = 'flag',
   composition,
   className,
