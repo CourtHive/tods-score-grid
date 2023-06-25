@@ -1,3 +1,4 @@
+import { scoreWrapperStyle } from './scoreWrapperStyle';
 import { css } from '@stitches/react';
 import React from 'react';
 
@@ -39,9 +40,9 @@ const gameWrapperStyle = css({
   marginInlineEnd: '$space$gameMarginInlineEnd'
 });
 
-const Set = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
+const ScoreSet = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
   const isWinningSide = sideNumber === set?.winningSide;
-  const variant = isWinningSide ? 'winner' : set?.winningSide ? 'loser' : undefined;
+  const variant = (isWinningSide && 'winner') || set?.winningSide ? 'loser' : undefined;
   const gameScore = sideNumber === 2 ? set.side2Score : set.side1Score;
   const tieBreakScore = sideNumber === 2 ? set.side2TiebreakScore : set.side1TiebreakScore;
   const tieBreakSet = gameScore === undefined && tieBreakScore;
@@ -56,35 +57,28 @@ const Set = ({ gameScoreOnly, scoreStripes, set, sideNumber }) => {
   );
 };
 
-export const SideScore = ({ composition, score, sideNumber, participantHeight }) => {
+export const SideScore = ({ composition, sideNumber, participantHeight, eventHandlers, matchUp }) => {
   const scoreStripes = composition?.configuration?.winnerChevron;
   const gameScoreOnly = composition?.configuration?.gameScoreOnly;
-  const sets = score?.sets || [];
+  const sets = matchUp?.score?.sets || [];
 
   const scoreBox = composition?.configuration?.scoreBox;
 
-  const scoreWrapperStyle = css({
-    display: 'flex',
-    alignItems: 'center',
-    height: participantHeight - 1, // to account for border
-    justifyContent: 'flex-end',
-    borderBottom: '1px solid transparent',
-    backgroundColor: '$matchUp',
-    variants: {
-      sideNumber: {
-        1: {
-          borderBottom: '1px solid $internalDividers'
-        }
-      }
+  const scoreStyle = scoreWrapperStyle(participantHeight);
+
+  const handleScoreClick = (event) => {
+    if (typeof eventHandlers?.scoreClick === 'function') {
+      event.stopPropagation();
+      eventHandlers.scoreClick({ event, matchUp });
     }
-  });
+  };
 
   return (
-    <div className={scoreWrapperStyle({ sideNumber: !scoreBox && sideNumber })}>
+    <div className={scoreStyle({ fontSize: '5px', sideNumber: !scoreBox && sideNumber })} onClick={handleScoreClick}>
       <div className={gameWrapperStyle()}>
-        {sets?.map((set, i) => (
-          <Set
-            key={`Side${sideNumber}-Set-${i}`}
+        {sets?.map((set) => (
+          <ScoreSet
+            key={`Side${sideNumber}-Set-${set.setNumber}`}
             gameScoreOnly={gameScoreOnly}
             scoreStripes={scoreStripes}
             sideNumber={sideNumber}

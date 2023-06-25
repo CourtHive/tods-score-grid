@@ -13,23 +13,17 @@ export const MatchUp = (params) => {
   const isDoubles = matchUpType === 'DOUBLES';
 
   const link =
-    !matchUp.drawPositions || matchUp.isRoundRobin || isLucky
-      ? 'mr'
-      : isQualifying || preFeedRound
-      ? 'm0'
-      : moeity
-      ? 'm1'
-      : 'm2';
+    ((matchUp.isRoundRobin || isLucky) && 'mr') || ((isQualifying || preFeedRound) && 'm0') || (moeity && 'm1') || 'm2';
 
   const configuration = composition?.configuration || {};
   const { resultsInfo, showAddress } = configuration || {};
 
-  const participantHeight = isDoubles ? (showAddress ? 80 : 60) : showAddress ? 50 : 40;
+  const participantHeight = (isDoubles && ((showAddress && 80) || 60)) || showAddress ? 50 : 40;
   const componentStyle = matchUpStyle({ composition, roundFactor, roundNumber, participantHeight });
 
   const handleOnClick = (event) => {
     if (typeof eventHandlers?.matchUpClick === 'function') {
-      eventHandlers.matchUpClick({ event, matchUpId: matchUp?.matchUpId });
+      eventHandlers.matchUpClick({ event, matchUp });
     }
   };
 
@@ -42,8 +36,20 @@ export const MatchUp = (params) => {
           link
         })}
       >
-        <Side sideNumber={1} {...matchUp} composition={composition} participantHeight={participantHeight} />
-        <Side sideNumber={2} {...matchUp} composition={composition} participantHeight={participantHeight} />
+        <Side
+          participantHeight={participantHeight}
+          eventHandlers={eventHandlers}
+          composition={composition}
+          matchUp={matchUp}
+          sideNumber={1}
+        />
+        <Side
+          participantHeight={participantHeight}
+          eventHandlers={eventHandlers}
+          composition={composition}
+          matchUp={matchUp}
+          sideNumber={2}
+        />
         {!resultsInfo ? null : <ResultsInfo {...matchUp} />}
         <div
           className="overlay"
@@ -100,8 +106,8 @@ function ResultsInfo({ score }) {
       {!points ? null : <div className={resultsItemStyle({ variant: 'points' })}>PTS</div>}
       {!sets?.length
         ? null
-        : sets.map((_, index) => (
-            <div key={`set-${index}`} className={resultsItemStyle({ variant: 'set' })}>
+        : sets.map((set, index) => (
+            <div key={set.setNumber} className={resultsItemStyle({ variant: 'set' })}>
               {index + 1}
             </div>
           ))}

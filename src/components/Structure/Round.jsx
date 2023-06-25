@@ -25,7 +25,7 @@ export const Round = ({ composition, eventHandlers, isLucky, matchUps, selectedM
           matchUp={matchUp}
           isLucky={isLucky}
           eventHandlers={eventHandlers}
-          key={`m-${i}`}
+          key={matchUp.matchUpId}
         />
       ))}{' '}
     </div>

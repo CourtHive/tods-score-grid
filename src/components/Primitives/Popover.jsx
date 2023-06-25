@@ -3,7 +3,7 @@ import { styled, keyframes } from '@stitches/react';
 import { violet, blackA } from '@radix-ui/colors';
 import { MixerHorizontalIcon, Cross2Icon } from '@radix-ui/react-icons';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import Dropzone, { useDropzone } from 'react-dropzone';
+import { useDropzone } from 'react-dropzone';
 
 const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(2px)' },

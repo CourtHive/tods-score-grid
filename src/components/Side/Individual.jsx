@@ -60,19 +60,27 @@ const seedStyle = css({
 });
 
 export function Individual(params) {
-  const { isWinningSide, onClickIndividual, side, individualParticipant } = params;
+  const { isWinningSide, side, individualParticipant, matchUp } = params;
+  const eventHandlers = params.eventHandlers || {};
   const variant = isWinningSide ? 'winner' : undefined;
 
   const participantName = individualParticipant?.participantName;
 
+  const handleOnClick = (event) => {
+    if (typeof eventHandlers?.participantClick === 'function') {
+      event.stopPropagation();
+      eventHandlers.participantClick({ event, side, individualParticipant, matchUp });
+    }
+  };
+
   return (
     <div key={`${params.index}`}>
-      <div className={participantStyle()} onClick={onClickIndividual}>
+      <div className={participantStyle()} onClick={handleOnClick}>
         <Frill {...params} className={flagStyles()} />
 
         <div className={participantNameStyle({ variant })}>
           {side?.bye || side?.qualifier || !participantName ? (
-            <abbr className={participantStatus()}>{side?.bye ? BYE : side?.qualifier ? QUALIFIER : TBD}</abbr>
+            <abbr className={participantStatus()}>{(side?.bye && BYE) || (side?.qualifier && QUALIFIER) || TBD}</abbr>
           ) : (
             <span>{participantName}</span>
           )}

@@ -1,3 +1,4 @@
+import { setConsoleOptions } from '@storybook/addon-console';
 import { generateMatchUps } from '../Data/matchUps';
 import { compositions } from '../Data/compositions';
 import { useDarkMode } from 'storybook-dark-mode';
@@ -6,7 +7,6 @@ import { argTypes } from '../Data/argTypes';
 import { styled } from '@stitches/react';
 import { nightTheme } from '../themes';
 import React from 'react';
-import { setConsoleOptions } from '@storybook/addon-console';
 
 const panelExclude = setConsoleOptions({}).panelExclude;
 setConsoleOptions({

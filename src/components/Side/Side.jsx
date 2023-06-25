@@ -7,6 +7,7 @@ import { css } from '@stitches/react';
 import { Tick } from './Tick';
 import React from 'react';
 import dayjs from 'dayjs';
+import { scoreWrapperStyle } from './scoreWrapperStyle';
 
 const sideContainerStyle = css({
   display: 'flex',
@@ -44,20 +45,15 @@ const tickStyles = css({
   color: 'green'
 });
 
-export const Side = ({
-  participantHeight,
-  matchUpStatus,
-  composition,
-  matchUpType,
-  roundNumber,
-  winningSide,
-  sideNumber,
-  schedule,
-  score,
-  sides
-}) => {
+const EntryStatus = ({ entryStatus, sideNumber }) => (
+  <CenterInfo height={30} sideNumber={sideNumber} entryStatus={entryStatus} />
+);
+
+export const Side = ({ participantHeight, eventHandlers, matchUp, composition, sideNumber }) => {
   const configuration = composition?.configuration || {};
   const scheduleInfo = configuration?.scheduleInfo;
+
+  const { matchUpStatus, matchUpType, winningSide, roundNumber, isRoundRobin } = matchUp;
 
   const schedulingStyle = css({
     display: 'flex',
@@ -99,16 +95,16 @@ export const Side = ({
     }
   });
 
-  const isTeam = matchUpType === 'TEAM';
+  const scoringStyle = scoreWrapperStyle(participantHeight);
+
   const isDoubles = matchUpType === 'DOUBLES';
-  const side = sides?.find((side) => side.sideNumber === sideNumber);
+  const side = matchUp?.sides?.find((side) => side.sideNumber === sideNumber);
   const firstParticipant = isDoubles ? side?.participant?.individualParticipants?.[0] : side?.participant;
   const secondParticipant = isDoubles && side?.participant?.individualParticipants?.[1];
   const isWinningSide = sideNumber === winningSide;
   const winnerChevron = configuration?.winnerChevron && isWinningSide;
   const teamLogo = configuration?.teamLogo;
-  const entryStatus = side?.participant?.entryStatus?.replace('_', ' ');
-  const EntryStatus = () => <CenterInfo height={30} sideNumber={sideNumber} entryStatus={entryStatus} />;
+  const entryStatus = matchUp?.side?.participant?.entryStatus?.replace('_', ' ');
 
   const irregularEnding =
     ['RETIRED', 'DOUBLE_WALKOVER', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
@@ -135,13 +131,13 @@ export const Side = ({
 
   const centerInfo = configuration?.centerInfo;
   const drawPosition =
-    configuration.drawPositions && side?.drawPosition && (roundNumber === 1 || side.participantFed)
+    configuration.drawPositions && side?.drawPosition && (roundNumber === 1 || side.participantFed || isRoundRobin)
       ? side?.drawPosition
       : '';
 
-  const hasScore = score?.scoreStringSide1;
+  const hasScore = matchUp?.score?.scoreStringSide1;
   const scoreBox = composition?.configuration?.scoreBox && hasScore;
-  const { scheduledTime, scheduledDate, venueAbbreviation, courtName } = schedule || {};
+  const { scheduledTime, scheduledDate, venueAbbreviation, courtName } = matchUp?.schedule || {};
   const {
     dateTime: { extractDate, extractTime }
   } = utilities;
@@ -156,15 +152,37 @@ export const Side = ({
   const displayDate = scheduledDate ? dayjs(constructedDateString).format(dateFormat) : 'Not scheduled';
   const location = venueAbbreviation && courtName ? `${venueAbbreviation} ${courtName}` : '';
 
+  const handleSideClick = (event) => {
+    if (typeof eventHandlers?.sideClick === 'function') {
+      event.stopPropagation();
+      eventHandlers.sideClick({ event, matchUp, sideNumber });
+    }
+  };
+
+  const handleHeaderClick = (event) => {
+    if (typeof eventHandlers?.headerClick === 'function') {
+      event.stopPropagation();
+      eventHandlers.headerClick({ event, matchUp });
+    }
+  };
+  const handleScoreClick = (event) => {
+    if (typeof eventHandlers?.scoreClick === 'function') {
+      event.stopPropagation();
+      eventHandlers.scoreClick({ event, matchUp });
+    }
+  };
+
+  const readyToScore = matchUp?.readyToScore && eventHandlers.scoreClick;
+
   return (
     <div className={sideContainerStyle()}>
       {!scheduleInfo || sideNumber === 2 ? null : (
-        <div className={schedulingStyle()}>
+        <div className={schedulingStyle()} onClick={handleHeaderClick}>
           <div>{displayDate}</div>
           <div> {location}</div>
         </div>
       )}
-      {!centerInfo || sideNumber === 1 ? null : <EntryStatus />}
+      {!centerInfo || sideNumber === 1 ? null : <EntryStatus entryStatus={entryStatus} sideNumber={sideNumber} />}
       <div className={sideRowStyle()}>
         <div
           className={participantContainerStyle({
@@ -183,6 +201,7 @@ export const Side = ({
               }
             }
           })}
+          onClick={handleSideClick}
         >
           {!teamLogo ? null : (
             <div
@@ -190,40 +209,51 @@ export const Side = ({
             ></div>
           )}
           <div className={participantTypeStyle({ variant: isDoubles ? 'doubles' : undefined })}>
-            {isTeam ? null : (
+            {
               <div className={chevronStyle({ variant: winnerChevron ? 'winner' : undefined })}>
                 <Individual
                   individualParticipant={firstParticipant}
+                  eventHandlers={eventHandlers}
                   isWinningSide={isWinningSide}
                   composition={composition}
+                  matchUp={matchUp}
                   side={side}
                 />
                 {!secondParticipant ? null : (
                   <Individual
                     individualParticipant={secondParticipant}
+                    eventHandlers={eventHandlers}
                     isWinningSide={isWinningSide}
                     composition={composition}
+                    matchUp={matchUp}
                     side={side}
                   />
                 )}
               </div>
-            )}
+            }
           </div>
           <div style={{ lineHeight: 0 }}>
             {!isWinningSide || gameScoreOnly ? null : <Tick className={tickStyles()} />}
             {!irregularEnding ? null : <StatusPill matchUpStatus={matchUpStatus} />}
           </div>
         </div>
-        {!scoreBox ? null : <div style={{ height: participantHeight - 1, border: `1px solid lightgray` }}> </div>}
+        {!scoreBox ? null : <div style={{ height: participantHeight, border: `1px solid lightgray` }}> </div>}
         {!hasScore ? null : (
           <SideScore
             participantHeight={participantHeight}
-            matchUpStatus={matchUpStatus}
+            eventHandlers={eventHandlers}
             composition={composition}
-            winningSide={winningSide}
             sideNumber={sideNumber}
-            score={score}
+            matchUp={matchUp}
           />
+        )}
+        {!readyToScore ? null : (
+          <div
+            className={scoringStyle({ fontSize: 'small', sideNumber: !scoreBox && sideNumber })}
+            onClick={handleScoreClick}
+          >
+            [Score]&nbsp;
+          </div>
         )}
       </div>
       {!centerInfo || sideNumber === 2 ? null : <EntryStatus />}

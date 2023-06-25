@@ -35,6 +35,7 @@ export const MultiStructure = (args) => {
       <div style={{ padding: '1rem' }}>
         <DrawComponent
           {...args}
+          useStructureSelector={true}
           composition={composition}
           structureId={initialStructureId}
           structures={structures}
@@ -50,10 +51,48 @@ MultiStructure.args = {
   composition: 'Australian',
   matchUpFormat: 'standard',
   participantsCount: 32,
-  eventType: 'Singles',
-  completionGoal: 100,
+  eventType: 'SINGLES',
   drawType: 'Compass',
+  completionGoal: 50,
   drawSize: 32
+};
+
+export const TeamStructure = (args) => {
+  const composition = compositions[args.composition];
+  const className = useDarkMode() ? nightTheme : composition?.theme;
+  const { eventData } = generateEventData({ ...args }) || {};
+
+  const structures = eventData?.drawsData?.[0]?.structures || [];
+  const initialStructureId = structures[0]?.structureId;
+
+  const eventHandlers = {};
+
+  return (
+    <Container className={className} style={{ direction: args.direction }}>
+      <div style={{ padding: '1rem' }}>
+        <DrawComponent
+          {...args}
+          useStructureSelector={true}
+          composition={composition}
+          structureId={initialStructureId}
+          structures={structures}
+          eventHandlers={eventHandlers}
+        />
+      </div>
+    </Container>
+  );
+};
+
+TeamStructure.args = {
+  completeAllMatchUps: false,
+  direction: 'Left to Right',
+  composition: 'Australian',
+  matchUpFormat: 'standard',
+  participantsCount: 8,
+  autoSchedule: false,
+  disableFlags: true,
+  eventType: 'TEAM',
+  drawSize: 8
 };
 
 export const Nada = () => {

@@ -28,7 +28,7 @@ const allDrawTypes = {
   Compass: 'COMPASS',
   Olympic: 'OLYMPIC',
   'Single Elimination': 'SINGLE_ELIMINATION',
-  // 'Double Elimination': 'DOUBLE_ELIMINATION', // factory musts coerce to valid double elimination size and interpret drawSize as participantsCount
+  'Double Elimination': 'DOUBLE_ELIMINATION',
   'First Match Loser Consolation': 'FIRST_MATCH_LOSER_CONSOLATION',
   'Curtis Consolation': 'CURTIS_CONSOLATION',
   'Round Robin with Playoffs': 'ROUND_ROBIN_WITH_PLAYOFFS'
