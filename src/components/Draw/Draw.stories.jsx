@@ -90,6 +90,7 @@ TeamStructure.args = {
   matchUpFormat: 'standard',
   participantsCount: 8,
   autoSchedule: false,
+  disableFlags: true,
   eventType: 'TEAM',
   drawSize: 8
 };

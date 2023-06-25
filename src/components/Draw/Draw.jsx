@@ -18,7 +18,7 @@ export const Draw = ({
   useEffect(() => setSelectedStructureId(structureId), [structureId]);
 
   if (teamLogo) composition.teamLogo = teamLogo;
-  if (disableFlags) composition.flags = false;
+  if (disableFlags && composition?.configuration) composition.configuration.flags = false;
 
   if (eventHandlers && !eventHandlers.matchUpClick) {
     /*
