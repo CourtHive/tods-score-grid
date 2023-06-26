@@ -7,7 +7,7 @@ export const MatchUp = (params) => {
   const { className, composition, isLucky, matchUp, moeity, selectedMatchUpId } = params;
   const eventHandlers = params.eventHandlers || {};
   const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound, stage } = matchUp;
-  const noProgression = stage !== 'QUALIFUYING' && parseInt(finishingRound) === 1;
+  const noProgression = stage !== 'QUALIFYING' && parseInt(finishingRound) === 1;
   const isQualifying = stage === 'QUALIFYING' && parseInt(finishingRound) === 1;
   const isFirstRound = parseInt(roundNumber) === 1;
   const isDoubles = matchUpType === 'DOUBLES';
