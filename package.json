@@ -137,6 +137,6 @@
     "vite": "^4.3.9",
     "vite-web-test-runner-plugin": "0.1.0",
     "vitest": "0.32.2",
-    "webpack": "5.88.0"
+    "webpack": "5.88.1"
   }
 }
