@@ -1,3 +1,4 @@
+import { scoreWrapperStyle } from './scoreWrapperStyle';
 import { utilities } from 'tods-competition-factory';
 import { CenterInfo } from './CenterInfo';
 import { Individual } from './Individual';
@@ -7,7 +8,6 @@ import { css } from '@stitches/react';
 import { Tick } from './Tick';
 import React from 'react';
 import dayjs from 'dayjs';
-import { scoreWrapperStyle } from './scoreWrapperStyle';
 
 const sideContainerStyle = css({
   display: 'flex',
