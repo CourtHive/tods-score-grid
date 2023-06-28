@@ -151,7 +151,7 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
   }
   const displayDate = scheduledDate ? dayjs(constructedDateString).format(dateFormat) : 'Not scheduled';
   const location =
-    (venueAbbreviation && courtName?.startsWith(venueAbbreviation) && courtName) || // ensure no duplication of venuAbbreviation
+    (venueAbbreviation && courtName?.toString().startsWith(venueAbbreviation) && courtName) || // ensure no duplication of venuAbbreviation
     (venueAbbreviation && courtName && `${venueAbbreviation} ${courtName}`) ||
     courtName ||
     venueAbbreviation ||
