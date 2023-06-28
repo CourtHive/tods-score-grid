@@ -1,3 +1,4 @@
+import { scoreWrapperStyle } from './scoreWrapperStyle';
 import { utilities } from 'tods-competition-factory';
 import { CenterInfo } from './CenterInfo';
 import { Individual } from './Individual';
@@ -7,7 +8,6 @@ import { css } from '@stitches/react';
 import { Tick } from './Tick';
 import React from 'react';
 import dayjs from 'dayjs';
-import { scoreWrapperStyle } from './scoreWrapperStyle';
 
 const sideContainerStyle = css({
   display: 'flex',
@@ -150,7 +150,12 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
     constructedDateString += `T${time}`;
   }
   const displayDate = scheduledDate ? dayjs(constructedDateString).format(dateFormat) : 'Not scheduled';
-  const location = venueAbbreviation && courtName ? `${venueAbbreviation} ${courtName}` : '';
+  const location =
+    (venueAbbreviation && courtName?.toString().startsWith(venueAbbreviation) && courtName) || // ensure no duplication of venuAbbreviation
+    (venueAbbreviation && courtName && `${venueAbbreviation} ${courtName}`) ||
+    courtName ||
+    venueAbbreviation ||
+    '';
 
   const handleSideClick = (event) => {
     if (typeof eventHandlers?.sideClick === 'function') {

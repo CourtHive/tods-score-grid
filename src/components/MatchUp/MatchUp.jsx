@@ -4,16 +4,19 @@ import { Side } from '../Side/Side';
 import React from 'react';
 
 export const MatchUp = (params) => {
-  const { className, composition, isLucky, matchUp, moeity, selectedMatchUpId } = params;
+  const { className, composition, isLucky, matchUp, moeity, selectedMatchUpId, searchActive } = params;
   const eventHandlers = params.eventHandlers || {};
   const { roundFactor, roundNumber, finishingRound, matchUpType, preFeedRound, stage } = matchUp;
-  const noProgression = stage !== 'QUALIFUYING' && parseInt(finishingRound) === 1;
+  const noProgression = stage !== 'QUALIFYING' && parseInt(finishingRound) === 1;
   const isQualifying = stage === 'QUALIFYING' && parseInt(finishingRound) === 1;
   const isFirstRound = parseInt(roundNumber) === 1;
   const isDoubles = matchUpType === 'DOUBLES';
 
   const link =
-    ((matchUp.isRoundRobin || isLucky) && 'mr') || ((isQualifying || preFeedRound) && 'm0') || (moeity && 'm1') || 'm2';
+    ((searchActive || matchUp.isRoundRobin || matchUp.collectionId || isLucky) && 'mr') ||
+    ((isQualifying || preFeedRound) && 'm0') ||
+    (moeity && 'm1') ||
+    'm2';
 
   const configuration = composition?.configuration || {};
   const { resultsInfo, showAddress } = configuration || {};
