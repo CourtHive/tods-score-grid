@@ -79,7 +79,7 @@
     "@rollup/plugin-commonjs": "25.0.2",
     "@rollup/plugin-json": "6.0.0",
     "@rollup/plugin-node-resolve": "15.1.0",
-    "@rollup/plugin-typescript": "11.1.1",
+    "@rollup/plugin-typescript": "11.1.2",
     "@storybook/addon-actions": "7.0.23",
     "@storybook/addon-console": "2.0.0",
     "@storybook/addon-docs": "7.0.23",
