@@ -13,7 +13,10 @@ export const MatchUp = (params) => {
   const isDoubles = matchUpType === 'DOUBLES';
 
   const link =
-    ((matchUp.isRoundRobin || isLucky) && 'mr') || ((isQualifying || preFeedRound) && 'm0') || (moeity && 'm1') || 'm2';
+    ((matchUp.isRoundRobin || matchUp.collectionId || isLucky) && 'mr') ||
+    ((isQualifying || preFeedRound) && 'm0') ||
+    (moeity && 'm1') ||
+    'm2';
 
   const configuration = composition?.configuration || {};
   const { resultsInfo, showAddress } = configuration || {};
