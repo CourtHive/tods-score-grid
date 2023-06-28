@@ -6,6 +6,7 @@ import { styled } from '@stitches/react';
 export const Draw = ({
   useStructureSelector,
   eventHandlers,
+  searchActive,
   disableFlags,
   composition,
   structureId,
@@ -60,6 +61,7 @@ export const Draw = ({
         <Structure
           selectedMatchUpId={selectedMatchUpId}
           eventHandlers={eventHandlers}
+          searchActive={searchActive}
           composition={composition}
           matchUps={matchUps}
         />
