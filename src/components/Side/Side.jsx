@@ -10,23 +10,23 @@ import React from 'react';
 import dayjs from 'dayjs';
 
 const sideContainerStyle = css({
-  display: 'flex',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  display: 'flex'
 });
 
 const sideRowStyle = css({
-  display: 'flex',
-  alignItems: 'stretch'
+  alignItems: 'stretch',
+  display: 'flex'
 });
 
 const participantTypeStyle = css({
-  display: 'flex',
-  flexDirection: 'column',
   justifyContent: 'space-between',
+  flexDirection: 'column',
   marginInlineEnd: '0rem',
-  overflowX: 'scroll',
   scrollbarWidth: 'none',
+  overflowX: 'scroll',
   fontWeight: 500,
+  display: 'flex',
   width: '100%',
   '&::WebkitScrollbar': { display: 'none' },
   variants: {
@@ -131,7 +131,8 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
 
   const centerInfo = configuration?.centerInfo;
   const drawPosition =
-    configuration.drawPositions && side?.drawPosition && (roundNumber === 1 || side.participantFed || isRoundRobin)
+    configuration.allDrawPositions ||
+    (configuration.drawPositions && side?.drawPosition && (roundNumber === 1 || side.participantFed || isRoundRobin))
       ? side?.drawPosition
       : '';
 
