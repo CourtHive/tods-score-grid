@@ -55,15 +55,15 @@ export const MatchUp = (params) => {
         />
         {!resultsInfo ? null : <ResultsInfo {...matchUp} />}
         <div
-          className="overlay"
+          className="selected-matchup"
           style={{
             display: selectedMatchUpId === matchUp.matchUpId ? '' : 'none',
+            backgroundColor: 'magenta',
             position: 'absolute',
-            top: 0,
+            opacity: '0.2',
             height: '100%',
             width: '100%',
-            opacity: '0.2',
-            backgroundColor: 'magenta'
+            top: 0
           }}
         ></div>
       </div>
