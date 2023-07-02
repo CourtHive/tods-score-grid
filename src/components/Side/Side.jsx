@@ -101,7 +101,7 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
   const side = matchUp?.sides?.find((side) => side.sideNumber === sideNumber);
   const firstParticipant = isDoubles ? side?.participant?.individualParticipants?.[0] : side?.participant;
   const secondParticipant = isDoubles && side?.participant?.individualParticipants?.[1];
-  const isWinningSide = sideNumber === winningSide;
+  const isWinningSide = sideNumber === winningSide || (matchUpStatus === 'BYE' && side.participant);
   const winnerChevron = configuration?.winnerChevron && isWinningSide;
   const teamLogo = configuration?.teamLogo;
   const entryStatus = matchUp?.side?.participant?.entryStatus?.replace('_', ' ');
@@ -178,7 +178,7 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
     }
   };
 
-  const readyToScore = matchUp?.readyToScore && eventHandlers.scoreClick;
+  const readyToScore = matchUp?.readyToScore && eventHandlers.scoreClick && !utilities.scoreHasValue({ matchUp });
 
   return (
     <div className={sideContainerStyle()}>
@@ -253,7 +253,7 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
             matchUp={matchUp}
           />
         )}
-        {!readyToScore ? null : (
+        {!readyToScore ? null : ( // and not scoreHasValue
           <div
             className={scoringStyle({ fontSize: 'small', sideNumber: !scoreBox && sideNumber })}
             onClick={handleScoreClick}

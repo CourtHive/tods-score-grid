@@ -1,6 +1,6 @@
 {
   "name": "tods-score-grid",
-  "version": "0.13.6",
+  "version": "0.13.7",
   "description": "React component to visualize TODS `matchUps`",
   "files": [
     "dist"
@@ -65,7 +65,7 @@
     "dayjs": "^1.10.7",
     "flag-icons": "^6.7.0",
     "react-country-flag": "^3.1.0",
-    "tods-competition-factory": "^1.0.17"
+    "tods-competition-factory": "^1.0.19"
   },
   "devDependencies": {
     "@babel/core": "7.22.5",
