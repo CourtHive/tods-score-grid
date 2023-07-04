@@ -106,8 +106,6 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
   const teamLogo = configuration?.teamLogo;
   const entryStatus = matchUp?.side?.participant?.entryStatus?.replace('_', ' ');
 
-  if (window.dev) console.log({ matchUpStatus, isWinningSide });
-
   const irregularEnding =
     ['RETIRED', 'DOUBLE_WALKOVER', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
   const gameScoreOnly = composition?.configuration?.gameScoreOnly;
