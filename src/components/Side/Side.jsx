@@ -101,12 +101,10 @@ export const Side = ({ participantHeight, eventHandlers, matchUp, composition, s
   const side = matchUp?.sides?.find((side) => side.sideNumber === sideNumber);
   const firstParticipant = isDoubles ? side?.participant?.individualParticipants?.[0] : side?.participant;
   const secondParticipant = isDoubles && side?.participant?.individualParticipants?.[1];
-  const isWinningSide = sideNumber === winningSide || (matchUpStatus === 'BYE' && side.participant);
+  const isWinningSide = sideNumber === winningSide || (matchUpStatus === 'BYE' && side?.participant);
   const winnerChevron = configuration?.winnerChevron && isWinningSide;
   const teamLogo = configuration?.teamLogo;
   const entryStatus = matchUp?.side?.participant?.entryStatus?.replace('_', ' ');
-
-  if (window.dev) console.log({ matchUpStatus, isWinningSide });
 
   const irregularEnding =
     ['RETIRED', 'DOUBLE_WALKOVER', 'WALKOVER', 'DEFAULTED'].includes(matchUpStatus) && !isWinningSide;
