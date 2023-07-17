@@ -79,10 +79,10 @@ export function Individual(params) {
         <Frill {...params} className={flagStyles()} />
 
         <div className={participantNameStyle({ variant })}>
-          {side?.bye || side?.qualifier || !participantName ? (
-            <abbr className={participantStatus()}>{(side?.bye && BYE) || (side?.qualifier && QUALIFIER) || TBD}</abbr>
-          ) : (
+          {participantName ? (
             <span>{participantName}</span>
+          ) : (
+            <abbr className={participantStatus()}>{(side?.bye && BYE) || (side?.qualifier && QUALIFIER) || TBD}</abbr>
           )}
         </div>
 
