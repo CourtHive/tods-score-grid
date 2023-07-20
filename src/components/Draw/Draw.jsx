@@ -54,7 +54,6 @@ export const Draw = ({
       {!structures?.length || structures.length === 1 || !useStructureSelector ? null : (
         <StructureSelector structures={structures} structureId={selectedStructureId} onSelect={onSelect} />
       )}
-      <div style={{ height: '30px' }}> </div>
       {!structures?.length ? (
         <Notice>Nothing to show with current configuration</Notice>
       ) : (
