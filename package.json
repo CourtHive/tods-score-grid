@@ -123,7 +123,7 @@
     "lint-staged": "13.2.3",
     "np": "^8.0.4",
     "pinst": "3.0.0",
-    "prettier": "2.8.8",
+    "prettier": "3.0.0",
     "prettier-eslint": "15.0.1",
     "prop-types": "15.8.1",
     "react": "17.0.2",
