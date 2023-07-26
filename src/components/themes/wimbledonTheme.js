@@ -8,7 +8,6 @@ export const wimbledonTheme = createTheme('wimbledon-theme', {
     borderInlineStart: '10px solid green'
   },
   colors: {
-    backgroundColor: '#00703c',
     connector: 'transparent',
     borderHover: 'lightgray',
     border: '#00703c',
